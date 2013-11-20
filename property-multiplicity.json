@@ -235,7 +235,7 @@
 	"fileFormat": false,
 	"fileSize": false,
 	"followee": true,
-	"follows": false,
+	"follows": true,
 	"followup": false,
 	"foodEstablishment": true,
 	"foodEvent": true,
