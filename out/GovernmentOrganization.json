@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/GovernmentOrganization.json",
+	"title": "Government Organization",
+	"format": "http://schema.org/GovernmentOrganization",
+	"allOf": [{"$ref": "Organization.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

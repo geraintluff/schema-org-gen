@@ -1,0 +1,61 @@
+{
+	"id": "http://json-schema.org/schemas/QualitativeValue.json",
+	"title": "Qualitative Value",
+	"format": "http://schema.org/QualitativeValue",
+	"allOf": [{"$ref": "Enumeration.json"}],
+	"type": "object",
+	"properties": {
+		"equal": {
+			"type": "array",
+			"items": {"$ref": "QualitativeValue.json#/definitions/possibleRef"}
+		},
+		"greater": {
+			"type": "array",
+			"items": {"$ref": "QualitativeValue.json#/definitions/possibleRef"}
+		},
+		"greaterOrEqual": {
+			"type": "array",
+			"items": {"$ref": "QualitativeValue.json#/definitions/possibleRef"}
+		},
+		"lesser": {
+			"type": "array",
+			"items": {"$ref": "QualitativeValue.json#/definitions/possibleRef"}
+		},
+		"lesserOrEqual": {
+			"type": "array",
+			"items": {"$ref": "QualitativeValue.json#/definitions/possibleRef"}
+		},
+		"nonEqual": {
+			"type": "array",
+			"items": {"$ref": "QualitativeValue.json#/definitions/possibleRef"}
+		},
+		"valueReference": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/valueReference"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"valueReference": {
+			"title": "Value Reference",
+			"description": "A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.",
+			"anyOf": [{"$ref": "Enumeration.json#/definitions/possibleRef"}, {"$ref": "StructuredValue.json#/definitions/possibleRef"}]
+		}
+	}
+}

@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/Library.json",
+	"title": "Library",
+	"format": "http://schema.org/Library",
+	"allOf": [{"$ref": "LocalBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

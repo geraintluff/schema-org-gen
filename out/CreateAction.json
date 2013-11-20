@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/CreateAction.json",
+	"title": "Create Action",
+	"format": "http://schema.org/CreateAction",
+	"allOf": [{"$ref": "Action.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

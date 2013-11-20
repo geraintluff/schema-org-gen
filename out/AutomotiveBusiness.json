@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/AutomotiveBusiness.json",
+	"title": "Automotive Business",
+	"format": "http://schema.org/AutomotiveBusiness",
+	"allOf": [{"$ref": "LocalBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

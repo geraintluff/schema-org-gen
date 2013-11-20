@@ -1,0 +1,43 @@
+{
+	"id": "http://json-schema.org/schemas/Movie.json",
+	"title": "Movie",
+	"format": "http://schema.org/Movie",
+	"allOf": [{"$ref": "CreativeWork.json"}],
+	"type": "object",
+	"properties": {
+		"actor": {
+			"type": "array",
+			"items": {"$ref": "Person.json#/definitions/possibleRef"}
+		},
+		"director": {"$ref": "Person.json#/definitions/possibleRef"},
+		"duration": {"$ref": "Duration.json#/definitions/possibleRef"},
+		"musicBy": {"$ref": "#/definitions/musicBy"},
+		"producer": {"$ref": "Person.json#/definitions/possibleRef"},
+		"productionCompany": {"$ref": "Organization.json#/definitions/possibleRef"},
+		"trailer": {"$ref": "VideoObject.json#/definitions/possibleRef"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"musicBy": {
+			"title": "Music by",
+			"description": "The composer of the movie or TV/radio soundtrack.",
+			"anyOf": [{"$ref": "Person.json#/definitions/possibleRef"}, {"$ref": "MusicGroup.json#/definitions/possibleRef"}]
+		}
+	}
+}

@@ -1,0 +1,54 @@
+{
+	"id": "http://json-schema.org/schemas/DrugCost.json",
+	"title": "Drug Cost",
+	"format": "http://schema.org/DrugCost",
+	"allOf": [{"$ref": "MedicalIntangible.json"}],
+	"type": "object",
+	"properties": {
+		"applicableLocation": {"$ref": "AdministrativeArea.json#/definitions/possibleRef"},
+		"costCategory": {"$ref": "DrugCostCategory.json#/definitions/possibleRef"},
+		"costCurrency": {"$ref": "#/definitions/costCurrency"},
+		"costOrigin": {"$ref": "#/definitions/costOrigin"},
+		"costPerUnit": {"$ref": "#/definitions/costPerUnit"},
+		"drugUnit": {"$ref": "#/definitions/drugUnit"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"costCurrency": {
+			"title": "Cost Currency",
+			"description": "The currency (in 3-letter ISO 4217 format) of the drug cost.",
+			"type": "string"
+		},
+		"costOrigin": {
+			"title": "Cost Origin",
+			"description": "Additional details to capture the origin of the cost data. For example, 'Medicare Part B'.",
+			"type": "string"
+		},
+		"costPerUnit": {
+			"title": "Cost Per Unit",
+			"description": "The cost per unit of the drug.",
+			"anyOf": [{"type": "number"}, {"type": "string"}]
+		},
+		"drugUnit": {
+			"title": "Drug Unit",
+			"description": "The unit in which the drug is measured, e.g. '5 mg tablet'.",
+			"type": "string"
+		}
+	}
+}

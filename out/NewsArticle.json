@@ -1,0 +1,58 @@
+{
+	"id": "http://json-schema.org/schemas/NewsArticle.json",
+	"title": "News Article",
+	"format": "http://schema.org/NewsArticle",
+	"allOf": [{"$ref": "Article.json"}],
+	"type": "object",
+	"properties": {
+		"dateline": {"$ref": "#/definitions/dateline"},
+		"printColumn": {"$ref": "#/definitions/printColumn"},
+		"printEdition": {"$ref": "#/definitions/printEdition"},
+		"printPage": {"$ref": "#/definitions/printPage"},
+		"printSection": {"$ref": "#/definitions/printSection"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"dateline": {
+			"title": "Dateline",
+			"description": "The location where the NewsArticle was produced.",
+			"type": "string"
+		},
+		"printColumn": {
+			"title": "Print Column",
+			"description": "The number of the column in which the NewsArticle appears in the print edition.",
+			"type": "string"
+		},
+		"printEdition": {
+			"title": "Print Edition",
+			"description": "The edition of the print product in which the NewsArticle appears.",
+			"type": "string"
+		},
+		"printPage": {
+			"title": "Print Page",
+			"description": "If this NewsArticle appears in print, this field indicates the name of the page on which the article is found. Please note that this field is intended for the exact page name (e.g. A5, B18).",
+			"type": "string"
+		},
+		"printSection": {
+			"title": "Print Section",
+			"description": "If this NewsArticle appears in print, this field indicates the print section in which the article appeared.",
+			"type": "string"
+		}
+	}
+}

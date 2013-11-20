@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/FireStation.json",
+	"title": "Fire Station",
+	"format": "http://schema.org/FireStation",
+	"allOf": [{"$ref": "CivicStructure.json"}, {"$ref": "EmergencyService.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

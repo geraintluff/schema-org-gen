@@ -1,0 +1,37 @@
+{
+	"id": "http://json-schema.org/schemas/SearchAction.json",
+	"title": "Search Action",
+	"format": "http://schema.org/SearchAction",
+	"allOf": [{"$ref": "Action.json"}],
+	"type": "object",
+	"properties": {
+		"query": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/query"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"query": {
+			"title": "Query",
+			"description": "A sub property of instrument. The query used on this action.",
+			"anyOf": [{"$ref": "Class.json#/definitions/possibleRef"}, {"type": "string"}]
+		}
+	}
+}

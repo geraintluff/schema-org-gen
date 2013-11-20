@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/Airport.json",
+	"title": "Airport",
+	"format": "http://schema.org/Airport",
+	"allOf": [{"$ref": "CivicStructure.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

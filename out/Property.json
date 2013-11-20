@@ -1,0 +1,36 @@
+{
+	"id": "http://json-schema.org/schemas/Property.json",
+	"title": "Property",
+	"format": "http://schema.org/Property",
+	"allOf": [{"$ref": "Thing.json"}],
+	"type": "object",
+	"properties": {
+		"domainIncludes": {
+			"type": "array",
+			"items": {"$ref": "Class.json#/definitions/possibleRef"}
+		},
+		"rangeIncludes": {
+			"type": "array",
+			"items": {"$ref": "Class.json#/definitions/possibleRef"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

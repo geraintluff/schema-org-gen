@@ -1,0 +1,42 @@
+{
+	"id": "http://json-schema.org/schemas/CommunicateAction.json",
+	"title": "Communicate Action",
+	"format": "http://schema.org/CommunicateAction",
+	"allOf": [{"$ref": "InteractAction.json"}],
+	"type": "object",
+	"properties": {
+		"about": {"$ref": "Thing.json#/definitions/possibleRef"},
+		"language": {
+			"type": "array",
+			"items": {"$ref": "Language.json#/definitions/possibleRef"}
+		},
+		"recipient": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/recipient"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"recipient": {
+			"title": "Recipient",
+			"description": "A sub property of participant. The participant who is at the receiving end of the action.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Audience.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		}
+	}
+}

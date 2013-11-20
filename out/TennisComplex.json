@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/TennisComplex.json",
+	"title": "Tennis Complex",
+	"format": "http://schema.org/TennisComplex",
+	"allOf": [{"$ref": "SportsActivityLocation.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

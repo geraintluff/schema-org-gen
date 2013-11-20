@@ -1,0 +1,41 @@
+{
+	"id": "http://json-schema.org/schemas/SendAction.json",
+	"title": "Send Action",
+	"format": "http://schema.org/SendAction",
+	"allOf": [{"$ref": "TransferAction.json"}],
+	"type": "object",
+	"properties": {
+		"deliveryMethod": {
+			"type": "array",
+			"items": {"$ref": "DeliveryMethod.json#/definitions/possibleRef"}
+		},
+		"recipient": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/recipient"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"recipient": {
+			"title": "Recipient",
+			"description": "A sub property of participant. The participant who is at the receiving end of the action.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Audience.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		}
+	}
+}

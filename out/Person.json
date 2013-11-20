@@ -1,0 +1,265 @@
+{
+	"id": "http://json-schema.org/schemas/Person.json",
+	"title": "Person",
+	"format": "http://schema.org/Person",
+	"allOf": [{"$ref": "Thing.json"}],
+	"type": "object",
+	"properties": {
+		"additionalName": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/additionalName"}
+		},
+		"address": {"$ref": "PostalAddress.json#/definitions/possibleRef"},
+		"affiliation": {
+			"type": "array",
+			"items": {"$ref": "Organization.json#/definitions/possibleRef"}
+		},
+		"alumniOf": {
+			"type": "array",
+			"items": {"$ref": "EducationalOrganization.json#/definitions/possibleRef"}
+		},
+		"award": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/award"}
+		},
+		"birthDate": {"$ref": "#/definitions/birthDate"},
+		"brand": {"$ref": "#/definitions/brand"},
+		"children": {
+			"type": "array",
+			"items": {"$ref": "Person.json#/definitions/possibleRef"}
+		},
+		"colleague": {
+			"type": "array",
+			"items": {"$ref": "Person.json#/definitions/possibleRef"}
+		},
+		"contactPoint": {
+			"type": "array",
+			"items": {"$ref": "ContactPoint.json#/definitions/possibleRef"}
+		},
+		"deathDate": {"$ref": "#/definitions/deathDate"},
+		"duns": {"$ref": "#/definitions/duns"},
+		"email": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/email"}
+		},
+		"familyName": {"$ref": "#/definitions/familyName"},
+		"faxNumber": {"$ref": "#/definitions/faxNumber"},
+		"follows": {"$ref": "Person.json#/definitions/possibleRef"},
+		"gender": {"$ref": "#/definitions/gender"},
+		"givenName": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/givenName"}
+		},
+		"globalLocationNumber": {"$ref": "#/definitions/globalLocationNumber"},
+		"hasPOS": {
+			"type": "array",
+			"items": {"$ref": "Place.json#/definitions/possibleRef"}
+		},
+		"homeLocation": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/homeLocation"}
+		},
+		"honorificPrefix": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/honorificPrefix"}
+		},
+		"honorificSuffix": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/honorificSuffix"}
+		},
+		"interactionCount": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/interactionCount"}
+		},
+		"isicV4": {"$ref": "#/definitions/isicV4"},
+		"jobTitle": {"$ref": "#/definitions/jobTitle"},
+		"knows": {"$ref": "Person.json#/definitions/possibleRef"},
+		"makesOffer": {
+			"type": "array",
+			"items": {"$ref": "Offer.json#/definitions/possibleRef"}
+		},
+		"memberOf": {
+			"type": "array",
+			"items": {"$ref": "Organization.json#/definitions/possibleRef"}
+		},
+		"naics": {"$ref": "#/definitions/naics"},
+		"nationality": {
+			"type": "array",
+			"items": {"$ref": "Country.json#/definitions/possibleRef"}
+		},
+		"owns": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/owns"}
+		},
+		"parent": {
+			"type": "array",
+			"items": {"$ref": "Person.json#/definitions/possibleRef"}
+		},
+		"performerIn": {
+			"type": "array",
+			"items": {"$ref": "Event.json#/definitions/possibleRef"}
+		},
+		"relatedTo": {"$ref": "Person.json#/definitions/possibleRef"},
+		"seeks": {
+			"type": "array",
+			"items": {"$ref": "Demand.json#/definitions/possibleRef"}
+		},
+		"sibling": {
+			"type": "array",
+			"items": {"$ref": "Person.json#/definitions/possibleRef"}
+		},
+		"spouse": {"$ref": "Person.json#/definitions/possibleRef"},
+		"taxID": {"$ref": "#/definitions/taxID"},
+		"telephone": {"$ref": "#/definitions/telephone"},
+		"vatID": {"$ref": "#/definitions/vatID"},
+		"workLocation": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/workLocation"}
+		},
+		"worksFor": {
+			"type": "array",
+			"items": {"$ref": "Organization.json#/definitions/possibleRef"}
+		}
+	},
+	"definitions": {
+		"additionalName": {
+			"title": "Additional Name",
+			"description": "An additional name for a Person, can be used for a middle name.",
+			"type": "string"
+		},
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"award": {
+			"title": "Award",
+			"description": "An award won by this person or for this creative work.",
+			"type": "string"
+		},
+		"birthDate": {
+			"title": "Birth Date",
+			"description": "Date of birth.",
+			"type": "string",
+			"format": "date"
+		},
+		"brand": {
+			"title": "Brand",
+			"description": "The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Brand.json#/definitions/possibleRef"}]
+		},
+		"deathDate": {
+			"title": "Death Date",
+			"description": "Date of death.",
+			"type": "string",
+			"format": "date"
+		},
+		"duns": {
+			"title": "Duns",
+			"description": "The Dun & Bradstreet DUNS number for identifying an organization or business person.",
+			"type": "string"
+		},
+		"email": {
+			"title": "Email",
+			"description": "Email address.",
+			"type": "string"
+		},
+		"familyName": {
+			"title": "Family Name",
+			"description": "Family name. In the U.S., the last name of an Person. This can be used along with givenName instead of the Name property.",
+			"type": "string"
+		},
+		"faxNumber": {
+			"title": "Fax Number",
+			"description": "The fax number.",
+			"type": "string"
+		},
+		"gender": {
+			"title": "Gender",
+			"description": "Gender of the person.",
+			"type": "string"
+		},
+		"givenName": {
+			"title": "Given Name",
+			"description": "Given name. In the U.S., the first name of a Person. This can be used along with familyName instead of the Name property.",
+			"type": "string"
+		},
+		"globalLocationNumber": {
+			"title": "Global Location Number",
+			"description": "The Global Location Number (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.",
+			"type": "string"
+		},
+		"homeLocation": {
+			"title": "Home Location",
+			"description": "A contact location for a person's residence.",
+			"anyOf": [{"$ref": "ContactPoint.json#/definitions/possibleRef"}, {"$ref": "Place.json#/definitions/possibleRef"}]
+		},
+		"honorificPrefix": {
+			"title": "Honorific Prefix",
+			"description": "An honorific prefix preceding a Person's name such as Dr/Mrs/Mr.",
+			"type": "string"
+		},
+		"honorificSuffix": {
+			"title": "Honorific Suffix",
+			"description": "An honorific suffix preceding a Person's name such as M.D. /PhD/MSCSW.",
+			"type": "string"
+		},
+		"interactionCount": {
+			"title": "Interaction Count",
+			"description": "A count of a specific user interactions with this item—for example, 20 UserLikes, 5 UserComments, or 300 UserDownloads. The user interaction type should be one of the sub types of UserInteraction.",
+			"type": "string"
+		},
+		"isicV4": {
+			"title": "Isic V4",
+			"description": "The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.",
+			"type": "string"
+		},
+		"jobTitle": {
+			"title": "Job Title",
+			"description": "The job title of the person (for example, Financial Manager).",
+			"type": "string"
+		},
+		"naics": {
+			"title": "Naics",
+			"description": "The North American Industry Classification System (NAICS) code for a particular organization or business person.",
+			"type": "string"
+		},
+		"owns": {
+			"title": "Owns",
+			"description": "Products owned by the organization or person.",
+			"anyOf": [{"$ref": "OwnershipInfo.json#/definitions/possibleRef"}, {"$ref": "Product.json#/definitions/possibleRef"}]
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"taxID": {
+			"title": "Tax ID",
+			"description": "The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.",
+			"type": "string"
+		},
+		"telephone": {
+			"title": "Telephone",
+			"description": "The telephone number.",
+			"type": "string"
+		},
+		"vatID": {
+			"title": "Vat ID",
+			"description": "The Value-added Tax ID of the organisation or person.",
+			"type": "string"
+		},
+		"workLocation": {
+			"title": "Work Location",
+			"description": "A contact location for a person's place of work.",
+			"anyOf": [{"$ref": "ContactPoint.json#/definitions/possibleRef"}, {"$ref": "Place.json#/definitions/possibleRef"}]
+		}
+	}
+}

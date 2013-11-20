@@ -1,0 +1,40 @@
+{
+	"id": "http://json-schema.org/schemas/MusicGroup.json",
+	"title": "Music Group",
+	"format": "http://schema.org/MusicGroup",
+	"allOf": [{"$ref": "PerformingGroup.json"}],
+	"type": "object",
+	"properties": {
+		"album": {
+			"type": "array",
+			"items": {"$ref": "MusicAlbum.json#/definitions/possibleRef"}
+		},
+		"musicGroupMember": {
+			"type": "array",
+			"items": {"$ref": "Person.json#/definitions/possibleRef"}
+		},
+		"track": {
+			"type": "array",
+			"items": {"$ref": "MusicRecording.json#/definitions/possibleRef"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

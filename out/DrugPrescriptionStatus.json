@@ -1,0 +1,6 @@
+{
+	"id": "http://json-schema.org/schemas/DrugPrescriptionStatus.json",
+	"title": "Drug Prescription Status",
+	"format": "http://schema.org/DrugPrescriptionStatus",
+	"enum": ["OTC", "PrescriptionOnly"]
+}

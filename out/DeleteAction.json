@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/DeleteAction.json",
+	"title": "Delete Action",
+	"format": "http://schema.org/DeleteAction",
+	"allOf": [{"$ref": "UpdateAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

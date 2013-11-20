@@ -1,0 +1,32 @@
+{
+	"id": "http://json-schema.org/schemas/TrackAction.json",
+	"title": "Track Action",
+	"format": "http://schema.org/TrackAction",
+	"allOf": [{"$ref": "FindAction.json"}],
+	"type": "object",
+	"properties": {
+		"deliveryMethod": {
+			"type": "array",
+			"items": {"$ref": "DeliveryMethod.json#/definitions/possibleRef"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/InstallAction.json",
+	"title": "Install Action",
+	"format": "http://schema.org/InstallAction",
+	"allOf": [{"$ref": "ConsumeAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

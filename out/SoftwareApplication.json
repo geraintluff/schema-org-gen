@@ -1,0 +1,214 @@
+{
+	"id": "http://json-schema.org/schemas/SoftwareApplication.json",
+	"title": "Software Application",
+	"format": "http://schema.org/SoftwareApplication",
+	"allOf": [{"$ref": "CreativeWork.json"}],
+	"type": "object",
+	"properties": {
+		"applicationCategory": {"$ref": "#/definitions/applicationCategory"},
+		"applicationSubCategory": {"$ref": "#/definitions/applicationSubCategory"},
+		"applicationSuite": {"$ref": "#/definitions/applicationSuite"},
+		"countriesNotSupported": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/countriesNotSupported"}
+		},
+		"countriesSupported": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/countriesSupported"}
+		},
+		"device": {"$ref": "#/definitions/device"},
+		"downloadUrl": {"$ref": "#/definitions/downloadUrl"},
+		"featureList": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/featureList"}
+		},
+		"fileFormat": {"$ref": "#/definitions/fileFormat"},
+		"fileSize": {"$ref": "#/definitions/fileSize"},
+		"installUrl": {"$ref": "#/definitions/installUrl"},
+		"memoryRequirements": {"$ref": "#/definitions/memoryRequirements"},
+		"operatingSystem": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/operatingSystem"}
+		},
+		"permissions": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/permissions"}
+		},
+		"processorRequirements": {"$ref": "#/definitions/processorRequirements"},
+		"releaseNotes": {"$ref": "#/definitions/releaseNotes"},
+		"requirements": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/requirements"}
+		},
+		"screenshot": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/screenshot"}
+		},
+		"softwareVersion": {"$ref": "#/definitions/softwareVersion"},
+		"storageRequirements": {"$ref": "#/definitions/storageRequirements"}
+	},
+	"definitions": {
+		"applicationCategory": {
+			"title": "Application Category",
+			"description": "Type of software application, e.g. \"Game, Multimedia\".",
+			"anyOf": [
+				{"type": "string"},
+				{
+					"type": "string",
+					"format": "uri"
+				}
+			]
+		},
+		"applicationSubCategory": {
+			"title": "Application Sub Category",
+			"description": "Subcategory of the application, e.g. \"Arcade Game\".",
+			"anyOf": [
+				{"type": "string"},
+				{
+					"type": "string",
+					"format": "uri"
+				}
+			]
+		},
+		"applicationSuite": {
+			"title": "Application Suite",
+			"description": "The name of the application suite to which the application belongs (e.g. Excel belongs to Office)",
+			"type": "string"
+		},
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"countriesNotSupported": {
+			"title": "Countries Not Supported",
+			"description": "Countries for which the application is not supported. You can also provide the two-letter ISO 3166-1 alpha-2 country code.",
+			"type": "string"
+		},
+		"countriesSupported": {
+			"title": "Countries Supported",
+			"description": "Countries for which the application is supported. You can also provide the two-letter ISO 3166-1 alpha-2 country code.",
+			"type": "string"
+		},
+		"device": {
+			"title": "Device",
+			"description": "Device required to run the application. Used in cases where a specific make/model is required to run the application.",
+			"type": "string"
+		},
+		"downloadUrl": {
+			"title": "Download Url",
+			"description": "If the file can be downloaded, URL to download the binary.",
+			"type": "string",
+			"format": "uri",
+			"links": [{
+				"rel": "full",
+				"href": "{+$}"
+			}]
+		},
+		"featureList": {
+			"title": "Feature List",
+			"description": "Features or modules provided by this application (and possibly required by other applications).",
+			"anyOf": [
+				{"type": "string"},
+				{
+					"type": "string",
+					"format": "uri"
+				}
+			]
+		},
+		"fileFormat": {
+			"title": "File Format",
+			"description": "MIME format of the binary (e.g. application/zip).",
+			"type": "string"
+		},
+		"fileSize": {
+			"title": "File Size",
+			"description": "Size of the application / package (e.g. 18MB). In the absence of a unit (MB, KB etc.), KB will be assumed.",
+			"type": "integer"
+		},
+		"installUrl": {
+			"title": "Install Url",
+			"description": "URL at which the app may be installed, if different from the URL of the item.",
+			"type": "string",
+			"format": "uri",
+			"links": [{
+				"rel": "full",
+				"href": "{+$}"
+			}]
+		},
+		"memoryRequirements": {
+			"title": "Memory Requirements",
+			"description": "Minimum memory requirements.",
+			"anyOf": [
+				{"type": "string"},
+				{
+					"type": "string",
+					"format": "uri"
+				}
+			]
+		},
+		"operatingSystem": {
+			"title": "Operating System",
+			"description": "Operating systems supported (Windows 7, OSX 10.6, Android 1.6).",
+			"type": "string"
+		},
+		"permissions": {
+			"title": "Permissions",
+			"description": "Permission(s) required to run the app (for example, a mobile app may require full internet access or may run only on wifi).",
+			"type": "string"
+		},
+		"processorRequirements": {
+			"title": "Processor Requirements",
+			"description": "Processor architecture required to run the application (e.g. IA64).",
+			"type": "string"
+		},
+		"releaseNotes": {
+			"title": "Release Notes",
+			"description": "Description of what changed in this version.",
+			"anyOf": [
+				{"type": "string"},
+				{
+					"type": "string",
+					"format": "uri"
+				}
+			]
+		},
+		"requirements": {
+			"title": "Requirements",
+			"description": "Component dependency requirements for application. This includes runtime environments and shared libraries that are not included in the application distribution package, but required to run the application (Examples: DirectX, Java or .NET runtime).",
+			"anyOf": [
+				{"type": "string"},
+				{
+					"type": "string",
+					"format": "uri"
+				}
+			]
+		},
+		"screenshot": {
+			"title": "Screenshot",
+			"description": "A link to a screenshot image of the app.",
+			"anyOf": [
+				{"$ref": "ImageObject.json#/definitions/possibleRef"},
+				{
+					"type": "string",
+					"format": "uri"
+				}
+			]
+		},
+		"softwareVersion": {
+			"title": "Software Version",
+			"description": "Version of the software instance.",
+			"type": "string"
+		},
+		"storageRequirements": {
+			"title": "Storage Requirements",
+			"description": "Storage requirements (free space required).",
+			"anyOf": [
+				{"type": "string"},
+				{
+					"type": "string",
+					"format": "uri"
+				}
+			]
+		}
+	}
+}

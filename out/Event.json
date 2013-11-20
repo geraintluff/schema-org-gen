@@ -1,0 +1,99 @@
+{
+	"id": "http://json-schema.org/schemas/Event.json",
+	"title": "Event",
+	"format": "http://schema.org/Event",
+	"allOf": [{"$ref": "Thing.json"}],
+	"type": "object",
+	"properties": {
+		"attendee": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/attendee"}
+		},
+		"duration": {"$ref": "Duration.json#/definitions/possibleRef"},
+		"endDate": {"$ref": "#/definitions/endDate"},
+		"eventStatus": {
+			"type": "array",
+			"items": {"$ref": "EventStatusType.json#/definitions/possibleRef"}
+		},
+		"location": {"$ref": "#/definitions/location"},
+		"offers": {
+			"type": "array",
+			"items": {"$ref": "Offer.json#/definitions/possibleRef"}
+		},
+		"performer": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/performer"}
+		},
+		"previousStartDate": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/previousStartDate"}
+		},
+		"startDate": {"$ref": "#/definitions/startDate"},
+		"subEvent": {
+			"type": "array",
+			"items": {"$ref": "Event.json#/definitions/possibleRef"}
+		},
+		"superEvent": {
+			"type": "array",
+			"items": {"$ref": "Event.json#/definitions/possibleRef"}
+		},
+		"typicalAgeRange": {"$ref": "#/definitions/typicalAgeRange"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"attendee": {
+			"title": "Attendee",
+			"description": "A person or organization attending the event.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		},
+		"endDate": {
+			"title": "End Date",
+			"description": "The end date and time of the event or item (in ISO 8601 date format).",
+			"type": "string",
+			"format": "date"
+		},
+		"location": {
+			"title": "Location",
+			"description": "The location of the event, organization or action.",
+			"anyOf": [{"$ref": "PostalAddress.json#/definitions/possibleRef"}, {"$ref": "Place.json#/definitions/possibleRef"}]
+		},
+		"performer": {
+			"title": "Performer",
+			"description": "A performer at the event—for example, a presenter, musician, musical group or actor.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		},
+		"previousStartDate": {
+			"title": "Previous Start Date",
+			"description": "Used in conjunction with eventStatus for rescheduled or cancelled events. This property contains the previously scheduled start date. For rescheduled events, the startDate property should be used for the newly scheduled start date. In the (rare) case of an event that has been postponed and rescheduled multiple times, this field may be repeated.",
+			"type": "string",
+			"format": "date"
+		},
+		"startDate": {
+			"title": "Start Date",
+			"description": "The start date and time of the event or item (in ISO 8601 date format).",
+			"type": "string",
+			"format": "date"
+		},
+		"typicalAgeRange": {
+			"title": "Typical Age Range",
+			"description": "The typical expected age range, e.g. '7-9', '11-'.",
+			"type": "string"
+		}
+	}
+}

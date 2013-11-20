@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/ScheduleAction.json",
+	"title": "Schedule Action",
+	"format": "http://schema.org/ScheduleAction",
+	"allOf": [{"$ref": "PlanAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

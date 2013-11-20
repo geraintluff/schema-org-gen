@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/PaymentMethod.json",
+	"title": "Payment Method",
+	"format": "http://schema.org/PaymentMethod",
+	"allOf": [{"$ref": "Enumeration.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

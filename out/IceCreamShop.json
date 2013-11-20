@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/IceCreamShop.json",
+	"title": "Ice Cream Shop",
+	"format": "http://schema.org/IceCreamShop",
+	"allOf": [{"$ref": "FoodEstablishment.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

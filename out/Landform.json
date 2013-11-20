@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/Landform.json",
+	"title": "Landform",
+	"format": "http://schema.org/Landform",
+	"allOf": [{"$ref": "Place.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

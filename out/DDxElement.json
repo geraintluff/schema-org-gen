@@ -1,0 +1,36 @@
+{
+	"id": "http://json-schema.org/schemas/DDxElement.json",
+	"title": "D Dx Element",
+	"format": "http://schema.org/DDxElement",
+	"allOf": [{"$ref": "MedicalIntangible.json"}],
+	"type": "object",
+	"properties": {
+		"diagnosis": {
+			"type": "array",
+			"items": {"$ref": "MedicalCondition.json#/definitions/possibleRef"}
+		},
+		"distinguishingSign": {
+			"type": "array",
+			"items": {"$ref": "MedicalSignOrSymptom.json#/definitions/possibleRef"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

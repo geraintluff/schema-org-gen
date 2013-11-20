@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/BroadcastEvent.json",
+	"title": "Broadcast Event",
+	"format": "http://schema.org/BroadcastEvent",
+	"allOf": [{"$ref": "PublicationEvent.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

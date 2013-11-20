@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/MobilePhoneStore.json",
+	"title": "Mobile Phone Store",
+	"format": "http://schema.org/MobilePhoneStore",
+	"allOf": [{"$ref": "Store.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

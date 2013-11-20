@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/Vessel.json",
+	"title": "Vessel",
+	"format": "http://schema.org/Vessel",
+	"allOf": [{"$ref": "AnatomicalStructure.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

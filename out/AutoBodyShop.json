@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/AutoBodyShop.json",
+	"title": "Auto Body Shop",
+	"format": "http://schema.org/AutoBodyShop",
+	"allOf": [{"$ref": "AutomotiveBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

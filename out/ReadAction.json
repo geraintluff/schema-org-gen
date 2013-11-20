@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/ReadAction.json",
+	"title": "Read Action",
+	"format": "http://schema.org/ReadAction",
+	"allOf": [{"$ref": "ConsumeAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

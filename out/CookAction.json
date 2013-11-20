@@ -1,0 +1,45 @@
+{
+	"id": "http://json-schema.org/schemas/CookAction.json",
+	"title": "Cook Action",
+	"format": "http://schema.org/CookAction",
+	"allOf": [{"$ref": "CreateAction.json"}],
+	"type": "object",
+	"properties": {
+		"foodEstablishment": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/foodEstablishment"}
+		},
+		"foodEvent": {
+			"type": "array",
+			"items": {"$ref": "FoodEvent.json#/definitions/possibleRef"}
+		},
+		"recipe": {
+			"type": "array",
+			"items": {"$ref": "Recipe.json#/definitions/possibleRef"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"foodEstablishment": {
+			"title": "Food Establishment",
+			"description": "A sub property of location. The specific food establishment where the action occurreed.",
+			"anyOf": [{"$ref": "FoodEstablishment.json#/definitions/possibleRef"}, {"$ref": "Place.json#/definitions/possibleRef"}]
+		}
+	}
+}

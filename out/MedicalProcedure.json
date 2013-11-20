@@ -1,0 +1,47 @@
+{
+	"id": "http://json-schema.org/schemas/MedicalProcedure.json",
+	"title": "Medical Procedure",
+	"format": "http://schema.org/MedicalProcedure",
+	"allOf": [{"$ref": "MedicalEntity.json"}],
+	"type": "object",
+	"properties": {
+		"followup": {"$ref": "#/definitions/followup"},
+		"howPerformed": {"$ref": "#/definitions/howPerformed"},
+		"preparation": {"$ref": "#/definitions/preparation"},
+		"procedureType": {"$ref": "MedicalProcedureType.json#/definitions/possibleRef"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"followup": {
+			"title": "Followup",
+			"description": "Typical or recommended followup care after the procedure is performed.",
+			"type": "string"
+		},
+		"howPerformed": {
+			"title": "How Performed",
+			"description": "How the procedure is performed.",
+			"type": "string"
+		},
+		"preparation": {
+			"title": "Preparation",
+			"description": "Typical preparation that a patient must undergo before having the procedure performed.",
+			"type": "string"
+		}
+	}
+}

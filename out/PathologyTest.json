@@ -1,0 +1,32 @@
+{
+	"id": "http://json-schema.org/schemas/PathologyTest.json",
+	"title": "Pathology Test",
+	"format": "http://schema.org/PathologyTest",
+	"allOf": [{"$ref": "MedicalTest.json"}],
+	"type": "object",
+	"properties": {"tissueSample": {"$ref": "#/definitions/tissueSample"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"tissueSample": {
+			"title": "Tissue Sample",
+			"description": "The type of tissue sample required for the test.",
+			"type": "string"
+		}
+	}
+}

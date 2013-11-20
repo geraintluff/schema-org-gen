@@ -1,0 +1,76 @@
+{
+	"id": "http://json-schema.org/schemas/Series.json",
+	"title": "Series",
+	"format": "http://schema.org/Series",
+	"allOf": [{"$ref": "CreativeWork.json"}],
+	"type": "object",
+	"properties": {
+		"actor": {
+			"type": "array",
+			"items": {"$ref": "Person.json#/definitions/possibleRef"}
+		},
+		"director": {"$ref": "Person.json#/definitions/possibleRef"},
+		"endDate": {"$ref": "#/definitions/endDate"},
+		"episode": {
+			"type": "array",
+			"items": {"$ref": "Episode.json#/definitions/possibleRef"}
+		},
+		"musicBy": {"$ref": "#/definitions/musicBy"},
+		"numberOfEpisodes": {"$ref": "#/definitions/numberOfEpisodes"},
+		"numberOfSeasons": {"$ref": "#/definitions/numberOfSeasons"},
+		"producer": {"$ref": "Person.json#/definitions/possibleRef"},
+		"productionCompany": {"$ref": "Organization.json#/definitions/possibleRef"},
+		"season": {
+			"type": "array",
+			"items": {"$ref": "Season.json#/definitions/possibleRef"}
+		},
+		"startDate": {"$ref": "#/definitions/startDate"},
+		"trailer": {"$ref": "VideoObject.json#/definitions/possibleRef"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"endDate": {
+			"title": "End Date",
+			"description": "The end date and time of the event or item (in ISO 8601 date format).",
+			"type": "string",
+			"format": "date"
+		},
+		"musicBy": {
+			"title": "Music by",
+			"description": "The composer of the movie or TV/radio soundtrack.",
+			"anyOf": [{"$ref": "Person.json#/definitions/possibleRef"}, {"$ref": "MusicGroup.json#/definitions/possibleRef"}]
+		},
+		"numberOfEpisodes": {
+			"title": "Number of Episodes",
+			"description": "The number of episodes in this season or series.",
+			"type": "number"
+		},
+		"numberOfSeasons": {
+			"title": "Number of Seasons",
+			"description": "The number of seasons in this series.",
+			"type": "number"
+		},
+		"startDate": {
+			"title": "Start Date",
+			"description": "The start date and time of the event or item (in ISO 8601 date format).",
+			"type": "string",
+			"format": "date"
+		}
+	}
+}

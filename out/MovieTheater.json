@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/MovieTheater.json",
+	"title": "Movie Theater",
+	"format": "http://schema.org/MovieTheater",
+	"allOf": [{"$ref": "CivicStructure.json"}, {"$ref": "EntertainmentBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

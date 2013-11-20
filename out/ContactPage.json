@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/ContactPage.json",
+	"title": "Contact Page",
+	"format": "http://schema.org/ContactPage",
+	"allOf": [{"$ref": "WebPage.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

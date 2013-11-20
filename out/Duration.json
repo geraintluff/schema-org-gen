@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/Duration.json",
+	"title": "Duration",
+	"format": "http://schema.org/Duration",
+	"allOf": [{"$ref": "Quantity.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

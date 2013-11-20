@@ -1,0 +1,44 @@
+{
+	"id": "http://json-schema.org/schemas/InfectiousDisease.json",
+	"title": "Infectious Disease",
+	"format": "http://schema.org/InfectiousDisease",
+	"allOf": [{"$ref": "MedicalCondition.json"}],
+	"type": "object",
+	"properties": {
+		"infectiousAgent": {"$ref": "#/definitions/infectiousAgent"},
+		"infectiousAgentClass": {"$ref": "InfectiousAgentClass.json#/definitions/possibleRef"},
+		"transmissionMethod": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/transmissionMethod"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"infectiousAgent": {
+			"title": "Infectious Agent",
+			"description": "The actual infectious agent, such as a specific bacterium.",
+			"type": "string"
+		},
+		"transmissionMethod": {
+			"title": "Transmission Method",
+			"description": "How the disease spreads, either as a route or vector, for example 'direct contact', 'Aedes aegypti', etc.",
+			"type": "string"
+		}
+	}
+}

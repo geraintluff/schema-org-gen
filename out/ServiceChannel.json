@@ -1,0 +1,36 @@
+{
+	"id": "http://json-schema.org/schemas/ServiceChannel.json",
+	"title": "Service Channel",
+	"format": "http://schema.org/ServiceChannel",
+	"allOf": [{"$ref": "Intangible.json"}],
+	"type": "object",
+	"properties": {
+		"availableLanguage": {
+			"type": "array",
+			"items": {"$ref": "Language.json#/definitions/possibleRef"}
+		},
+		"processingTime": {"$ref": "Duration.json#/definitions/possibleRef"},
+		"providesService": {"$ref": "Service.json#/definitions/possibleRef"},
+		"serviceLocation": {"$ref": "Place.json#/definitions/possibleRef"},
+		"servicePhone": {"$ref": "ContactPoint.json#/definitions/possibleRef"},
+		"servicePostalAddress": {"$ref": "PostalAddress.json#/definitions/possibleRef"},
+		"serviceSmsNumber": {"$ref": "ContactPoint.json#/definitions/possibleRef"},
+		"serviceUrl": {"$ref": "#/definitions/serviceUrl"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"serviceUrl": {
+			"title": "Service Url",
+			"description": "The website to access the service.",
+			"type": "string",
+			"format": "uri",
+			"links": [{
+				"rel": "full",
+				"href": "{+$}"
+			}]
+		}
+	}
+}

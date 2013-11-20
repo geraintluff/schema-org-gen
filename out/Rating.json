@@ -1,0 +1,46 @@
+{
+	"id": "http://json-schema.org/schemas/Rating.json",
+	"title": "Rating",
+	"format": "http://schema.org/Rating",
+	"allOf": [{"$ref": "Intangible.json"}],
+	"type": "object",
+	"properties": {
+		"bestRating": {"$ref": "#/definitions/bestRating"},
+		"ratingValue": {"$ref": "#/definitions/ratingValue"},
+		"worstRating": {"$ref": "#/definitions/worstRating"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"bestRating": {
+			"title": "Best Rating",
+			"description": "The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.",
+			"anyOf": [{"type": "number"}, {"type": "string"}]
+		},
+		"ratingValue": {
+			"title": "Rating Value",
+			"description": "The rating for the content.",
+			"type": "string"
+		},
+		"worstRating": {
+			"title": "Worst Rating",
+			"description": "The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.",
+			"anyOf": [{"type": "number"}, {"type": "string"}]
+		}
+	}
+}

@@ -1,0 +1,82 @@
+{
+	"id": "http://json-schema.org/schemas/PriceSpecification.json",
+	"title": "Price Specification",
+	"format": "http://schema.org/PriceSpecification",
+	"allOf": [{"$ref": "StructuredValue.json"}],
+	"type": "object",
+	"properties": {
+		"eligibleQuantity": {"$ref": "QuantitativeValue.json#/definitions/possibleRef"},
+		"eligibleTransactionVolume": {"$ref": "PriceSpecification.json#/definitions/possibleRef"},
+		"maxPrice": {"$ref": "#/definitions/maxPrice"},
+		"minPrice": {"$ref": "#/definitions/minPrice"},
+		"price": {"$ref": "#/definitions/price"},
+		"priceCurrency": {"$ref": "#/definitions/priceCurrency"},
+		"validFrom": {"$ref": "#/definitions/validFrom"},
+		"validThrough": {"$ref": "#/definitions/validThrough"},
+		"valueAddedTaxIncluded": {"$ref": "#/definitions/valueAddedTaxIncluded"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"maxPrice": {
+			"title": "Max Price",
+			"description": "The highest price if the price is a range.",
+			"type": "number"
+		},
+		"minPrice": {
+			"title": "Min Price",
+			"description": "The lowest price if the price is a range.",
+			"type": "number"
+		},
+		"price": {
+			"title": "Price",
+			"description": "The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.",
+			"anyOf": [{"type": "string"}, {"type": "number"}]
+		},
+		"priceCurrency": {
+			"title": "Price Currency",
+			"description": "The currency (in 3-letter ISO 4217 format) of the offer price or a price component, when attached to PriceSpecification and its subtypes.",
+			"type": "string"
+		},
+		"validFrom": {
+			"title": "Valid From",
+			"description": "The date when the permit becomes valid.",
+			"anyOf": [
+				{
+					"type": "string",
+					"format": "date"
+				},
+				{
+					"type": "string",
+					"format": "date-time"
+				}
+			]
+		},
+		"validThrough": {
+			"title": "Valid Through",
+			"description": "The end of the validity of offer, price specification, or opening hours data.",
+			"type": "string",
+			"format": "date-time"
+		},
+		"valueAddedTaxIncluded": {
+			"title": "Value Added Tax Included",
+			"description": "Specifies whether the applicable value-added tax (VAT) is included in the price specification or not.",
+			"type": "boolean"
+		}
+	}
+}

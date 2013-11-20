@@ -1,0 +1,49 @@
+{
+	"id": "http://json-schema.org/schemas/Article.json",
+	"title": "Article",
+	"format": "http://schema.org/Article",
+	"allOf": [{"$ref": "CreativeWork.json"}],
+	"type": "object",
+	"properties": {
+		"articleBody": {"$ref": "#/definitions/articleBody"},
+		"articleSection": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/articleSection"}
+		},
+		"wordCount": {"$ref": "#/definitions/wordCount"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"articleBody": {
+			"title": "Article Body",
+			"description": "The actual body of the article.",
+			"type": "string"
+		},
+		"articleSection": {
+			"title": "Article Section",
+			"description": "Articles may belong to one or more 'sections' in a magazine or newspaper, such as Sports, Lifestyle, etc.",
+			"type": "string"
+		},
+		"wordCount": {
+			"title": "Word Count",
+			"description": "The number of words in the text of the Article.",
+			"type": "integer"
+		}
+	}
+}

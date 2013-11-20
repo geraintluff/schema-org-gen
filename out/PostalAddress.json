@@ -1,0 +1,59 @@
+{
+	"id": "http://json-schema.org/schemas/PostalAddress.json",
+	"title": "Postal Address",
+	"format": "http://schema.org/PostalAddress",
+	"allOf": [{"$ref": "ContactPoint.json"}],
+	"type": "object",
+	"properties": {
+		"addressCountry": {"$ref": "Country.json#/definitions/possibleRef"},
+		"addressLocality": {"$ref": "#/definitions/addressLocality"},
+		"addressRegion": {"$ref": "#/definitions/addressRegion"},
+		"postalCode": {"$ref": "#/definitions/postalCode"},
+		"postOfficeBoxNumber": {"$ref": "#/definitions/postOfficeBoxNumber"},
+		"streetAddress": {"$ref": "#/definitions/streetAddress"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"addressLocality": {
+			"title": "Address Locality",
+			"description": "The locality. For example, Mountain View.",
+			"type": "string"
+		},
+		"addressRegion": {
+			"title": "Address Region",
+			"description": "The region. For example, CA.",
+			"type": "string"
+		},
+		"postalCode": {
+			"title": "Postal Code",
+			"description": "The postal code. For example, 94043.",
+			"type": "string"
+		},
+		"postOfficeBoxNumber": {
+			"title": "Post Office Box Number",
+			"description": "The post offce box number for PO box addresses.",
+			"type": "string"
+		},
+		"streetAddress": {
+			"title": "Street Address",
+			"description": "The street address. For example, 1600 Amphitheatre Pkwy.",
+			"type": "string"
+		}
+	}
+}

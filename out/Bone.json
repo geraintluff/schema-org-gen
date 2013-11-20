@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/Bone.json",
+	"title": "Bone",
+	"format": "http://schema.org/Bone",
+	"allOf": [{"$ref": "AnatomicalStructure.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

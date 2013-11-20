@@ -1,0 +1,6 @@
+{
+	"id": "http://json-schema.org/schemas/MedicalProcedureType.json",
+	"title": "Medical Procedure Type",
+	"format": "http://schema.org/MedicalProcedureType",
+	"enum": ["NoninvasiveProcedure", "PercutaneousProcedure", "SurgicalProcedure"]
+}

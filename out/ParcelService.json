@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/ParcelService.json",
+	"title": "Parcel Service",
+	"format": "http://schema.org/ParcelService",
+	"allOf": [{"$ref": "DeliveryMethod.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

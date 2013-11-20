@@ -1,0 +1,41 @@
+{
+	"id": "http://json-schema.org/schemas/MedicalClinic.json",
+	"title": "Medical Clinic",
+	"format": "http://schema.org/MedicalClinic",
+	"allOf": [{"$ref": "MedicalOrganization.json"}],
+	"type": "object",
+	"properties": {
+		"availableService": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/availableService"}
+		},
+		"medicalSpecialty": {
+			"type": "array",
+			"items": {"$ref": "MedicalSpecialty.json#/definitions/possibleRef"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"availableService": {
+			"title": "Available Service",
+			"description": "A medical service available from this provider.",
+			"anyOf": [{"$ref": "MedicalTest.json#/definitions/possibleRef"}, {"$ref": "MedicalProcedure.json#/definitions/possibleRef"}, {"$ref": "MedicalTherapy.json#/definitions/possibleRef"}]
+		}
+	}
+}

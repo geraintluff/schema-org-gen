@@ -1,0 +1,92 @@
+{
+	"id": "http://json-schema.org/schemas/DietarySupplement.json",
+	"title": "Dietary Supplement",
+	"format": "http://schema.org/DietarySupplement",
+	"allOf": [{"$ref": "MedicalTherapy.json"}],
+	"type": "object",
+	"properties": {
+		"activeIngredient": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/activeIngredient"}
+		},
+		"background": {"$ref": "#/definitions/background"},
+		"dosageForm": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/dosageForm"}
+		},
+		"isProprietary": {"$ref": "#/definitions/isProprietary"},
+		"legalStatus": {"$ref": "DrugLegalStatus.json#/definitions/possibleRef"},
+		"manufacturer": {"$ref": "Organization.json#/definitions/possibleRef"},
+		"maximumIntake": {"$ref": "MaximumDoseSchedule.json#/definitions/possibleRef"},
+		"mechanismOfAction": {"$ref": "#/definitions/mechanismOfAction"},
+		"nonProprietaryName": {"$ref": "#/definitions/nonProprietaryName"},
+		"recommendedIntake": {
+			"type": "array",
+			"items": {"$ref": "RecommendedDoseSchedule.json#/definitions/possibleRef"}
+		},
+		"safetyConsideration": {"$ref": "#/definitions/safetyConsideration"},
+		"targetPopulation": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/targetPopulation"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"activeIngredient": {
+			"title": "Active Ingredient",
+			"description": "An active ingredient, typically chemical compounds and/or biologic substances.",
+			"type": "string"
+		},
+		"background": {
+			"title": "Background",
+			"description": "Descriptive information establishing a historical perspective on the supplement. May include the rationale for the name, the population where the supplement first came to prominence, etc.",
+			"type": "string"
+		},
+		"dosageForm": {
+			"title": "Dosage Form",
+			"description": "A dosage form in which this drug/supplement is available, e.g. 'tablet', 'suspension', 'injection'.",
+			"type": "string"
+		},
+		"isProprietary": {
+			"title": "Is Proprietary",
+			"description": "True if this item's name is a proprietary/brand name (vs. generic name).",
+			"type": "boolean"
+		},
+		"mechanismOfAction": {
+			"title": "Mechanism of Action",
+			"description": "The specific biochemical interaction through which this drug or supplement produces its pharmacological effect.",
+			"type": "string"
+		},
+		"nonProprietaryName": {
+			"title": "Non Proprietary Name",
+			"description": "The generic name of this drug or supplement.",
+			"type": "string"
+		},
+		"safetyConsideration": {
+			"title": "Safety Consideration",
+			"description": "Any potential safety concern associated with the supplement. May include interactions with other drugs and foods, pregnancy, breastfeeding, known adverse reactions, and documented efficacy of the supplement.",
+			"type": "string"
+		},
+		"targetPopulation": {
+			"title": "Target Population",
+			"description": "Characteristics of the population for which this is intended, or which typically uses it, e.g. 'adults'.",
+			"type": "string"
+		}
+	}
+}

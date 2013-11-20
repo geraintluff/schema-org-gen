@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/ComedyClub.json",
+	"title": "Comedy Club",
+	"format": "http://schema.org/ComedyClub",
+	"allOf": [{"$ref": "EntertainmentBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

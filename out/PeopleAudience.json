@@ -1,0 +1,65 @@
+{
+	"id": "http://json-schema.org/schemas/PeopleAudience.json",
+	"title": "People Audience",
+	"format": "http://schema.org/PeopleAudience",
+	"allOf": [{"$ref": "Audience.json"}],
+	"type": "object",
+	"properties": {
+		"healthCondition": {"$ref": "MedicalCondition.json#/definitions/possibleRef"},
+		"requiredGender": {"$ref": "#/definitions/requiredGender"},
+		"requiredMaxAge": {"$ref": "#/definitions/requiredMaxAge"},
+		"requiredMinAge": {"$ref": "#/definitions/requiredMinAge"},
+		"suggestedGender": {"$ref": "#/definitions/suggestedGender"},
+		"suggestedMaxAge": {"$ref": "#/definitions/suggestedMaxAge"},
+		"suggestedMinAge": {"$ref": "#/definitions/suggestedMinAge"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"requiredGender": {
+			"title": "Required Gender",
+			"description": "Audiences defined by a person's gender.",
+			"type": "string"
+		},
+		"requiredMaxAge": {
+			"title": "Required Max Age",
+			"description": "Audiences defined by a person's maximum age.",
+			"type": "integer"
+		},
+		"requiredMinAge": {
+			"title": "Required Min Age",
+			"description": "Audiences defined by a person's minimum age.",
+			"type": "integer"
+		},
+		"suggestedGender": {
+			"title": "Suggested Gender",
+			"description": "The gender of the person or audience.",
+			"type": "string"
+		},
+		"suggestedMaxAge": {
+			"title": "Suggested Max Age",
+			"description": "Maximal age recommended for viewing content",
+			"type": "number"
+		},
+		"suggestedMinAge": {
+			"title": "Suggested Min Age",
+			"description": "Minimal age recommended for viewing content",
+			"type": "number"
+		}
+	}
+}

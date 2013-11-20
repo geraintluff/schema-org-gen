@@ -1,0 +1,27 @@
+{
+	"id": "http://json-schema.org/schemas/MusicAlbum.json",
+	"title": "Music Album",
+	"format": "http://schema.org/MusicAlbum",
+	"allOf": [{"$ref": "MusicPlaylist.json"}],
+	"type": "object",
+	"properties": {"byArtist": {"$ref": "MusicGroup.json#/definitions/possibleRef"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

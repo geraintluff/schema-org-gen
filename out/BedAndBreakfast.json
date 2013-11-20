@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/BedAndBreakfast.json",
+	"title": "Bed And Breakfast",
+	"format": "http://schema.org/BedAndBreakfast",
+	"allOf": [{"$ref": "LodgingBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

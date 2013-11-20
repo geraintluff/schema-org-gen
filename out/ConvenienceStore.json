@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/ConvenienceStore.json",
+	"title": "Convenience Store",
+	"format": "http://schema.org/ConvenienceStore",
+	"allOf": [{"$ref": "Store.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

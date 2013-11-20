@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/TVSeries.json",
+	"title": "TV Series",
+	"format": "http://schema.org/TVSeries",
+	"allOf": [{"$ref": "CreativeWork.json"}, {"$ref": "Series.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

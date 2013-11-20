@@ -1,0 +1,6 @@
+{
+	"id": "http://json-schema.org/schemas/MedicalAudience.json",
+	"title": "Medical Audience",
+	"format": "http://schema.org/MedicalAudience",
+	"enum": ["Clinician", "MedicalResearcher", "Patient"]
+}

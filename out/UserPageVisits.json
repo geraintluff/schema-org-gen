@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/UserPageVisits.json",
+	"title": "User Page Visits",
+	"format": "http://schema.org/UserPageVisits",
+	"allOf": [{"$ref": "UserInteraction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

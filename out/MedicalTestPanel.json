@@ -1,0 +1,32 @@
+{
+	"id": "http://json-schema.org/schemas/MedicalTestPanel.json",
+	"title": "Medical Test Panel",
+	"format": "http://schema.org/MedicalTestPanel",
+	"allOf": [{"$ref": "MedicalTest.json"}],
+	"type": "object",
+	"properties": {
+		"subTest": {
+			"type": "array",
+			"items": {"$ref": "MedicalTest.json#/definitions/possibleRef"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

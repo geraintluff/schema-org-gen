@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/AchieveAction.json",
+	"title": "Achieve Action",
+	"format": "http://schema.org/AchieveAction",
+	"allOf": [{"$ref": "Action.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

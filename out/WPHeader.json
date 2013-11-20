@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/WPHeader.json",
+	"title": "WP Header",
+	"format": "http://schema.org/WPHeader",
+	"allOf": [{"$ref": "WebPageElement.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

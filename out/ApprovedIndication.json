@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/ApprovedIndication.json",
+	"title": "Approved Indication",
+	"format": "http://schema.org/ApprovedIndication",
+	"allOf": [{"$ref": "MedicalIndication.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

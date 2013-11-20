@@ -1,0 +1,47 @@
+{
+	"id": "http://json-schema.org/schemas/Service.json",
+	"title": "Service",
+	"format": "http://schema.org/Service",
+	"allOf": [{"$ref": "Intangible.json"}],
+	"type": "object",
+	"properties": {
+		"availableChannel": {
+			"type": "array",
+			"items": {"$ref": "ServiceChannel.json#/definitions/possibleRef"}
+		},
+		"produces": {"$ref": "Thing.json#/definitions/possibleRef"},
+		"provider": {"$ref": "#/definitions/provider"},
+		"serviceArea": {"$ref": "AdministrativeArea.json#/definitions/possibleRef"},
+		"serviceAudience": {"$ref": "Audience.json#/definitions/possibleRef"},
+		"serviceType": {"$ref": "#/definitions/serviceType"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"provider": {
+			"title": "Provider",
+			"description": "The organization or agency that is providing the service.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		},
+		"serviceType": {
+			"title": "Service Type",
+			"description": "The type of service being offered, e.g. veterans' benefits, emergency relief, etc.",
+			"type": "string"
+		}
+	}
+}

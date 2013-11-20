@@ -1,0 +1,40 @@
+{
+	"id": "http://json-schema.org/schemas/ProductModel.json",
+	"title": "Product Model",
+	"format": "http://schema.org/ProductModel",
+	"allOf": [{"$ref": "Product.json"}],
+	"type": "object",
+	"properties": {
+		"isVariantOf": {
+			"type": "array",
+			"items": {"$ref": "ProductModel.json#/definitions/possibleRef"}
+		},
+		"predecessorOf": {
+			"type": "array",
+			"items": {"$ref": "ProductModel.json#/definitions/possibleRef"}
+		},
+		"successorOf": {
+			"type": "array",
+			"items": {"$ref": "ProductModel.json#/definitions/possibleRef"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

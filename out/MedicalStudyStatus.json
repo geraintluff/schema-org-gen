@@ -1,0 +1,17 @@
+{
+	"id": "http://json-schema.org/schemas/MedicalStudyStatus.json",
+	"title": "Medical Study Status",
+	"format": "http://schema.org/MedicalStudyStatus",
+	"enum": [
+		"ActiveNotRecruiting",
+		"Completed",
+		"EnrollingByInvitation",
+		"NotYetRecruiting",
+		"Recruiting",
+		"ResultsAvailable",
+		"ResultsNotAvailable",
+		"Suspended",
+		"Terminated",
+		"Withdrawn"
+	]
+}

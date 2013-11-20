@@ -1,0 +1,32 @@
+{
+	"id": "http://json-schema.org/schemas/VoteAction.json",
+	"title": "Vote Action",
+	"format": "http://schema.org/VoteAction",
+	"allOf": [{"$ref": "ChooseAction.json"}],
+	"type": "object",
+	"properties": {
+		"candidate": {
+			"type": "array",
+			"items": {"$ref": "Person.json#/definitions/possibleRef"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,6 @@
+{
+	"id": "http://json-schema.org/schemas/Audience.json",
+	"title": "Audience",
+	"format": "http://schema.org/Audience",
+	"enum": ["Researcher"]
+}

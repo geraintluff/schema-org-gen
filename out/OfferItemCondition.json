@@ -1,0 +1,6 @@
+{
+	"id": "http://json-schema.org/schemas/OfferItemCondition.json",
+	"title": "Offer Item Condition",
+	"format": "http://schema.org/OfferItemCondition",
+	"enum": ["DamagedCondition", "NewCondition", "RefurbishedCondition", "UsedCondition"]
+}

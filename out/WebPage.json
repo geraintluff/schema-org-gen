@@ -1,0 +1,75 @@
+{
+	"id": "http://json-schema.org/schemas/WebPage.json",
+	"title": "Web Page",
+	"format": "http://schema.org/WebPage",
+	"allOf": [{"$ref": "CreativeWork.json"}],
+	"type": "object",
+	"properties": {
+		"breadcrumb": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/breadcrumb"}
+		},
+		"isPartOf": {"$ref": "CollectionPage.json#/definitions/possibleRef"},
+		"lastReviewed": {"$ref": "#/definitions/lastReviewed"},
+		"mainContentOfPage": {"$ref": "WebPageElement.json#/definitions/possibleRef"},
+		"primaryImageOfPage": {"$ref": "ImageObject.json#/definitions/possibleRef"},
+		"relatedLink": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/relatedLink"}
+		},
+		"reviewedBy": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/reviewedBy"}
+		},
+		"significantLink": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/significantLink"}
+		},
+		"specialty": {
+			"type": "array",
+			"items": {"$ref": "Specialty.json#/definitions/possibleRef"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"breadcrumb": {
+			"title": "Breadcrumb",
+			"description": "A set of links that can help a user understand and navigate a website hierarchy.",
+			"type": "string"
+		},
+		"lastReviewed": {
+			"title": "Last Reviewed",
+			"description": "Date on which the content on this web page was last reviewed for accuracy and/or completeness.",
+			"type": "string",
+			"format": "date"
+		},
+		"relatedLink": {
+			"title": "Related Link",
+			"description": "A link related to this web page, for example to other related web pages.",
+			"type": "string",
+			"format": "uri",
+			"links": [{
+				"rel": "full",
+				"href": "{+$}"
+			}]
+		},
+		"reviewedBy": {
+			"title": "Reviewed by",
+			"description": "People or organizations that have reviewed the content on this web page for accuracy and/or completeness.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		},
+		"significantLink": {
+			"title": "Significant Link",
+			"description": "One of the more significant URLs on the page. Typically, these are the non-navigation links that are clicked on the most.",
+			"type": "string",
+			"format": "uri",
+			"links": [{
+				"rel": "full",
+				"href": "{+$}"
+			}]
+		}
+	}
+}

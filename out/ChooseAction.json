@@ -1,0 +1,37 @@
+{
+	"id": "http://json-schema.org/schemas/ChooseAction.json",
+	"title": "Choose Action",
+	"format": "http://schema.org/ChooseAction",
+	"allOf": [{"$ref": "AssessAction.json"}],
+	"type": "object",
+	"properties": {
+		"option": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/option"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"option": {
+			"title": "Option",
+			"description": "A sub property of object. The options subject to this action.",
+			"anyOf": [{"type": "string"}, {"$ref": "Thing.json#/definitions/possibleRef"}]
+		}
+	}
+}

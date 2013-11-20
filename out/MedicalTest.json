@@ -1,0 +1,50 @@
+{
+	"id": "http://json-schema.org/schemas/MedicalTest.json",
+	"title": "Medical Test",
+	"format": "http://schema.org/MedicalTest",
+	"allOf": [{"$ref": "MedicalEntity.json"}],
+	"type": "object",
+	"properties": {
+		"affectedBy": {
+			"type": "array",
+			"items": {"$ref": "Drug.json#/definitions/possibleRef"}
+		},
+		"normalRange": {"$ref": "#/definitions/normalRange"},
+		"signDetected": {
+			"type": "array",
+			"items": {"$ref": "MedicalSign.json#/definitions/possibleRef"}
+		},
+		"usedToDiagnose": {
+			"type": "array",
+			"items": {"$ref": "MedicalCondition.json#/definitions/possibleRef"}
+		},
+		"usesDevice": {
+			"type": "array",
+			"items": {"$ref": "MedicalDevice.json#/definitions/possibleRef"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"normalRange": {
+			"title": "Normal Range",
+			"description": "Range of acceptable values for a typical patient, when applicable.",
+			"type": "string"
+		}
+	}
+}

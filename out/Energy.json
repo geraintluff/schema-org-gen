@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/Energy.json",
+	"title": "Energy",
+	"format": "http://schema.org/Energy",
+	"allOf": [{"$ref": "Quantity.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

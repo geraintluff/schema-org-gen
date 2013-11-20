@@ -1,0 +1,46 @@
+{
+	"id": "http://json-schema.org/schemas/Joint.json",
+	"title": "Joint",
+	"format": "http://schema.org/Joint",
+	"allOf": [{"$ref": "AnatomicalStructure.json"}],
+	"type": "object",
+	"properties": {
+		"biomechnicalClass": {"$ref": "#/definitions/biomechnicalClass"},
+		"functionalClass": {"$ref": "#/definitions/functionalClass"},
+		"structuralClass": {"$ref": "#/definitions/structuralClass"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"biomechnicalClass": {
+			"title": "Biomechnical Class",
+			"description": "The biomechanical properties of the bone.",
+			"type": "string"
+		},
+		"functionalClass": {
+			"title": "Functional Class",
+			"description": "The degree of mobility the joint allows.",
+			"type": "string"
+		},
+		"structuralClass": {
+			"title": "Structural Class",
+			"description": "The name given to how bone physically connects to each other.",
+			"type": "string"
+		}
+	}
+}

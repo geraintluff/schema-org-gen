@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/BloodTest.json",
+	"title": "Blood Test",
+	"format": "http://schema.org/BloodTest",
+	"allOf": [{"$ref": "MedicalTest.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

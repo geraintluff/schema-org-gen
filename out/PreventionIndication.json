@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/PreventionIndication.json",
+	"title": "Prevention Indication",
+	"format": "http://schema.org/PreventionIndication",
+	"allOf": [{"$ref": "MedicalIndication.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

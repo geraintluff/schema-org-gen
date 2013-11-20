@@ -1,0 +1,91 @@
+{
+	"id": "http://json-schema.org/schemas/Thing.json",
+	"title": "Thing",
+	"format": "http://schema.org/Thing",
+	"type": "object",
+	"properties": {
+		"additionalType": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/additionalType"}
+		},
+		"alternateName": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/alternateName"}
+		},
+		"description": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/description"}
+		},
+		"image": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/image"}
+		},
+		"name": {"$ref": "#/definitions/name"},
+		"sameAs": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/sameAs"}
+		},
+		"url": {"$ref": "#/definitions/url"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"additionalType": {
+			"title": "Additional Type",
+			"description": "An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.",
+			"type": "string",
+			"format": "uri",
+			"links": [{
+				"rel": "full",
+				"href": "{+$}"
+			}]
+		},
+		"alternateName": {
+			"title": "Alternate Name",
+			"description": "An alias for the item.",
+			"type": "string"
+		},
+		"description": {
+			"title": "Description",
+			"description": "A short description of the item.",
+			"type": "string"
+		},
+		"image": {
+			"title": "Image",
+			"description": "URL of an image of the item.",
+			"type": "string",
+			"format": "uri",
+			"links": [{
+				"rel": "full",
+				"href": "{+$}"
+			}]
+		},
+		"name": {
+			"title": "Name",
+			"description": "The name of the item.",
+			"type": "string"
+		},
+		"sameAs": {
+			"title": "Same As",
+			"description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.",
+			"type": "string",
+			"format": "uri",
+			"links": [{
+				"rel": "full",
+				"href": "{+$}"
+			}]
+		},
+		"url": {
+			"title": "URL",
+			"description": "URL of the item.",
+			"type": "string",
+			"format": "uri",
+			"links": [{
+				"rel": "full",
+				"href": "{+$}"
+			}]
+		}
+	}
+}

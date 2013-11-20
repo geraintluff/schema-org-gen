@@ -1,0 +1,27 @@
+{
+	"id": "http://json-schema.org/schemas/CivicStructure.json",
+	"title": "Civic Structure",
+	"format": "http://schema.org/CivicStructure",
+	"allOf": [{"$ref": "Place.json"}],
+	"type": "object",
+	"properties": {"openingHours": {"$ref": "Duration.json#/definitions/possibleRef"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

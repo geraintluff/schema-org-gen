@@ -1,0 +1,16 @@
+{
+	"id": "http://json-schema.org/schemas/MedicalTrialDesign.json",
+	"title": "Medical Trial Design",
+	"format": "http://schema.org/MedicalTrialDesign",
+	"enum": [
+		"DoubleBlindedTrial",
+		"InternationalTrial",
+		"MultiCenterTrial",
+		"OpenTrial",
+		"PlaceboControlledTrial",
+		"RandomizedTrial",
+		"SingleBlindedTrial",
+		"SingleCenterTrial",
+		"TripleBlindedTrial"
+	]
+}

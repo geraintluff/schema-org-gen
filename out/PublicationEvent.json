@@ -1,0 +1,41 @@
+{
+	"id": "http://json-schema.org/schemas/PublicationEvent.json",
+	"title": "Publication Event",
+	"format": "http://schema.org/PublicationEvent",
+	"allOf": [{"$ref": "Event.json"}],
+	"type": "object",
+	"properties": {
+		"free": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/free"}
+		},
+		"publishedOn": {
+			"type": "array",
+			"items": {"$ref": "BroadcastService.json#/definitions/possibleRef"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"free": {
+			"title": "Free",
+			"description": "A flag to signal that the publication is accessible for free.",
+			"type": "boolean"
+		}
+	}
+}

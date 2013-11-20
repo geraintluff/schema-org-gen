@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/TireShop.json",
+	"title": "Tire Shop",
+	"format": "http://schema.org/TireShop",
+	"allOf": [{"$ref": "Store.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

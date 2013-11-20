@@ -1,0 +1,58 @@
+{
+	"id": "http://json-schema.org/schemas/PhysicalActivity.json",
+	"title": "Physical Activity",
+	"format": "http://schema.org/PhysicalActivity",
+	"allOf": [{"$ref": "LifestyleModification.json"}],
+	"type": "object",
+	"properties": {
+		"associatedAnatomy": {"$ref": "#/definitions/associatedAnatomy"},
+		"category": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/category"}
+		},
+		"epidemiology": {"$ref": "#/definitions/epidemiology"},
+		"pathophysiology": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/pathophysiology"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"associatedAnatomy": {
+			"title": "Associated Anatomy",
+			"description": "The anatomy of the underlying organ system or structures associated with this entity.",
+			"anyOf": [{"$ref": "AnatomicalSystem.json#/definitions/possibleRef"}, {"$ref": "SuperficialAnatomy.json#/definitions/possibleRef"}, {"$ref": "AnatomicalStructure.json#/definitions/possibleRef"}]
+		},
+		"category": {
+			"title": "Category",
+			"description": "A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.",
+			"anyOf": [{"type": "string"}, {"$ref": "PhysicalActivityCategory.json#/definitions/possibleRef"}, {"$ref": "Thing.json#/definitions/possibleRef"}]
+		},
+		"epidemiology": {
+			"title": "Epidemiology",
+			"description": "The characteristics of associated patients, such as age, gender, race etc.",
+			"type": "string"
+		},
+		"pathophysiology": {
+			"title": "Pathophysiology",
+			"description": "Changes in the normal mechanical, physical, and biochemical functions that are associated with this activity or condition.",
+			"type": "string"
+		}
+	}
+}

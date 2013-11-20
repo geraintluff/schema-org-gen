@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/ComputerStore.json",
+	"title": "Computer Store",
+	"format": "http://schema.org/ComputerStore",
+	"allOf": [{"$ref": "Store.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

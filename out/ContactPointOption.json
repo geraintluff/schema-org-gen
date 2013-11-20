@@ -1,0 +1,6 @@
+{
+	"id": "http://json-schema.org/schemas/ContactPointOption.json",
+	"title": "Contact Point Option",
+	"format": "http://schema.org/ContactPointOption",
+	"enum": ["HearingImpairedSupported", "TollFree"]
+}

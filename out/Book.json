@@ -1,0 +1,48 @@
+{
+	"id": "http://json-schema.org/schemas/Book.json",
+	"title": "Book",
+	"format": "http://schema.org/Book",
+	"allOf": [{"$ref": "CreativeWork.json"}],
+	"type": "object",
+	"properties": {
+		"bookEdition": {"$ref": "#/definitions/bookEdition"},
+		"bookFormat": {"$ref": "BookFormatType.json#/definitions/possibleRef"},
+		"illustrator": {"$ref": "Person.json#/definitions/possibleRef"},
+		"isbn": {"$ref": "#/definitions/isbn"},
+		"numberOfPages": {"$ref": "#/definitions/numberOfPages"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"bookEdition": {
+			"title": "Book Edition",
+			"description": "The edition of the book.",
+			"type": "string"
+		},
+		"isbn": {
+			"title": "ISBN",
+			"description": "The ISBN of the book.",
+			"type": "string"
+		},
+		"numberOfPages": {
+			"title": "Number of Pages",
+			"description": "The number of pages in the book.",
+			"type": "integer"
+		}
+	}
+}

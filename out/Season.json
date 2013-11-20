@@ -1,0 +1,68 @@
+{
+	"id": "http://json-schema.org/schemas/Season.json",
+	"title": "Season",
+	"format": "http://schema.org/Season",
+	"allOf": [{"$ref": "CreativeWork.json"}],
+	"type": "object",
+	"properties": {
+		"endDate": {"$ref": "#/definitions/endDate"},
+		"episode": {
+			"type": "array",
+			"items": {"$ref": "Episode.json#/definitions/possibleRef"}
+		},
+		"numberOfEpisodes": {"$ref": "#/definitions/numberOfEpisodes"},
+		"partOfSeries": {"$ref": "Series.json#/definitions/possibleRef"},
+		"position": {"$ref": "#/definitions/position"},
+		"producer": {"$ref": "Person.json#/definitions/possibleRef"},
+		"productionCompany": {"$ref": "Organization.json#/definitions/possibleRef"},
+		"seasonNumber": {"$ref": "#/definitions/seasonNumber"},
+		"startDate": {"$ref": "#/definitions/startDate"},
+		"trailer": {"$ref": "VideoObject.json#/definitions/possibleRef"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"endDate": {
+			"title": "End Date",
+			"description": "The end date and time of the event or item (in ISO 8601 date format).",
+			"type": "string",
+			"format": "date"
+		},
+		"numberOfEpisodes": {
+			"title": "Number of Episodes",
+			"description": "The number of episodes in this season or series.",
+			"type": "number"
+		},
+		"position": {
+			"title": "Position",
+			"description": "Free text to define other than pure numerical ranking of an episode or a season in an ordered list of items (further formatting restrictions may apply within particular user groups).",
+			"type": "string"
+		},
+		"seasonNumber": {
+			"title": "Season Number",
+			"description": "Position of the season within an ordered group of seasons.",
+			"type": "integer"
+		},
+		"startDate": {
+			"title": "Start Date",
+			"description": "The start date and time of the event or item (in ISO 8601 date format).",
+			"type": "string",
+			"format": "date"
+		}
+	}
+}

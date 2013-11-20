@@ -1,0 +1,48 @@
+{
+	"id": "http://json-schema.org/schemas/MedicalTherapy.json",
+	"title": "Medical Therapy",
+	"format": "http://schema.org/MedicalTherapy",
+	"allOf": [{"$ref": "MedicalEntity.json"}],
+	"type": "object",
+	"properties": {
+		"adverseOutcome": {
+			"type": "array",
+			"items": {"$ref": "MedicalEntity.json#/definitions/possibleRef"}
+		},
+		"contraindication": {
+			"type": "array",
+			"items": {"$ref": "MedicalContraindication.json#/definitions/possibleRef"}
+		},
+		"duplicateTherapy": {
+			"type": "array",
+			"items": {"$ref": "MedicalTherapy.json#/definitions/possibleRef"}
+		},
+		"indication": {
+			"type": "array",
+			"items": {"$ref": "MedicalIndication.json#/definitions/possibleRef"}
+		},
+		"seriousAdverseOutcome": {
+			"type": "array",
+			"items": {"$ref": "MedicalEntity.json#/definitions/possibleRef"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

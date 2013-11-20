@@ -1,0 +1,39 @@
+{
+	"id": "http://json-schema.org/schemas/Muscle.json",
+	"title": "Muscle",
+	"format": "http://schema.org/Muscle",
+	"allOf": [{"$ref": "AnatomicalStructure.json"}],
+	"type": "object",
+	"properties": {
+		"action": {"$ref": "#/definitions/action"},
+		"antagonist": {"$ref": "Muscle.json#/definitions/possibleRef"},
+		"bloodSupply": {"$ref": "Vessel.json#/definitions/possibleRef"},
+		"insertion": {"$ref": "AnatomicalStructure.json#/definitions/possibleRef"},
+		"nerve": {"$ref": "Nerve.json#/definitions/possibleRef"},
+		"origin": {"$ref": "AnatomicalStructure.json#/definitions/possibleRef"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"action": {
+			"title": "Action",
+			"description": "The movement the muscle generates.",
+			"type": "string"
+		}
+	}
+}

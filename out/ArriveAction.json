@@ -1,0 +1,25 @@
+{
+	"id": "http://json-schema.org/schemas/ArriveAction.json",
+	"title": "Arrive Action",
+	"format": "http://schema.org/ArriveAction",
+	"allOf": [{"$ref": "MoveAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}

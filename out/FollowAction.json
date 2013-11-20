@@ -1,0 +1,37 @@
+{
+	"id": "http://json-schema.org/schemas/FollowAction.json",
+	"title": "Follow Action",
+	"format": "http://schema.org/FollowAction",
+	"allOf": [{"$ref": "InteractAction.json"}],
+	"type": "object",
+	"properties": {
+		"followee": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/followee"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"followee": {
+			"title": "Followee",
+			"description": "A sub property of object. The person or organization being followed.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		}
+	}
+}

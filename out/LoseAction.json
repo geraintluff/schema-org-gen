@@ -1,0 +1,32 @@
+{
+	"id": "http://json-schema.org/schemas/LoseAction.json",
+	"title": "Lose Action",
+	"format": "http://schema.org/LoseAction",
+	"allOf": [{"$ref": "AchieveAction.json"}],
+	"type": "object",
+	"properties": {
+		"winner": {
+			"type": "array",
+			"items": {"$ref": "Person.json#/definitions/possibleRef"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		}
+	}
+}
