@@ -1,0 +1,54 @@
+{
+	"Boolean": {
+		"type": "boolean"
+	},
+	"Date": {
+		"type": "string",
+		"format": "date"
+	},
+	"DateTime": {
+		"type": "string",
+		"format": "date-time"
+	},
+	"Float": {
+		"type": "number",
+		"format": "http://schema.org/Float"
+	},
+	"Integer": {
+		"type": "integer"
+	},
+	"Number": {
+		"type": "number"
+	},
+	"Text": {
+		"type": "string"
+	},
+	"Time": {
+		"type": "string",
+		"format": "time"
+	},
+	"URL": {
+		"type": "string",
+		"format": "uri"
+	},
+	"Quantity": {
+		"type": "string"
+	},
+	"acceptsReservations": {
+		"oneOf": [
+			{"type": "boolean"},
+			{
+				"type": "string",
+				"format": "uri"
+			}
+		]
+	},
+	"occupationalCategory": {
+		"type": "string",
+		"format": "http://www.onetcenter.org/taxonomy.html"
+	},
+	"repetitions": {
+		"type": "integer",
+		"minimum": 1
+	}
+}
