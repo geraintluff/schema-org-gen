@@ -23,6 +23,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"price": {
 			"title": "Price",
 			"description": "The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.",

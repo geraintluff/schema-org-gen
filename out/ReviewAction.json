@@ -4,12 +4,7 @@
 	"format": "http://schema.org/ReviewAction",
 	"allOf": [{"$ref": "AssessAction.json"}],
 	"type": "object",
-	"properties": {
-		"resultReview": {
-			"type": "array",
-			"items": {"$ref": "Review.json#/definitions/possibleRef"}
-		}
-	},
+	"properties": {"resultReview": {"$ref": "Review.json#/definitions/possibleRefArray"}},
 	"definitions": {
 		"array": {
 			"type": "array",
@@ -27,6 +22,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

@@ -5,18 +5,9 @@
 	"allOf": [{"$ref": "PerformingGroup.json"}],
 	"type": "object",
 	"properties": {
-		"album": {
-			"type": "array",
-			"items": {"$ref": "MusicAlbum.json#/definitions/possibleRef"}
-		},
-		"musicGroupMember": {
-			"type": "array",
-			"items": {"$ref": "Person.json#/definitions/possibleRef"}
-		},
-		"track": {
-			"type": "array",
-			"items": {"$ref": "MusicRecording.json#/definitions/possibleRef"}
-		}
+		"album": {"$ref": "MusicAlbum.json#/definitions/possibleRefArray"},
+		"musicGroupMember": {"$ref": "Person.json#/definitions/possibleRefArray"},
+		"track": {"$ref": "MusicRecording.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -35,6 +26,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

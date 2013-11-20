@@ -27,6 +27,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"bestRating": {
 			"title": "Best Rating",
 			"description": "The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.",

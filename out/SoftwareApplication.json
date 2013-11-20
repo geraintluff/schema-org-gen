@@ -156,6 +156,10 @@
 			"description": "Permission(s) required to run the app (for example, a mobile app may require full internet access or may run only on wifi).",
 			"type": "string"
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"processorRequirements": {
 			"title": "Processor Requirements",
 			"description": "Processor architecture required to run the application (e.g. IA64).",

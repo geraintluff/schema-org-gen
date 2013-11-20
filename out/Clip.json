@@ -10,10 +10,7 @@
 		"partOfSeason": {"$ref": "Season.json#/definitions/possibleRef"},
 		"partOfSeries": {"$ref": "Series.json#/definitions/possibleRef"},
 		"position": {"$ref": "#/definitions/position"},
-		"publication": {
-			"type": "array",
-			"items": {"$ref": "PublicationEvent.json#/definitions/possibleRef"}
-		}
+		"publication": {"$ref": "PublicationEvent.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -32,6 +29,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"clipNumber": {
 			"title": "Clip Number",

@@ -27,6 +27,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"regionDrained": {
 			"title": "Region Drained",
 			"description": "The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.",

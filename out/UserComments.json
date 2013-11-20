@@ -16,6 +16,10 @@
 			"type": "array",
 			"items": {"$ref": "#"}
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"commentText": {
 			"title": "Comment Text",
 			"description": "The text of the UserComment.",

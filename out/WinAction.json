@@ -4,12 +4,7 @@
 	"format": "http://schema.org/WinAction",
 	"allOf": [{"$ref": "AchieveAction.json"}],
 	"type": "object",
-	"properties": {
-		"loser": {
-			"type": "array",
-			"items": {"$ref": "Person.json#/definitions/possibleRef"}
-		}
-	},
+	"properties": {"loser": {"$ref": "Person.json#/definitions/possibleRefArray"}},
 	"definitions": {
 		"array": {
 			"type": "array",
@@ -27,6 +22,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

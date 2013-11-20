@@ -101,11 +101,15 @@ request.get('http://schema.rdfs.org/all.json', function (err, request, body) {
 					}
 				]
 			};
+			schema.definitions.possibleRefArray = {
+				"type": "array",
+				"items": {"$ref": "#/definitions/possibleRefArray"}
+			};
 			schema.allOf = spec.supertypes.map(function (supertype) {
 				return {"$ref": supertype + URL_SUFFIX};
 			});
 			spec.specific_properties.forEach(function (key) {
-				if (key === 'array' || key === 'possibleRef') {
+				if (key === 'array' || key === 'possibleRef' || key === 'possibleRefArray') {
 					throw new Error('Not allowed key: ' + key);
 				}
 				var propSpec = allData.properties[key];
@@ -158,10 +162,14 @@ request.get('http://schema.rdfs.org/all.json', function (err, request, body) {
 				}
 				if (propertyMultiplicity[key] === true) {
 					var subSchema = schema['properties'][key];
-					schema.properties[key] = {
-						type: "array",
-						items: subSchema
-					};
+					if (subSchema['$ref'] && /^[^#]+#\/definitions\/possibleRef?$/.test(subSchema['$ref'])) {
+						subSchema['$ref'] += 'Array';
+					} else {
+						schema.properties[key] = {
+							type: "array",
+							items: subSchema
+						};
+					}
 				} else if (propertyMultiplicity[key] !== false) {
 					var subSchema = schema['properties'][key];
 					schema.properties[key] = {

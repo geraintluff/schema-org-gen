@@ -5,10 +5,7 @@
 	"allOf": [{"$ref": "CreativeWork.json"}],
 	"type": "object",
 	"properties": {
-		"actor": {
-			"type": "array",
-			"items": {"$ref": "Person.json#/definitions/possibleRef"}
-		},
+		"actor": {"$ref": "Person.json#/definitions/possibleRefArray"},
 		"director": {"$ref": "Person.json#/definitions/possibleRef"},
 		"duration": {"$ref": "Duration.json#/definitions/possibleRef"},
 		"musicBy": {"$ref": "#/definitions/musicBy"},
@@ -33,6 +30,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"musicBy": {
 			"title": "Music by",

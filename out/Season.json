@@ -6,10 +6,7 @@
 	"type": "object",
 	"properties": {
 		"endDate": {"$ref": "#/definitions/endDate"},
-		"episode": {
-			"type": "array",
-			"items": {"$ref": "Episode.json#/definitions/possibleRef"}
-		},
+		"episode": {"$ref": "Episode.json#/definitions/possibleRefArray"},
 		"numberOfEpisodes": {"$ref": "#/definitions/numberOfEpisodes"},
 		"partOfSeries": {"$ref": "Series.json#/definitions/possibleRef"},
 		"position": {"$ref": "#/definitions/position"},
@@ -36,6 +33,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"endDate": {
 			"title": "End Date",

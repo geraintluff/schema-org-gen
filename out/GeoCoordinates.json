@@ -27,6 +27,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"elevation": {
 			"title": "Elevation",
 			"description": "The elevation of a location.",

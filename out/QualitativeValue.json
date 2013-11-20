@@ -5,30 +5,12 @@
 	"allOf": [{"$ref": "Enumeration.json"}],
 	"type": "object",
 	"properties": {
-		"equal": {
-			"type": "array",
-			"items": {"$ref": "QualitativeValue.json#/definitions/possibleRef"}
-		},
-		"greater": {
-			"type": "array",
-			"items": {"$ref": "QualitativeValue.json#/definitions/possibleRef"}
-		},
-		"greaterOrEqual": {
-			"type": "array",
-			"items": {"$ref": "QualitativeValue.json#/definitions/possibleRef"}
-		},
-		"lesser": {
-			"type": "array",
-			"items": {"$ref": "QualitativeValue.json#/definitions/possibleRef"}
-		},
-		"lesserOrEqual": {
-			"type": "array",
-			"items": {"$ref": "QualitativeValue.json#/definitions/possibleRef"}
-		},
-		"nonEqual": {
-			"type": "array",
-			"items": {"$ref": "QualitativeValue.json#/definitions/possibleRef"}
-		},
+		"equal": {"$ref": "QualitativeValue.json#/definitions/possibleRefArray"},
+		"greater": {"$ref": "QualitativeValue.json#/definitions/possibleRefArray"},
+		"greaterOrEqual": {"$ref": "QualitativeValue.json#/definitions/possibleRefArray"},
+		"lesser": {"$ref": "QualitativeValue.json#/definitions/possibleRefArray"},
+		"lesserOrEqual": {"$ref": "QualitativeValue.json#/definitions/possibleRefArray"},
+		"nonEqual": {"$ref": "QualitativeValue.json#/definitions/possibleRefArray"},
 		"valueReference": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/valueReference"}
@@ -51,6 +33,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"valueReference": {
 			"title": "Value Reference",

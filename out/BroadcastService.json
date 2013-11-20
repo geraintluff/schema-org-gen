@@ -7,10 +7,7 @@
 	"properties": {
 		"area": {"$ref": "Place.json#/definitions/possibleRef"},
 		"broadcaster": {"$ref": "Organization.json#/definitions/possibleRef"},
-		"parentService": {
-			"type": "array",
-			"items": {"$ref": "BroadcastService.json#/definitions/possibleRef"}
-		}
+		"parentService": {"$ref": "BroadcastService.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -29,6 +26,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

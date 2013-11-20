@@ -34,6 +34,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"associatedAnatomy": {
 			"title": "Associated Anatomy",
 			"description": "The anatomy of the underlying organ system or structures associated with this entity.",

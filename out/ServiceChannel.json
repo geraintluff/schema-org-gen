@@ -5,10 +5,7 @@
 	"allOf": [{"$ref": "Intangible.json"}],
 	"type": "object",
 	"properties": {
-		"availableLanguage": {
-			"type": "array",
-			"items": {"$ref": "Language.json#/definitions/possibleRef"}
-		},
+		"availableLanguage": {"$ref": "Language.json#/definitions/possibleRefArray"},
 		"processingTime": {"$ref": "Duration.json#/definitions/possibleRef"},
 		"providesService": {"$ref": "Service.json#/definitions/possibleRef"},
 		"serviceLocation": {"$ref": "Place.json#/definitions/possibleRef"},
@@ -21,6 +18,10 @@
 		"array": {
 			"type": "array",
 			"items": {"$ref": "#"}
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"serviceUrl": {
 			"title": "Service Url",

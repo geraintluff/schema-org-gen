@@ -4,12 +4,7 @@
 	"format": "http://schema.org/WriteAction",
 	"allOf": [{"$ref": "CreateAction.json"}],
 	"type": "object",
-	"properties": {
-		"language": {
-			"type": "array",
-			"items": {"$ref": "Language.json#/definitions/possibleRef"}
-		}
-	},
+	"properties": {"language": {"$ref": "Language.json#/definitions/possibleRefArray"}},
 	"definitions": {
 		"array": {
 			"type": "array",
@@ -27,6 +22,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

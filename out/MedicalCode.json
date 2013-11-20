@@ -26,6 +26,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"codeValue": {
 			"title": "Code Value",
 			"description": "The actual code.",

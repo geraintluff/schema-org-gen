@@ -9,10 +9,7 @@
 			"type": "array",
 			"items": {"$ref": "#/definitions/availableService"}
 		},
-		"medicalSpecialty": {
-			"type": "array",
-			"items": {"$ref": "MedicalSpecialty.json#/definitions/possibleRef"}
-		}
+		"medicalSpecialty": {"$ref": "MedicalSpecialty.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -31,6 +28,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"availableService": {
 			"title": "Available Service",

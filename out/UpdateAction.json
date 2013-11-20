@@ -4,12 +4,7 @@
 	"format": "http://schema.org/UpdateAction",
 	"allOf": [{"$ref": "Action.json"}],
 	"type": "object",
-	"properties": {
-		"collection": {
-			"type": "array",
-			"items": {"$ref": "Thing.json#/definitions/possibleRef"}
-		}
-	},
+	"properties": {"collection": {"$ref": "Thing.json#/definitions/possibleRefArray"}},
 	"definitions": {
 		"array": {
 			"type": "array",
@@ -27,6 +22,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

@@ -5,22 +5,10 @@
 	"allOf": [{"$ref": "PlayAction.json"}],
 	"type": "object",
 	"properties": {
-		"course": {
-			"type": "array",
-			"items": {"$ref": "Place.json#/definitions/possibleRef"}
-		},
-		"diet": {
-			"type": "array",
-			"items": {"$ref": "Diet.json#/definitions/possibleRef"}
-		},
-		"distance": {
-			"type": "array",
-			"items": {"$ref": "Distance.json#/definitions/possibleRef"}
-		},
-		"exercisePlan": {
-			"type": "array",
-			"items": {"$ref": "ExercisePlan.json#/definitions/possibleRef"}
-		},
+		"course": {"$ref": "Place.json#/definitions/possibleRefArray"},
+		"diet": {"$ref": "Diet.json#/definitions/possibleRefArray"},
+		"distance": {"$ref": "Distance.json#/definitions/possibleRefArray"},
+		"exercisePlan": {"$ref": "ExercisePlan.json#/definitions/possibleRefArray"},
 		"exerciseType": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/exerciseType"}
@@ -29,22 +17,10 @@
 			"type": "array",
 			"items": {"$ref": "#/definitions/fromLocation"}
 		},
-		"oponent": {
-			"type": "array",
-			"items": {"$ref": "Person.json#/definitions/possibleRef"}
-		},
-		"sportsActivityLocation": {
-			"type": "array",
-			"items": {"$ref": "SportsActivityLocation.json#/definitions/possibleRef"}
-		},
-		"sportsEvent": {
-			"type": "array",
-			"items": {"$ref": "SportsEvent.json#/definitions/possibleRef"}
-		},
-		"sportsTeam": {
-			"type": "array",
-			"items": {"$ref": "SportsTeam.json#/definitions/possibleRef"}
-		},
+		"oponent": {"$ref": "Person.json#/definitions/possibleRefArray"},
+		"sportsActivityLocation": {"$ref": "SportsActivityLocation.json#/definitions/possibleRefArray"},
+		"sportsEvent": {"$ref": "SportsEvent.json#/definitions/possibleRefArray"},
+		"sportsTeam": {"$ref": "SportsTeam.json#/definitions/possibleRefArray"},
 		"toLocation": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/toLocation"}
@@ -67,6 +43,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"exerciseType": {
 			"title": "Exercise Type",

@@ -36,6 +36,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"servingSize": {
 			"title": "Serving Size",
 			"description": "The serving size, in terms of the number of volume or mass",

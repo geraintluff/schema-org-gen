@@ -4,12 +4,7 @@
 	"format": "http://schema.org/DrugClass",
 	"allOf": [{"$ref": "MedicalTherapy.json"}],
 	"type": "object",
-	"properties": {
-		"drug": {
-			"type": "array",
-			"items": {"$ref": "Drug.json#/definitions/possibleRef"}
-		}
-	},
+	"properties": {"drug": {"$ref": "Drug.json#/definitions/possibleRefArray"}},
 	"definitions": {
 		"array": {
 			"type": "array",
@@ -27,6 +22,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

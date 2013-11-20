@@ -6,10 +6,7 @@
 	"type": "object",
 	"properties": {
 		"numTracks": {"$ref": "#/definitions/numTracks"},
-		"track": {
-			"type": "array",
-			"items": {"$ref": "MusicRecording.json#/definitions/possibleRef"}
-		}
+		"track": {"$ref": "MusicRecording.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -28,6 +25,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"numTracks": {
 			"title": "Num Tracks",

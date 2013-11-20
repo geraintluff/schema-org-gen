@@ -30,6 +30,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"action": {
 			"title": "Action",
 			"description": "The movement the muscle generates.",

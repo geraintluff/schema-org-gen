@@ -19,6 +19,10 @@
 			"type": "array",
 			"items": {"$ref": "#"}
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"alignmentType": {
 			"title": "Alignment Type",
 			"description": "A category of alignment between the learning resource and the framework node. Recommended values include: 'assesses', 'teaches', 'requires', 'textComplexity', 'readingLevel', 'educationalSubject', and 'educationLevel'.",

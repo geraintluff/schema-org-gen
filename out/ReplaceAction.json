@@ -5,14 +5,8 @@
 	"allOf": [{"$ref": "UpdateAction.json"}],
 	"type": "object",
 	"properties": {
-		"replacee": {
-			"type": "array",
-			"items": {"$ref": "Thing.json#/definitions/possibleRef"}
-		},
-		"replacer": {
-			"type": "array",
-			"items": {"$ref": "Thing.json#/definitions/possibleRef"}
-		}
+		"replacee": {"$ref": "Thing.json#/definitions/possibleRefArray"},
+		"replacer": {"$ref": "Thing.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -31,6 +25,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

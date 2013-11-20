@@ -28,6 +28,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"logo": {
 			"title": "Logo",
 			"description": "A logo associated with an organization.",

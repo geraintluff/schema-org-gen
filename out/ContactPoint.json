@@ -6,14 +6,8 @@
 	"type": "object",
 	"properties": {
 		"areaServed": {"$ref": "AdministrativeArea.json#/definitions/possibleRef"},
-		"availableLanguage": {
-			"type": "array",
-			"items": {"$ref": "Language.json#/definitions/possibleRef"}
-		},
-		"contactOption": {
-			"type": "array",
-			"items": {"$ref": "ContactPointOption.json#/definitions/possibleRef"}
-		},
+		"availableLanguage": {"$ref": "Language.json#/definitions/possibleRefArray"},
+		"contactOption": {"$ref": "ContactPointOption.json#/definitions/possibleRefArray"},
 		"contactType": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/contactType"}
@@ -44,6 +38,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"contactType": {
 			"title": "Contact Type",

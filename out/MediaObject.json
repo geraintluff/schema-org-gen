@@ -5,10 +5,7 @@
 	"allOf": [{"$ref": "CreativeWork.json"}],
 	"type": "object",
 	"properties": {
-		"associatedArticle": {
-			"type": "array",
-			"items": {"$ref": "NewsArticle.json#/definitions/possibleRef"}
-		},
+		"associatedArticle": {"$ref": "NewsArticle.json#/definitions/possibleRefArray"},
 		"bitrate": {"$ref": "#/definitions/bitrate"},
 		"contentSize": {"$ref": "#/definitions/contentSize"},
 		"contentUrl": {"$ref": "#/definitions/contentUrl"},
@@ -26,10 +23,7 @@
 			"items": {"$ref": "#/definitions/playerType"}
 		},
 		"productionCompany": {"$ref": "Organization.json#/definitions/possibleRef"},
-		"publication": {
-			"type": "array",
-			"items": {"$ref": "PublicationEvent.json#/definitions/possibleRef"}
-		},
+		"publication": {"$ref": "PublicationEvent.json#/definitions/possibleRefArray"},
 		"regionsAllowed": {"$ref": "Place.json#/definitions/possibleRef"},
 		"requiresSubscription": {"$ref": "#/definitions/requiresSubscription"},
 		"uploadDate": {"$ref": "#/definitions/uploadDate"},
@@ -90,6 +84,10 @@
 			"title": "Player Type",
 			"description": "Player type required—for example, Flash or Silverlight.",
 			"type": "string"
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"requiresSubscription": {
 			"title": "Requires Subscription",

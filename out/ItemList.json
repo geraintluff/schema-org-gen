@@ -29,6 +29,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"itemListElement": {
 			"title": "Item List Element",
 			"description": "A single list item.",

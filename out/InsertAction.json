@@ -28,6 +28,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"toLocation": {
 			"title": "To Location",
 			"description": "A sub property of location. The final location of the object or the agent after the action.",

@@ -6,10 +6,7 @@
 	"type": "object",
 	"properties": {
 		"about": {"$ref": "Thing.json#/definitions/possibleRef"},
-		"language": {
-			"type": "array",
-			"items": {"$ref": "Language.json#/definitions/possibleRef"}
-		},
+		"language": {"$ref": "Language.json#/definitions/possibleRefArray"},
 		"recipient": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/recipient"}
@@ -32,6 +29,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"recipient": {
 			"title": "Recipient",

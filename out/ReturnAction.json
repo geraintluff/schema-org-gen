@@ -28,6 +28,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"recipient": {
 			"title": "Recipient",
 			"description": "A sub property of participant. The participant who is at the receiving end of the action.",

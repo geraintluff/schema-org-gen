@@ -5,14 +5,8 @@
 	"allOf": [{"$ref": "MedicalSignOrSymptom.json"}],
 	"type": "object",
 	"properties": {
-		"identifyingExam": {
-			"type": "array",
-			"items": {"$ref": "PhysicalExam.json#/definitions/possibleRef"}
-		},
-		"identifyingTest": {
-			"type": "array",
-			"items": {"$ref": "MedicalTest.json#/definitions/possibleRef"}
-		}
+		"identifyingExam": {"$ref": "PhysicalExam.json#/definitions/possibleRefArray"},
+		"identifyingTest": {"$ref": "MedicalTest.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -31,6 +25,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

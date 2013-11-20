@@ -10,32 +10,17 @@
 			"items": {"$ref": "#/definitions/additionalName"}
 		},
 		"address": {"$ref": "PostalAddress.json#/definitions/possibleRef"},
-		"affiliation": {
-			"type": "array",
-			"items": {"$ref": "Organization.json#/definitions/possibleRef"}
-		},
-		"alumniOf": {
-			"type": "array",
-			"items": {"$ref": "EducationalOrganization.json#/definitions/possibleRef"}
-		},
+		"affiliation": {"$ref": "Organization.json#/definitions/possibleRefArray"},
+		"alumniOf": {"$ref": "EducationalOrganization.json#/definitions/possibleRefArray"},
 		"award": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/award"}
 		},
 		"birthDate": {"$ref": "#/definitions/birthDate"},
 		"brand": {"$ref": "#/definitions/brand"},
-		"children": {
-			"type": "array",
-			"items": {"$ref": "Person.json#/definitions/possibleRef"}
-		},
-		"colleague": {
-			"type": "array",
-			"items": {"$ref": "Person.json#/definitions/possibleRef"}
-		},
-		"contactPoint": {
-			"type": "array",
-			"items": {"$ref": "ContactPoint.json#/definitions/possibleRef"}
-		},
+		"children": {"$ref": "Person.json#/definitions/possibleRefArray"},
+		"colleague": {"$ref": "Person.json#/definitions/possibleRefArray"},
+		"contactPoint": {"$ref": "ContactPoint.json#/definitions/possibleRefArray"},
 		"deathDate": {"$ref": "#/definitions/deathDate"},
 		"duns": {"$ref": "#/definitions/duns"},
 		"email": {
@@ -44,17 +29,14 @@
 		},
 		"familyName": {"$ref": "#/definitions/familyName"},
 		"faxNumber": {"$ref": "#/definitions/faxNumber"},
-		"follows": {"$ref": "Person.json#/definitions/possibleRef"},
+		"follows": {"$ref": "Person.json#/definitions/possibleRefArray"},
 		"gender": {"$ref": "#/definitions/gender"},
 		"givenName": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/givenName"}
 		},
 		"globalLocationNumber": {"$ref": "#/definitions/globalLocationNumber"},
-		"hasPOS": {
-			"type": "array",
-			"items": {"$ref": "Place.json#/definitions/possibleRef"}
-		},
+		"hasPOS": {"$ref": "Place.json#/definitions/possibleRefArray"},
 		"homeLocation": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/homeLocation"}
@@ -74,40 +56,19 @@
 		"isicV4": {"$ref": "#/definitions/isicV4"},
 		"jobTitle": {"$ref": "#/definitions/jobTitle"},
 		"knows": {"$ref": "Person.json#/definitions/possibleRef"},
-		"makesOffer": {
-			"type": "array",
-			"items": {"$ref": "Offer.json#/definitions/possibleRef"}
-		},
-		"memberOf": {
-			"type": "array",
-			"items": {"$ref": "Organization.json#/definitions/possibleRef"}
-		},
+		"makesOffer": {"$ref": "Offer.json#/definitions/possibleRefArray"},
+		"memberOf": {"$ref": "Organization.json#/definitions/possibleRefArray"},
 		"naics": {"$ref": "#/definitions/naics"},
-		"nationality": {
-			"type": "array",
-			"items": {"$ref": "Country.json#/definitions/possibleRef"}
-		},
+		"nationality": {"$ref": "Country.json#/definitions/possibleRefArray"},
 		"owns": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/owns"}
 		},
-		"parent": {
-			"type": "array",
-			"items": {"$ref": "Person.json#/definitions/possibleRef"}
-		},
-		"performerIn": {
-			"type": "array",
-			"items": {"$ref": "Event.json#/definitions/possibleRef"}
-		},
+		"parent": {"$ref": "Person.json#/definitions/possibleRefArray"},
+		"performerIn": {"$ref": "Event.json#/definitions/possibleRefArray"},
 		"relatedTo": {"$ref": "Person.json#/definitions/possibleRef"},
-		"seeks": {
-			"type": "array",
-			"items": {"$ref": "Demand.json#/definitions/possibleRef"}
-		},
-		"sibling": {
-			"type": "array",
-			"items": {"$ref": "Person.json#/definitions/possibleRef"}
-		},
+		"seeks": {"$ref": "Demand.json#/definitions/possibleRefArray"},
+		"sibling": {"$ref": "Person.json#/definitions/possibleRefArray"},
 		"spouse": {"$ref": "Person.json#/definitions/possibleRef"},
 		"taxID": {"$ref": "#/definitions/taxID"},
 		"telephone": {"$ref": "#/definitions/telephone"},
@@ -116,10 +77,7 @@
 			"type": "array",
 			"items": {"$ref": "#/definitions/workLocation"}
 		},
-		"worksFor": {
-			"type": "array",
-			"items": {"$ref": "Organization.json#/definitions/possibleRef"}
-		}
+		"worksFor": {"$ref": "Organization.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"additionalName": {
@@ -240,6 +198,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"taxID": {
 			"title": "Tax ID",

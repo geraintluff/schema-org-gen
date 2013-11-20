@@ -26,6 +26,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"dependencies": {
 			"title": "Dependencies",
 			"description": "Prerequisites needed to fulfill steps in article.",

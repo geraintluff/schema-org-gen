@@ -26,6 +26,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"phase": {
 			"title": "Phase",
 			"description": "The phase of the trial.",

@@ -5,18 +5,9 @@
 	"allOf": [{"$ref": "MedicalEntity.json"}],
 	"type": "object",
 	"properties": {
-		"adverseOutcome": {
-			"type": "array",
-			"items": {"$ref": "MedicalEntity.json#/definitions/possibleRef"}
-		},
-		"contraindication": {
-			"type": "array",
-			"items": {"$ref": "MedicalContraindication.json#/definitions/possibleRef"}
-		},
-		"indication": {
-			"type": "array",
-			"items": {"$ref": "MedicalIndication.json#/definitions/possibleRef"}
-		},
+		"adverseOutcome": {"$ref": "MedicalEntity.json#/definitions/possibleRefArray"},
+		"contraindication": {"$ref": "MedicalContraindication.json#/definitions/possibleRefArray"},
+		"indication": {"$ref": "MedicalIndication.json#/definitions/possibleRefArray"},
 		"postOp": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/postOp"}
@@ -33,10 +24,7 @@
 			"type": "array",
 			"items": {"$ref": "#/definitions/purpose"}
 		},
-		"seriousAdverseOutcome": {
-			"type": "array",
-			"items": {"$ref": "MedicalEntity.json#/definitions/possibleRef"}
-		}
+		"seriousAdverseOutcome": {"$ref": "MedicalEntity.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -55,6 +43,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"postOp": {
 			"title": "Post Op",

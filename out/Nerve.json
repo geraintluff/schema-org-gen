@@ -28,6 +28,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"branch": {
 			"title": "Branch",
 			"description": "The branches that delineate from the nerve bundle.",

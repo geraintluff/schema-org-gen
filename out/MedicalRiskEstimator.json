@@ -6,10 +6,7 @@
 	"type": "object",
 	"properties": {
 		"estimatesRiskOf": {"$ref": "MedicalEntity.json#/definitions/possibleRef"},
-		"includedRiskFactor": {
-			"type": "array",
-			"items": {"$ref": "MedicalRiskFactor.json#/definitions/possibleRef"}
-		}
+		"includedRiskFactor": {"$ref": "MedicalRiskFactor.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -28,6 +25,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

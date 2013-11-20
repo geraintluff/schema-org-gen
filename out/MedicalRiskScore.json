@@ -23,6 +23,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"algorithm": {
 			"title": "Algorithm",
 			"description": "The algorithm or rules to follow to compute the score.",

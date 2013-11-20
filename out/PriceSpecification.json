@@ -33,6 +33,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"maxPrice": {
 			"title": "Max Price",
 			"description": "The highest price if the price is a range.",

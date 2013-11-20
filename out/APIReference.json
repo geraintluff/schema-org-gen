@@ -34,6 +34,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"assembly": {
 			"title": "Assembly",
 			"description": "Library file name e.g., mscorlib.dll, system.web.dll",

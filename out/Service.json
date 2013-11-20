@@ -5,10 +5,7 @@
 	"allOf": [{"$ref": "Intangible.json"}],
 	"type": "object",
 	"properties": {
-		"availableChannel": {
-			"type": "array",
-			"items": {"$ref": "ServiceChannel.json#/definitions/possibleRef"}
-		},
+		"availableChannel": {"$ref": "ServiceChannel.json#/definitions/possibleRefArray"},
 		"produces": {"$ref": "Thing.json#/definitions/possibleRef"},
 		"provider": {"$ref": "#/definitions/provider"},
 		"serviceArea": {"$ref": "AdministrativeArea.json#/definitions/possibleRef"},
@@ -32,6 +29,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"provider": {
 			"title": "Provider",

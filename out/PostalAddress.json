@@ -30,6 +30,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"addressLocality": {
 			"title": "Address Locality",
 			"description": "The locality. For example, Mountain View.",

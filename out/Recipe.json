@@ -37,6 +37,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"cookingMethod": {
 			"title": "Cooking Method",
 			"description": "The method of cooking, such as Frying, Steaming, ...",

@@ -20,10 +20,7 @@
 		"maximumIntake": {"$ref": "MaximumDoseSchedule.json#/definitions/possibleRef"},
 		"mechanismOfAction": {"$ref": "#/definitions/mechanismOfAction"},
 		"nonProprietaryName": {"$ref": "#/definitions/nonProprietaryName"},
-		"recommendedIntake": {
-			"type": "array",
-			"items": {"$ref": "RecommendedDoseSchedule.json#/definitions/possibleRef"}
-		},
+		"recommendedIntake": {"$ref": "RecommendedDoseSchedule.json#/definitions/possibleRefArray"},
 		"safetyConsideration": {"$ref": "#/definitions/safetyConsideration"},
 		"targetPopulation": {
 			"type": "array",
@@ -31,27 +28,14 @@
 		}
 	},
 	"definitions": {
-		"array": {
-			"type": "array",
-			"items": {"$ref": "#"}
-		},
-		"possibleRef": {
-			"oneOf": [
-				{"$ref": "#"},
-				{
-					"type": "string",
-					"format": "uri",
-					"links": [{
-						"rel": "full",
-						"href": "{+$}"
-					}]
-				}
-			]
-		},
 		"activeIngredient": {
 			"title": "Active Ingredient",
 			"description": "An active ingredient, typically chemical compounds and/or biologic substances.",
 			"type": "string"
+		},
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
 		},
 		"background": {
 			"title": "Background",
@@ -77,6 +61,23 @@
 			"title": "Non Proprietary Name",
 			"description": "The generic name of this drug or supplement.",
 			"type": "string"
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"safetyConsideration": {
 			"title": "Safety Consideration",

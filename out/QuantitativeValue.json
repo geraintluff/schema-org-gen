@@ -32,6 +32,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"maxValue": {
 			"title": "Max Value",
 			"description": "The upper of the product characteristic.",

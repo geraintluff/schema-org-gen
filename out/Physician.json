@@ -9,14 +9,8 @@
 			"type": "array",
 			"items": {"$ref": "#/definitions/availableService"}
 		},
-		"hospitalAffiliation": {
-			"type": "array",
-			"items": {"$ref": "Hospital.json#/definitions/possibleRef"}
-		},
-		"medicalSpecialty": {
-			"type": "array",
-			"items": {"$ref": "MedicalSpecialty.json#/definitions/possibleRef"}
-		}
+		"hospitalAffiliation": {"$ref": "Hospital.json#/definitions/possibleRefArray"},
+		"medicalSpecialty": {"$ref": "MedicalSpecialty.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -35,6 +29,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"availableService": {
 			"title": "Available Service",

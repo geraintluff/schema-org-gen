@@ -5,14 +5,8 @@
 	"allOf": [{"$ref": "MedicalIntangible.json"}],
 	"type": "object",
 	"properties": {
-		"diagnosis": {
-			"type": "array",
-			"items": {"$ref": "MedicalCondition.json#/definitions/possibleRef"}
-		},
-		"distinguishingSign": {
-			"type": "array",
-			"items": {"$ref": "MedicalSignOrSymptom.json#/definitions/possibleRef"}
-		}
+		"diagnosis": {"$ref": "MedicalCondition.json#/definitions/possibleRefArray"},
+		"distinguishingSign": {"$ref": "MedicalSignOrSymptom.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -31,6 +25,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

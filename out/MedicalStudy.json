@@ -7,16 +7,10 @@
 	"properties": {
 		"outcome": {"$ref": "#/definitions/outcome"},
 		"population": {"$ref": "#/definitions/population"},
-		"sponsor": {
-			"type": "array",
-			"items": {"$ref": "Organization.json#/definitions/possibleRef"}
-		},
+		"sponsor": {"$ref": "Organization.json#/definitions/possibleRefArray"},
 		"status": {"$ref": "MedicalStudyStatus.json#/definitions/possibleRef"},
 		"studyLocation": {"$ref": "AdministrativeArea.json#/definitions/possibleRef"},
-		"studySubject": {
-			"type": "array",
-			"items": {"$ref": "MedicalEntity.json#/definitions/possibleRef"}
-		}
+		"studySubject": {"$ref": "MedicalEntity.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -35,6 +29,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"outcome": {
 			"title": "Outcome",

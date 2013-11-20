@@ -27,6 +27,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"acceptsReservations": {
 			"title": "Accepts Reservations",
 			"description": "Either Yes/No, or a URL at which reservations can be made.",

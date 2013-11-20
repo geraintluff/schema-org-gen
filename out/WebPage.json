@@ -25,15 +25,16 @@
 			"type": "array",
 			"items": {"$ref": "#/definitions/significantLink"}
 		},
-		"specialty": {
-			"type": "array",
-			"items": {"$ref": "Specialty.json#/definitions/possibleRef"}
-		}
+		"specialty": {"$ref": "Specialty.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
 			"type": "array",
 			"items": {"$ref": "#"}
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"breadcrumb": {
 			"title": "Breadcrumb",

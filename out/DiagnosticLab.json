@@ -4,12 +4,7 @@
 	"format": "http://schema.org/DiagnosticLab",
 	"allOf": [{"$ref": "MedicalOrganization.json"}],
 	"type": "object",
-	"properties": {
-		"availableTest": {
-			"type": "array",
-			"items": {"$ref": "MedicalTest.json#/definitions/possibleRef"}
-		}
-	},
+	"properties": {"availableTest": {"$ref": "MedicalTest.json#/definitions/possibleRefArray"}},
 	"definitions": {
 		"array": {
 			"type": "array",
@@ -27,6 +22,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

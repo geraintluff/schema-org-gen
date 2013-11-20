@@ -28,6 +28,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"amountOfThisGood": {
 			"title": "Amount of This Good",
 			"description": "The quantity of the goods included in the offer.",

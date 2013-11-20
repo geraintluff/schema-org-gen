@@ -23,6 +23,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"carrierRequirements": {
 			"title": "Carrier Requirements",
 			"description": "Specifies specific carrier(s) requirements for the application (e.g. an application may only work on a specific carrier network).",

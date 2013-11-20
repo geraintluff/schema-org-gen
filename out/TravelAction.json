@@ -4,12 +4,7 @@
 	"format": "http://schema.org/TravelAction",
 	"allOf": [{"$ref": "MoveAction.json"}],
 	"type": "object",
-	"properties": {
-		"distance": {
-			"type": "array",
-			"items": {"$ref": "Distance.json#/definitions/possibleRef"}
-		}
-	},
+	"properties": {"distance": {"$ref": "Distance.json#/definitions/possibleRefArray"}},
 	"definitions": {
 		"array": {
 			"type": "array",
@@ -27,6 +22,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

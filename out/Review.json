@@ -27,6 +27,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"reviewBody": {
 			"title": "Review Body",
 			"description": "The actual body of the review",

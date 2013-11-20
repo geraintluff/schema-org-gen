@@ -5,14 +5,8 @@
 	"allOf": [{"$ref": "MedicalEntity.json"}],
 	"type": "object",
 	"properties": {
-		"cause": {
-			"type": "array",
-			"items": {"$ref": "MedicalCause.json#/definitions/possibleRef"}
-		},
-		"possibleTreatment": {
-			"type": "array",
-			"items": {"$ref": "MedicalTherapy.json#/definitions/possibleRef"}
-		}
+		"cause": {"$ref": "MedicalCause.json#/definitions/possibleRefArray"},
+		"possibleTreatment": {"$ref": "MedicalTherapy.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -31,6 +25,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

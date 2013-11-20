@@ -28,6 +28,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"followup": {
 			"title": "Followup",
 			"description": "Typical or recommended followup care after the procedure is performed.",

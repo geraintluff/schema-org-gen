@@ -31,6 +31,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"validFrom": {
 			"title": "Valid From",
 			"description": "The date when the permit becomes valid.",

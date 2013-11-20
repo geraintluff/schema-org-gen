@@ -6,14 +6,8 @@
 	"type": "object",
 	"properties": {
 		"associatedAnatomy": {"$ref": "#/definitions/associatedAnatomy"},
-		"cause": {
-			"type": "array",
-			"items": {"$ref": "MedicalCause.json#/definitions/possibleRef"}
-		},
-		"differentialDiagnosis": {
-			"type": "array",
-			"items": {"$ref": "DDxElement.json#/definitions/possibleRef"}
-		},
+		"cause": {"$ref": "MedicalCause.json#/definitions/possibleRefArray"},
+		"differentialDiagnosis": {"$ref": "DDxElement.json#/definitions/possibleRefArray"},
 		"epidemiology": {"$ref": "#/definitions/epidemiology"},
 		"expectedPrognosis": {"$ref": "#/definitions/expectedPrognosis"},
 		"naturalProgression": {"$ref": "#/definitions/naturalProgression"},
@@ -25,35 +19,17 @@
 			"type": "array",
 			"items": {"$ref": "#/definitions/possibleComplication"}
 		},
-		"possibleTreatment": {
-			"type": "array",
-			"items": {"$ref": "MedicalTherapy.json#/definitions/possibleRef"}
-		},
-		"primaryPrevention": {
-			"type": "array",
-			"items": {"$ref": "MedicalTherapy.json#/definitions/possibleRef"}
-		},
-		"riskFactor": {
-			"type": "array",
-			"items": {"$ref": "MedicalRiskFactor.json#/definitions/possibleRef"}
-		},
-		"secondaryPrevention": {
-			"type": "array",
-			"items": {"$ref": "MedicalTherapy.json#/definitions/possibleRef"}
-		},
-		"signOrSymptom": {
-			"type": "array",
-			"items": {"$ref": "MedicalSignOrSymptom.json#/definitions/possibleRef"}
-		},
+		"possibleTreatment": {"$ref": "MedicalTherapy.json#/definitions/possibleRefArray"},
+		"primaryPrevention": {"$ref": "MedicalTherapy.json#/definitions/possibleRefArray"},
+		"riskFactor": {"$ref": "MedicalRiskFactor.json#/definitions/possibleRefArray"},
+		"secondaryPrevention": {"$ref": "MedicalTherapy.json#/definitions/possibleRefArray"},
+		"signOrSymptom": {"$ref": "MedicalSignOrSymptom.json#/definitions/possibleRefArray"},
 		"stage": {"$ref": "MedicalConditionStage.json#/definitions/possibleRef"},
 		"subtype": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/subtype"}
 		},
-		"typicalTest": {
-			"type": "array",
-			"items": {"$ref": "MedicalTest.json#/definitions/possibleRef"}
-		}
+		"typicalTest": {"$ref": "MedicalTest.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -72,6 +48,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"associatedAnatomy": {
 			"title": "Associated Anatomy",

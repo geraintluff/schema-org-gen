@@ -14,10 +14,7 @@
 			"items": {"$ref": "#/definitions/administrationRoute"}
 		},
 		"alcoholWarning": {"$ref": "#/definitions/alcoholWarning"},
-		"availableStrength": {
-			"type": "array",
-			"items": {"$ref": "DrugStrength.json#/definitions/possibleRef"}
-		},
+		"availableStrength": {"$ref": "DrugStrength.json#/definitions/possibleRefArray"},
 		"breastfeedingWarning": {"$ref": "#/definitions/breastfeedingWarning"},
 		"clincalPharmacology": {"$ref": "#/definitions/clincalPharmacology"},
 		"cost": {"$ref": "DrugCost.json#/definitions/possibleRef"},
@@ -25,16 +22,10 @@
 			"type": "array",
 			"items": {"$ref": "#/definitions/dosageForm"}
 		},
-		"doseSchedule": {
-			"type": "array",
-			"items": {"$ref": "DoseSchedule.json#/definitions/possibleRef"}
-		},
+		"doseSchedule": {"$ref": "DoseSchedule.json#/definitions/possibleRefArray"},
 		"drugClass": {"$ref": "DrugClass.json#/definitions/possibleRef"},
 		"foodWarning": {"$ref": "#/definitions/foodWarning"},
-		"interactingDrug": {
-			"type": "array",
-			"items": {"$ref": "Drug.json#/definitions/possibleRef"}
-		},
+		"interactingDrug": {"$ref": "Drug.json#/definitions/possibleRefArray"},
 		"isAvailableGenerically": {"$ref": "#/definitions/isAvailableGenerically"},
 		"isProprietary": {"$ref": "#/definitions/isProprietary"},
 		"labelDetails": {"$ref": "#/definitions/labelDetails"},
@@ -47,10 +38,7 @@
 		"pregnancyWarning": {"$ref": "#/definitions/pregnancyWarning"},
 		"prescribingInfo": {"$ref": "#/definitions/prescribingInfo"},
 		"prescriptionStatus": {"$ref": "DrugPrescriptionStatus.json#/definitions/possibleRef"},
-		"relatedDrug": {
-			"type": "array",
-			"items": {"$ref": "Drug.json#/definitions/possibleRef"}
-		},
+		"relatedDrug": {"$ref": "Drug.json#/definitions/possibleRefArray"},
 		"warning": {"$ref": "#/definitions/warning"}
 	},
 	"definitions": {
@@ -127,6 +115,10 @@
 			"title": "Overdosage",
 			"description": "Any information related to overdose on a drug, including signs or symptoms, treatments, contact information for emergency response.",
 			"type": "string"
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"pregnancyWarning": {
 			"title": "Pregnancy Warning",

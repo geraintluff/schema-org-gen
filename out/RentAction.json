@@ -9,10 +9,7 @@
 			"type": "array",
 			"items": {"$ref": "#/definitions/landlord"}
 		},
-		"realEstateAgent": {
-			"type": "array",
-			"items": {"$ref": "RealEstateAgent.json#/definitions/possibleRef"}
-		}
+		"realEstateAgent": {"$ref": "RealEstateAgent.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -31,6 +28,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"landlord": {
 			"title": "Landlord",

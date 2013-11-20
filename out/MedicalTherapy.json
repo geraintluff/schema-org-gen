@@ -5,26 +5,11 @@
 	"allOf": [{"$ref": "MedicalEntity.json"}],
 	"type": "object",
 	"properties": {
-		"adverseOutcome": {
-			"type": "array",
-			"items": {"$ref": "MedicalEntity.json#/definitions/possibleRef"}
-		},
-		"contraindication": {
-			"type": "array",
-			"items": {"$ref": "MedicalContraindication.json#/definitions/possibleRef"}
-		},
-		"duplicateTherapy": {
-			"type": "array",
-			"items": {"$ref": "MedicalTherapy.json#/definitions/possibleRef"}
-		},
-		"indication": {
-			"type": "array",
-			"items": {"$ref": "MedicalIndication.json#/definitions/possibleRef"}
-		},
-		"seriousAdverseOutcome": {
-			"type": "array",
-			"items": {"$ref": "MedicalEntity.json#/definitions/possibleRef"}
-		}
+		"adverseOutcome": {"$ref": "MedicalEntity.json#/definitions/possibleRefArray"},
+		"contraindication": {"$ref": "MedicalContraindication.json#/definitions/possibleRefArray"},
+		"duplicateTherapy": {"$ref": "MedicalTherapy.json#/definitions/possibleRefArray"},
+		"indication": {"$ref": "MedicalIndication.json#/definitions/possibleRefArray"},
+		"seriousAdverseOutcome": {"$ref": "MedicalEntity.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -43,6 +28,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

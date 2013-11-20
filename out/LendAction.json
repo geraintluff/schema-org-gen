@@ -4,12 +4,7 @@
 	"format": "http://schema.org/LendAction",
 	"allOf": [{"$ref": "TransferAction.json"}],
 	"type": "object",
-	"properties": {
-		"borrower": {
-			"type": "array",
-			"items": {"$ref": "Person.json#/definitions/possibleRef"}
-		}
-	},
+	"properties": {"borrower": {"$ref": "Person.json#/definitions/possibleRefArray"}},
 	"definitions": {
 		"array": {
 			"type": "array",
@@ -27,6 +22,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

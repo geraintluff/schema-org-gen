@@ -23,6 +23,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"publicationType": {
 			"title": "Publication Type",
 			"description": "The type of the medical article, taken from the US NLM MeSH publication type catalog.",

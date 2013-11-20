@@ -9,10 +9,7 @@
 			"type": "array",
 			"items": {"$ref": "#/definitions/free"}
 		},
-		"publishedOn": {
-			"type": "array",
-			"items": {"$ref": "BroadcastService.json#/definitions/possibleRef"}
-		}
+		"publishedOn": {"$ref": "BroadcastService.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -31,6 +28,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"free": {
 			"title": "Free",

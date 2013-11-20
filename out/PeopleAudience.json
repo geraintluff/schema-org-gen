@@ -31,6 +31,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"requiredGender": {
 			"title": "Required Gender",
 			"description": "Audiences defined by a person's gender.",

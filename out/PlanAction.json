@@ -23,6 +23,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"scheduledTime": {
 			"title": "Scheduled Time",
 			"description": "The time the object is scheduled to.",

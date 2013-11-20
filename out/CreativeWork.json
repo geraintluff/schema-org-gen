@@ -14,10 +14,7 @@
 		},
 		"associatedMedia": {"$ref": "MediaObject.json#/definitions/possibleRef"},
 		"audience": {"$ref": "Audience.json#/definitions/possibleRef"},
-		"audio": {
-			"type": "array",
-			"items": {"$ref": "AudioObject.json#/definitions/possibleRef"}
-		},
+		"audio": {"$ref": "AudioObject.json#/definitions/possibleRefArray"},
 		"author": {"$ref": "#/definitions/author"},
 		"award": {
 			"type": "array",
@@ -27,10 +24,7 @@
 			"type": "array",
 			"items": {"$ref": "#/definitions/citation"}
 		},
-		"comment": {
-			"type": "array",
-			"items": {"$ref": "UserComments.json#/definitions/possibleRef"}
-		},
+		"comment": {"$ref": "UserComments.json#/definitions/possibleRefArray"},
 		"contentLocation": {"$ref": "Place.json#/definitions/possibleRef"},
 		"contentRating": {
 			"type": "array",
@@ -51,15 +45,9 @@
 			"items": {"$ref": "#/definitions/discussionUrl"}
 		},
 		"editor": {"$ref": "Person.json#/definitions/possibleRef"},
-		"educationalAlignment": {
-			"type": "array",
-			"items": {"$ref": "AlignmentObject.json#/definitions/possibleRef"}
-		},
+		"educationalAlignment": {"$ref": "AlignmentObject.json#/definitions/possibleRefArray"},
 		"educationalUse": {"$ref": "#/definitions/educationalUse"},
-		"encoding": {
-			"type": "array",
-			"items": {"$ref": "MediaObject.json#/definitions/possibleRef"}
-		},
+		"encoding": {"$ref": "MediaObject.json#/definitions/possibleRefArray"},
 		"genre": {"$ref": "#/definitions/genre"},
 		"headline": {"$ref": "#/definitions/headline"},
 		"inLanguage": {"$ref": "#/definitions/inLanguage"},
@@ -75,21 +63,12 @@
 		"isFamilyFriendly": {"$ref": "#/definitions/isFamilyFriendly"},
 		"keywords": {"$ref": "#/definitions/keywords"},
 		"learningResourceType": {"$ref": "#/definitions/learningResourceType"},
-		"mentions": {
-			"type": "array",
-			"items": {"$ref": "Thing.json#/definitions/possibleRef"}
-		},
-		"offers": {
-			"type": "array",
-			"items": {"$ref": "Offer.json#/definitions/possibleRef"}
-		},
+		"mentions": {"$ref": "Thing.json#/definitions/possibleRefArray"},
+		"offers": {"$ref": "Offer.json#/definitions/possibleRefArray"},
 		"provider": {"$ref": "#/definitions/provider"},
 		"publisher": {"$ref": "Organization.json#/definitions/possibleRef"},
 		"publishingPrinciples": {"$ref": "#/definitions/publishingPrinciples"},
-		"review": {
-			"type": "array",
-			"items": {"$ref": "Review.json#/definitions/possibleRef"}
-		},
+		"review": {"$ref": "Review.json#/definitions/possibleRefArray"},
 		"sourceOrganization": {"$ref": "Organization.json#/definitions/possibleRef"},
 		"text": {"$ref": "#/definitions/text"},
 		"thumbnailUrl": {
@@ -99,10 +78,7 @@
 		"timeRequired": {"$ref": "Duration.json#/definitions/possibleRef"},
 		"typicalAgeRange": {"$ref": "#/definitions/typicalAgeRange"},
 		"version": {"$ref": "#/definitions/version"},
-		"video": {
-			"type": "array",
-			"items": {"$ref": "VideoObject.json#/definitions/possibleRef"}
-		}
+		"video": {"$ref": "VideoObject.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"alternativeHeadline": {
@@ -236,6 +212,10 @@
 			"title": "Learning Resource Type",
 			"description": "The predominant type or kind characterizing the learning resource. For example, 'presentation', 'handout'.",
 			"type": "string"
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"provider": {
 			"title": "Provider",

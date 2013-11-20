@@ -8,38 +8,20 @@
 		"address": {"$ref": "PostalAddress.json#/definitions/possibleRef"},
 		"aggregateRating": {"$ref": "AggregateRating.json#/definitions/possibleRef"},
 		"brand": {"$ref": "#/definitions/brand"},
-		"contactPoint": {
-			"type": "array",
-			"items": {"$ref": "ContactPoint.json#/definitions/possibleRef"}
-		},
-		"department": {
-			"type": "array",
-			"items": {"$ref": "Organization.json#/definitions/possibleRef"}
-		},
+		"contactPoint": {"$ref": "ContactPoint.json#/definitions/possibleRefArray"},
+		"department": {"$ref": "Organization.json#/definitions/possibleRefArray"},
 		"duns": {"$ref": "#/definitions/duns"},
 		"email": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/email"}
 		},
-		"employee": {
-			"type": "array",
-			"items": {"$ref": "Person.json#/definitions/possibleRef"}
-		},
-		"event": {
-			"type": "array",
-			"items": {"$ref": "Event.json#/definitions/possibleRef"}
-		},
+		"employee": {"$ref": "Person.json#/definitions/possibleRefArray"},
+		"event": {"$ref": "Event.json#/definitions/possibleRefArray"},
 		"faxNumber": {"$ref": "#/definitions/faxNumber"},
-		"founder": {
-			"type": "array",
-			"items": {"$ref": "Person.json#/definitions/possibleRef"}
-		},
+		"founder": {"$ref": "Person.json#/definitions/possibleRefArray"},
 		"foundingDate": {"$ref": "#/definitions/foundingDate"},
 		"globalLocationNumber": {"$ref": "#/definitions/globalLocationNumber"},
-		"hasPOS": {
-			"type": "array",
-			"items": {"$ref": "Place.json#/definitions/possibleRef"}
-		},
+		"hasPOS": {"$ref": "Place.json#/definitions/possibleRefArray"},
 		"interactionCount": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/interactionCount"}
@@ -51,10 +33,7 @@
 			"type": "array",
 			"items": {"$ref": "#/definitions/logo"}
 		},
-		"makesOffer": {
-			"type": "array",
-			"items": {"$ref": "Offer.json#/definitions/possibleRef"}
-		},
+		"makesOffer": {"$ref": "Offer.json#/definitions/possibleRefArray"},
 		"member": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/member"}
@@ -64,18 +43,9 @@
 			"type": "array",
 			"items": {"$ref": "#/definitions/owns"}
 		},
-		"review": {
-			"type": "array",
-			"items": {"$ref": "Review.json#/definitions/possibleRef"}
-		},
-		"seeks": {
-			"type": "array",
-			"items": {"$ref": "Demand.json#/definitions/possibleRef"}
-		},
-		"subOrganization": {
-			"type": "array",
-			"items": {"$ref": "Organization.json#/definitions/possibleRef"}
-		},
+		"review": {"$ref": "Review.json#/definitions/possibleRefArray"},
+		"seeks": {"$ref": "Demand.json#/definitions/possibleRefArray"},
+		"subOrganization": {"$ref": "Organization.json#/definitions/possibleRefArray"},
 		"taxID": {"$ref": "#/definitions/taxID"},
 		"telephone": {"$ref": "#/definitions/telephone"},
 		"vatID": {"$ref": "#/definitions/vatID"}
@@ -174,6 +144,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"taxID": {
 			"title": "Tax ID",

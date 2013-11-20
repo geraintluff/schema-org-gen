@@ -4,12 +4,7 @@
 	"format": "http://schema.org/ImagingTest",
 	"allOf": [{"$ref": "MedicalTest.json"}],
 	"type": "object",
-	"properties": {
-		"imagingTechnique": {
-			"type": "array",
-			"items": {"$ref": "MedicalImagingTechnique.json#/definitions/possibleRef"}
-		}
-	},
+	"properties": {"imagingTechnique": {"$ref": "MedicalImagingTechnique.json#/definitions/possibleRefArray"}},
 	"definitions": {
 		"array": {
 			"type": "array",
@@ -27,6 +22,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

@@ -32,6 +32,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"currenciesAccepted": {
 			"title": "Currencies Accepted",
 			"description": "The currency accepted (in ISO 4217 currency format).",

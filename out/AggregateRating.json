@@ -27,6 +27,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"ratingCount": {
 			"title": "Rating Count",
 			"description": "The count of total number of ratings.",

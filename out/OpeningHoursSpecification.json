@@ -29,6 +29,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"closes": {
 			"title": "Closes",
 			"description": "The closing hour of the place or service on the given day(s) of the week.",

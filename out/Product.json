@@ -14,26 +14,11 @@
 		"gtin14": {"$ref": "#/definitions/gtin14"},
 		"gtin8": {"$ref": "#/definitions/gtin8"},
 		"height": {"$ref": "#/definitions/height"},
-		"isAccessoryOrSparePartFor": {
-			"type": "array",
-			"items": {"$ref": "Product.json#/definitions/possibleRef"}
-		},
-		"isConsumableFor": {
-			"type": "array",
-			"items": {"$ref": "Product.json#/definitions/possibleRef"}
-		},
-		"isRelatedTo": {
-			"type": "array",
-			"items": {"$ref": "Product.json#/definitions/possibleRef"}
-		},
-		"isSimilarTo": {
-			"type": "array",
-			"items": {"$ref": "Product.json#/definitions/possibleRef"}
-		},
-		"itemCondition": {
-			"type": "array",
-			"items": {"$ref": "OfferItemCondition.json#/definitions/possibleRef"}
-		},
+		"isAccessoryOrSparePartFor": {"$ref": "Product.json#/definitions/possibleRefArray"},
+		"isConsumableFor": {"$ref": "Product.json#/definitions/possibleRefArray"},
+		"isRelatedTo": {"$ref": "Product.json#/definitions/possibleRefArray"},
+		"isSimilarTo": {"$ref": "Product.json#/definitions/possibleRefArray"},
+		"itemCondition": {"$ref": "OfferItemCondition.json#/definitions/possibleRefArray"},
 		"logo": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/logo"}
@@ -41,16 +26,10 @@
 		"manufacturer": {"$ref": "Organization.json#/definitions/possibleRef"},
 		"model": {"$ref": "#/definitions/model"},
 		"mpn": {"$ref": "#/definitions/mpn"},
-		"offers": {
-			"type": "array",
-			"items": {"$ref": "Offer.json#/definitions/possibleRef"}
-		},
+		"offers": {"$ref": "Offer.json#/definitions/possibleRefArray"},
 		"productID": {"$ref": "#/definitions/productID"},
 		"releaseDate": {"$ref": "#/definitions/releaseDate"},
-		"review": {
-			"type": "array",
-			"items": {"$ref": "Review.json#/definitions/possibleRef"}
-		},
+		"review": {"$ref": "Review.json#/definitions/possibleRefArray"},
 		"sku": {"$ref": "#/definitions/sku"},
 		"weight": {"$ref": "QuantitativeValue.json#/definitions/possibleRef"},
 		"width": {"$ref": "#/definitions/width"}
@@ -128,6 +107,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"productID": {
 			"title": "Product ID",

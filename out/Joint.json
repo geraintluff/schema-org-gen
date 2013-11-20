@@ -27,6 +27,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"biomechnicalClass": {
 			"title": "Biomechnical Class",
 			"description": "The biomechanical properties of the bone.",

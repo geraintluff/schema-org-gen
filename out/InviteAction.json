@@ -4,12 +4,7 @@
 	"format": "http://schema.org/InviteAction",
 	"allOf": [{"$ref": "CommunicateAction.json"}],
 	"type": "object",
-	"properties": {
-		"event": {
-			"type": "array",
-			"items": {"$ref": "Event.json#/definitions/possibleRef"}
-		}
-	},
+	"properties": {"event": {"$ref": "Event.json#/definitions/possibleRefArray"}},
 	"definitions": {
 		"array": {
 			"type": "array",
@@ -27,6 +22,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

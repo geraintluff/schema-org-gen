@@ -28,6 +28,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"endorsee": {
 			"title": "Endorsee",
 			"description": "A sub property of participant. The person/organization being supported.",

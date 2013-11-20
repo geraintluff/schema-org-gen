@@ -28,6 +28,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"followee": {
 			"title": "Followee",
 			"description": "A sub property of object. The person or organization being followed.",

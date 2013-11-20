@@ -23,6 +23,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"tissueSample": {
 			"title": "Tissue Sample",
 			"description": "The type of tissue sample required for the test.",

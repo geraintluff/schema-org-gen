@@ -28,6 +28,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"query": {
 			"title": "Query",
 			"description": "A sub property of instrument. The query used on this action.",

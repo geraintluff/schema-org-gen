@@ -29,6 +29,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"dateline": {
 			"title": "Dateline",
 			"description": "The location where the NewsArticle was produced.",

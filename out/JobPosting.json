@@ -20,10 +20,7 @@
 			"items": {"$ref": "#/definitions/incentives"}
 		},
 		"industry": {"$ref": "#/definitions/industry"},
-		"jobLocation": {
-			"type": "array",
-			"items": {"$ref": "Place.json#/definitions/possibleRef"}
-		},
+		"jobLocation": {"$ref": "Place.json#/definitions/possibleRefArray"},
 		"occupationalCategory": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/occupationalCategory"}
@@ -112,6 +109,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"qualifications": {
 			"title": "Qualifications",

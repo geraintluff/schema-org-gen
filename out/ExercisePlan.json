@@ -38,6 +38,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"activityFrequency": {
 			"title": "Activity Frequency",
 			"description": "How often one should engage in the activity.",

@@ -7,28 +7,13 @@
 	"properties": {
 		"associatedPathophysiology": {"$ref": "#/definitions/associatedPathophysiology"},
 		"bodyLocation": {"$ref": "#/definitions/bodyLocation"},
-		"connectedTo": {
-			"type": "array",
-			"items": {"$ref": "AnatomicalStructure.json#/definitions/possibleRef"}
-		},
-		"diagram": {
-			"type": "array",
-			"items": {"$ref": "ImageObject.json#/definitions/possibleRef"}
-		},
+		"connectedTo": {"$ref": "AnatomicalStructure.json#/definitions/possibleRefArray"},
+		"diagram": {"$ref": "ImageObject.json#/definitions/possibleRefArray"},
 		"function": {"$ref": "#/definitions/function"},
 		"partOfSystem": {"$ref": "AnatomicalSystem.json#/definitions/possibleRef"},
-		"relatedCondition": {
-			"type": "array",
-			"items": {"$ref": "MedicalCondition.json#/definitions/possibleRef"}
-		},
-		"relatedTherapy": {
-			"type": "array",
-			"items": {"$ref": "MedicalTherapy.json#/definitions/possibleRef"}
-		},
-		"subStructure": {
-			"type": "array",
-			"items": {"$ref": "AnatomicalStructure.json#/definitions/possibleRef"}
-		}
+		"relatedCondition": {"$ref": "MedicalCondition.json#/definitions/possibleRefArray"},
+		"relatedTherapy": {"$ref": "MedicalTherapy.json#/definitions/possibleRefArray"},
+		"subStructure": {"$ref": "AnatomicalStructure.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -47,6 +32,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"associatedPathophysiology": {
 			"title": "Associated Pathophysiology",

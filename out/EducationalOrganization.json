@@ -4,12 +4,7 @@
 	"format": "http://schema.org/EducationalOrganization",
 	"allOf": [{"$ref": "Organization.json"}],
 	"type": "object",
-	"properties": {
-		"alumni": {
-			"type": "array",
-			"items": {"$ref": "Person.json#/definitions/possibleRef"}
-		}
-	},
+	"properties": {"alumni": {"$ref": "Person.json#/definitions/possibleRefArray"}},
 	"definitions": {
 		"array": {
 			"type": "array",
@@ -27,6 +22,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

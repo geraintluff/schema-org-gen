@@ -5,10 +5,7 @@
 	"allOf": [{"$ref": "TransferAction.json"}],
 	"type": "object",
 	"properties": {
-		"deliveryMethod": {
-			"type": "array",
-			"items": {"$ref": "DeliveryMethod.json#/definitions/possibleRef"}
-		},
+		"deliveryMethod": {"$ref": "DeliveryMethod.json#/definitions/possibleRefArray"},
 		"recipient": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/recipient"}
@@ -31,6 +28,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"recipient": {
 			"title": "Recipient",

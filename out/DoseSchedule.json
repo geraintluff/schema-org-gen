@@ -31,6 +31,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"doseUnit": {
 			"title": "Dose Unit",
 			"description": "The unit of the dose, e.g. 'mg'.",

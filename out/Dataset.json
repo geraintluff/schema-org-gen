@@ -5,14 +5,8 @@
 	"allOf": [{"$ref": "CreativeWork.json"}],
 	"type": "object",
 	"properties": {
-		"catalog": {
-			"type": "array",
-			"items": {"$ref": "DataCatalog.json#/definitions/possibleRef"}
-		},
-		"distribution": {
-			"type": "array",
-			"items": {"$ref": "DataDownload.json#/definitions/possibleRef"}
-		},
+		"catalog": {"$ref": "DataCatalog.json#/definitions/possibleRefArray"},
+		"distribution": {"$ref": "DataDownload.json#/definitions/possibleRefArray"},
 		"spatial": {"$ref": "Place.json#/definitions/possibleRef"},
 		"temporal": {"$ref": "#/definitions/temporal"}
 	},
@@ -33,6 +27,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"temporal": {
 			"title": "Temporal",

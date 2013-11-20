@@ -29,6 +29,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"vendor": {
 			"title": "Vendor",
 			"description": "A sub property of participant. The seller.The participant/person/organization that sold the object.",

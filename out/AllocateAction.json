@@ -28,6 +28,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"purpose": {
 			"title": "Purpose",
 			"description": "A goal towards an action is taken. Can be concrete or abstract.",

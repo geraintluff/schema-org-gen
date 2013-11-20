@@ -26,6 +26,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"childMaxAge": {
 			"title": "Child Max Age",
 			"description": "Maximal age of the child",

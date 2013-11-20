@@ -6,10 +6,7 @@
 	"type": "object",
 	"properties": {
 		"audience": {"$ref": "Audience.json#/definitions/possibleRef"},
-		"event": {
-			"type": "array",
-			"items": {"$ref": "Event.json#/definitions/possibleRef"}
-		}
+		"event": {"$ref": "Event.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -28,6 +25,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

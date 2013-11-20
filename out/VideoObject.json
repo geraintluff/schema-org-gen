@@ -29,6 +29,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"caption": {
 			"title": "Caption",
 			"description": "The caption for this object.",

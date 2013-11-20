@@ -5,10 +5,7 @@
 	"allOf": [{"$ref": "TradeAction.json"}],
 	"type": "object",
 	"properties": {
-		"buyer": {
-			"type": "array",
-			"items": {"$ref": "Person.json#/definitions/possibleRef"}
-		},
+		"buyer": {"$ref": "Person.json#/definitions/possibleRefArray"},
 		"warrantyPromise": {"$ref": "WarrantyPromise.json#/definitions/possibleRef"}
 	},
 	"definitions": {
@@ -28,6 +25,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

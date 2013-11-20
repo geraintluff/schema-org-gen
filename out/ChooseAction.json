@@ -28,6 +28,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"option": {
 			"title": "Option",
 			"description": "A sub property of object. The options subject to this action.",

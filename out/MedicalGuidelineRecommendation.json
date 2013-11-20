@@ -28,6 +28,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"recommendationStrength": {
 			"title": "Recommendation Strength",
 			"description": "Strength of the guideline's recommendation (e.g. 'class I').",

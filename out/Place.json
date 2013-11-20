@@ -8,10 +8,7 @@
 		"address": {"$ref": "PostalAddress.json#/definitions/possibleRef"},
 		"aggregateRating": {"$ref": "AggregateRating.json#/definitions/possibleRef"},
 		"containedIn": {"$ref": "Place.json#/definitions/possibleRef"},
-		"event": {
-			"type": "array",
-			"items": {"$ref": "Event.json#/definitions/possibleRef"}
-		},
+		"event": {"$ref": "Event.json#/definitions/possibleRefArray"},
 		"faxNumber": {"$ref": "#/definitions/faxNumber"},
 		"geo": {"$ref": "#/definitions/geo"},
 		"globalLocationNumber": {"$ref": "#/definitions/globalLocationNumber"},
@@ -33,10 +30,7 @@
 			"type": "array",
 			"items": {"$ref": "#/definitions/photo"}
 		},
-		"review": {
-			"type": "array",
-			"items": {"$ref": "Review.json#/definitions/possibleRef"}
-		},
+		"review": {"$ref": "Review.json#/definitions/possibleRefArray"},
 		"telephone": {"$ref": "#/definitions/telephone"}
 	},
 	"definitions": {
@@ -94,6 +88,10 @@
 			"title": "Photo",
 			"description": "A photograph of this place.",
 			"anyOf": [{"$ref": "ImageObject.json#/definitions/possibleRef"}, {"$ref": "Photograph.json#/definitions/possibleRef"}]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"telephone": {
 			"title": "Telephone",

@@ -9,14 +9,8 @@
 			"type": "array",
 			"items": {"$ref": "#/definitions/foodEstablishment"}
 		},
-		"foodEvent": {
-			"type": "array",
-			"items": {"$ref": "FoodEvent.json#/definitions/possibleRef"}
-		},
-		"recipe": {
-			"type": "array",
-			"items": {"$ref": "Recipe.json#/definitions/possibleRef"}
-		}
+		"foodEvent": {"$ref": "FoodEvent.json#/definitions/possibleRefArray"},
+		"recipe": {"$ref": "Recipe.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -35,6 +29,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"foodEstablishment": {
 			"title": "Food Establishment",

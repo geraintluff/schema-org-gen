@@ -7,18 +7,9 @@
 	"properties": {
 		"associatedPathophysiology": {"$ref": "#/definitions/associatedPathophysiology"},
 		"comprisedOf": {"$ref": "#/definitions/comprisedOf"},
-		"relatedCondition": {
-			"type": "array",
-			"items": {"$ref": "MedicalCondition.json#/definitions/possibleRef"}
-		},
-		"relatedStructure": {
-			"type": "array",
-			"items": {"$ref": "AnatomicalStructure.json#/definitions/possibleRef"}
-		},
-		"relatedTherapy": {
-			"type": "array",
-			"items": {"$ref": "MedicalTherapy.json#/definitions/possibleRef"}
-		}
+		"relatedCondition": {"$ref": "MedicalCondition.json#/definitions/possibleRefArray"},
+		"relatedStructure": {"$ref": "AnatomicalStructure.json#/definitions/possibleRefArray"},
+		"relatedTherapy": {"$ref": "MedicalTherapy.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -37,6 +28,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"associatedPathophysiology": {
 			"title": "Associated Pathophysiology",

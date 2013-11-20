@@ -5,14 +5,8 @@
 	"allOf": [{"$ref": "Thing.json"}],
 	"type": "object",
 	"properties": {
-		"domainIncludes": {
-			"type": "array",
-			"items": {"$ref": "Class.json#/definitions/possibleRef"}
-		},
-		"rangeIncludes": {
-			"type": "array",
-			"items": {"$ref": "Class.json#/definitions/possibleRef"}
-		}
+		"domainIncludes": {"$ref": "Class.json#/definitions/possibleRefArray"},
+		"rangeIncludes": {"$ref": "Class.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -31,6 +25,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

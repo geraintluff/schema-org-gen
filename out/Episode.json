@@ -5,10 +5,7 @@
 	"allOf": [{"$ref": "CreativeWork.json"}],
 	"type": "object",
 	"properties": {
-		"actor": {
-			"type": "array",
-			"items": {"$ref": "Person.json#/definitions/possibleRef"}
-		},
+		"actor": {"$ref": "Person.json#/definitions/possibleRefArray"},
 		"director": {"$ref": "Person.json#/definitions/possibleRef"},
 		"episodeNumber": {"$ref": "#/definitions/episodeNumber"},
 		"musicBy": {"$ref": "#/definitions/musicBy"},
@@ -17,10 +14,7 @@
 		"position": {"$ref": "#/definitions/position"},
 		"producer": {"$ref": "Person.json#/definitions/possibleRef"},
 		"productionCompany": {"$ref": "Organization.json#/definitions/possibleRef"},
-		"publication": {
-			"type": "array",
-			"items": {"$ref": "PublicationEvent.json#/definitions/possibleRef"}
-		},
+		"publication": {"$ref": "PublicationEvent.json#/definitions/possibleRefArray"},
 		"trailer": {"$ref": "VideoObject.json#/definitions/possibleRef"}
 	},
 	"definitions": {
@@ -40,6 +34,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"episodeNumber": {
 			"title": "Episode Number",

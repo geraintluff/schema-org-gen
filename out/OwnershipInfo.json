@@ -28,6 +28,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"acquiredFrom": {
 			"title": "Acquired From",
 			"description": "The organization or person from which the product was acquired.",

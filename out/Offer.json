@@ -6,10 +6,7 @@
 	"type": "object",
 	"properties": {
 		"acceptedPaymentMethod": {"$ref": "PaymentMethod.json#/definitions/possibleRef"},
-		"addOn": {
-			"type": "array",
-			"items": {"$ref": "Offer.json#/definitions/possibleRef"}
-		},
+		"addOn": {"$ref": "Offer.json#/definitions/possibleRefArray"},
 		"advanceBookingRequirement": {"$ref": "QuantitativeValue.json#/definitions/possibleRef"},
 		"aggregateRating": {"$ref": "AggregateRating.json#/definitions/possibleRef"},
 		"availability": {"$ref": "ItemAvailability.json#/definitions/possibleRef"},
@@ -31,28 +28,16 @@
 		"gtin13": {"$ref": "#/definitions/gtin13"},
 		"gtin14": {"$ref": "#/definitions/gtin14"},
 		"gtin8": {"$ref": "#/definitions/gtin8"},
-		"includesObject": {
-			"type": "array",
-			"items": {"$ref": "TypeAndQuantityNode.json#/definitions/possibleRef"}
-		},
+		"includesObject": {"$ref": "TypeAndQuantityNode.json#/definitions/possibleRefArray"},
 		"inventoryLevel": {"$ref": "QuantitativeValue.json#/definitions/possibleRef"},
-		"itemCondition": {
-			"type": "array",
-			"items": {"$ref": "OfferItemCondition.json#/definitions/possibleRef"}
-		},
+		"itemCondition": {"$ref": "OfferItemCondition.json#/definitions/possibleRefArray"},
 		"itemOffered": {"$ref": "Product.json#/definitions/possibleRef"},
 		"mpn": {"$ref": "#/definitions/mpn"},
 		"price": {"$ref": "#/definitions/price"},
 		"priceCurrency": {"$ref": "#/definitions/priceCurrency"},
-		"priceSpecification": {
-			"type": "array",
-			"items": {"$ref": "PriceSpecification.json#/definitions/possibleRef"}
-		},
+		"priceSpecification": {"$ref": "PriceSpecification.json#/definitions/possibleRefArray"},
 		"priceValidUntil": {"$ref": "#/definitions/priceValidUntil"},
-		"review": {
-			"type": "array",
-			"items": {"$ref": "Review.json#/definitions/possibleRef"}
-		},
+		"review": {"$ref": "Review.json#/definitions/possibleRefArray"},
 		"seller": {"$ref": "#/definitions/seller"},
 		"serialNumber": {"$ref": "#/definitions/serialNumber"},
 		"sku": {"$ref": "#/definitions/sku"},
@@ -119,6 +104,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"price": {
 			"title": "Price",

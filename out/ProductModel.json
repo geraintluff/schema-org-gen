@@ -5,18 +5,9 @@
 	"allOf": [{"$ref": "Product.json"}],
 	"type": "object",
 	"properties": {
-		"isVariantOf": {
-			"type": "array",
-			"items": {"$ref": "ProductModel.json#/definitions/possibleRef"}
-		},
-		"predecessorOf": {
-			"type": "array",
-			"items": {"$ref": "ProductModel.json#/definitions/possibleRef"}
-		},
-		"successorOf": {
-			"type": "array",
-			"items": {"$ref": "ProductModel.json#/definitions/possibleRef"}
-		}
+		"isVariantOf": {"$ref": "ProductModel.json#/definitions/possibleRefArray"},
+		"predecessorOf": {"$ref": "ProductModel.json#/definitions/possibleRefArray"},
+		"successorOf": {"$ref": "ProductModel.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -35,6 +26,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

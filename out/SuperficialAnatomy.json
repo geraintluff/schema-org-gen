@@ -10,14 +10,8 @@
 			"type": "array",
 			"items": {"$ref": "#/definitions/relatedAnatomy"}
 		},
-		"relatedCondition": {
-			"type": "array",
-			"items": {"$ref": "MedicalCondition.json#/definitions/possibleRef"}
-		},
-		"relatedTherapy": {
-			"type": "array",
-			"items": {"$ref": "MedicalTherapy.json#/definitions/possibleRef"}
-		},
+		"relatedCondition": {"$ref": "MedicalCondition.json#/definitions/possibleRefArray"},
+		"relatedTherapy": {"$ref": "MedicalTherapy.json#/definitions/possibleRefArray"},
 		"significance": {"$ref": "#/definitions/significance"}
 	},
 	"definitions": {
@@ -37,6 +31,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"associatedPathophysiology": {
 			"title": "Associated Pathophysiology",

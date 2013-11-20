@@ -4,12 +4,7 @@
 	"format": "http://schema.org/PerformAction",
 	"allOf": [{"$ref": "PlayAction.json"}],
 	"type": "object",
-	"properties": {
-		"entertainmentBusiness": {
-			"type": "array",
-			"items": {"$ref": "EntertainmentBusiness.json#/definitions/possibleRef"}
-		}
-	},
+	"properties": {"entertainmentBusiness": {"$ref": "EntertainmentBusiness.json#/definitions/possibleRefArray"}},
 	"definitions": {
 		"array": {
 			"type": "array",
@@ -27,6 +22,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

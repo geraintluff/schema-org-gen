@@ -11,6 +11,16 @@ The documentation at schema.org gives no indication which properties/relations c
 
 Most of these were initially guessed based on whether their descriptions started with "A(n)" or "The".  This is sometimes inaccurate (e.g. http://schema.org/follows), so hand-edits should be made to `property-multiplicity.json`.
 
-## `#/definitions/possibleRef`
+## Standard definitions
+
+### `#/definitions/array`
+
+This definition is added to all generated schemas, to make it easy to represent an array of instances.
+
+### `#/definitions/possibleRef`
 
 This definition is added to all generated schemas, and it represents a type that can either be a reference (URL string) to an external resource or an actual inlined resource.
+
+### `#/definitions/possibleRefArray`
+
+A combination of the above two - an array of possible refs.

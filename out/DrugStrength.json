@@ -31,6 +31,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"activeIngredient": {
 			"title": "Active Ingredient",
 			"description": "An active ingredient, typically chemical compounds and/or biologic substances.",

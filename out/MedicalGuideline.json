@@ -28,6 +28,10 @@
 				}
 			]
 		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
 		"evidenceOrigin": {
 			"title": "Evidence Origin",
 			"description": "Source of the data used to formulate the guidance, e.g. RCT, consensus opinion, etc.",

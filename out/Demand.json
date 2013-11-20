@@ -22,21 +22,12 @@
 		"gtin13": {"$ref": "#/definitions/gtin13"},
 		"gtin14": {"$ref": "#/definitions/gtin14"},
 		"gtin8": {"$ref": "#/definitions/gtin8"},
-		"includesObject": {
-			"type": "array",
-			"items": {"$ref": "TypeAndQuantityNode.json#/definitions/possibleRef"}
-		},
+		"includesObject": {"$ref": "TypeAndQuantityNode.json#/definitions/possibleRefArray"},
 		"inventoryLevel": {"$ref": "QuantitativeValue.json#/definitions/possibleRef"},
-		"itemCondition": {
-			"type": "array",
-			"items": {"$ref": "OfferItemCondition.json#/definitions/possibleRef"}
-		},
+		"itemCondition": {"$ref": "OfferItemCondition.json#/definitions/possibleRefArray"},
 		"itemOffered": {"$ref": "Product.json#/definitions/possibleRef"},
 		"mpn": {"$ref": "#/definitions/mpn"},
-		"priceSpecification": {
-			"type": "array",
-			"items": {"$ref": "PriceSpecification.json#/definitions/possibleRef"}
-		},
+		"priceSpecification": {"$ref": "PriceSpecification.json#/definitions/possibleRefArray"},
 		"seller": {"$ref": "#/definitions/seller"},
 		"serialNumber": {"$ref": "#/definitions/serialNumber"},
 		"sku": {"$ref": "#/definitions/sku"},
@@ -98,6 +89,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"seller": {
 			"title": "Seller",

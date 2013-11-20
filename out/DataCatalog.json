@@ -4,12 +4,7 @@
 	"format": "http://schema.org/DataCatalog",
 	"allOf": [{"$ref": "CreativeWork.json"}],
 	"type": "object",
-	"properties": {
-		"dataset": {
-			"type": "array",
-			"items": {"$ref": "Dataset.json#/definitions/possibleRef"}
-		}
-	},
+	"properties": {"dataset": {"$ref": "Dataset.json#/definitions/possibleRefArray"}},
 	"definitions": {
 		"array": {
 			"type": "array",
@@ -27,6 +22,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		}
 	}
 }

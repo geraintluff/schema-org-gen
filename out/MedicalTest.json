@@ -5,23 +5,11 @@
 	"allOf": [{"$ref": "MedicalEntity.json"}],
 	"type": "object",
 	"properties": {
-		"affectedBy": {
-			"type": "array",
-			"items": {"$ref": "Drug.json#/definitions/possibleRef"}
-		},
+		"affectedBy": {"$ref": "Drug.json#/definitions/possibleRefArray"},
 		"normalRange": {"$ref": "#/definitions/normalRange"},
-		"signDetected": {
-			"type": "array",
-			"items": {"$ref": "MedicalSign.json#/definitions/possibleRef"}
-		},
-		"usedToDiagnose": {
-			"type": "array",
-			"items": {"$ref": "MedicalCondition.json#/definitions/possibleRef"}
-		},
-		"usesDevice": {
-			"type": "array",
-			"items": {"$ref": "MedicalDevice.json#/definitions/possibleRef"}
-		}
+		"signDetected": {"$ref": "MedicalSign.json#/definitions/possibleRefArray"},
+		"usedToDiagnose": {"$ref": "MedicalCondition.json#/definitions/possibleRefArray"},
+		"usesDevice": {"$ref": "MedicalDevice.json#/definitions/possibleRefArray"}
 	},
 	"definitions": {
 		"array": {
@@ -40,6 +28,10 @@
 					}]
 				}
 			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
 		},
 		"normalRange": {
 			"title": "Normal Range",
