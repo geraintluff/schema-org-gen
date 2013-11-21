@@ -1,0 +1,30 @@
+{
+	"id": "BroadcastEvent.json",
+	"title": "Broadcast Event",
+	"format": "http://schema.org/BroadcastEvent",
+	"media": {"type": "application/json;profile=http://schema.org/BroadcastEvent"},
+	"allOf": [{"$ref": "PublicationEvent.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

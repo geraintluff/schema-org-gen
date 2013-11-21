@@ -1,0 +1,30 @@
+{
+	"id": "HighSchool.json",
+	"title": "High School",
+	"format": "http://schema.org/HighSchool",
+	"media": {"type": "application/json;profile=http://schema.org/HighSchool"},
+	"allOf": [{"$ref": "EducationalOrganization.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

@@ -1,0 +1,30 @@
+{
+	"id": "WearAction.json",
+	"title": "Wear Action",
+	"format": "http://schema.org/WearAction",
+	"media": {"type": "application/json;profile=http://schema.org/WearAction"},
+	"allOf": [{"$ref": "UseAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

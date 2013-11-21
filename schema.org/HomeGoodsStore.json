@@ -1,0 +1,30 @@
+{
+	"id": "HomeGoodsStore.json",
+	"title": "Home Goods Store",
+	"format": "http://schema.org/HomeGoodsStore",
+	"media": {"type": "application/json;profile=http://schema.org/HomeGoodsStore"},
+	"allOf": [{"$ref": "Store.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

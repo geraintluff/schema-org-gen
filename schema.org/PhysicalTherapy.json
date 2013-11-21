@@ -1,0 +1,30 @@
+{
+	"id": "PhysicalTherapy.json",
+	"title": "Physical Therapy",
+	"format": "http://schema.org/PhysicalTherapy",
+	"media": {"type": "application/json;profile=http://schema.org/PhysicalTherapy"},
+	"allOf": [{"$ref": "MedicalTherapy.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

@@ -1,0 +1,30 @@
+{
+	"id": "MedicalRiskCalculator.json",
+	"title": "Medical Risk Calculator",
+	"format": "http://schema.org/MedicalRiskCalculator",
+	"media": {"type": "application/json;profile=http://schema.org/MedicalRiskCalculator"},
+	"allOf": [{"$ref": "MedicalRiskEstimator.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

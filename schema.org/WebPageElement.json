@@ -1,0 +1,30 @@
+{
+	"id": "WebPageElement.json",
+	"title": "Web Page Element",
+	"format": "http://schema.org/WebPageElement",
+	"media": {"type": "application/json;profile=http://schema.org/WebPageElement"},
+	"allOf": [{"$ref": "CreativeWork.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

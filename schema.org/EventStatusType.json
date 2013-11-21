@@ -1,0 +1,7 @@
+{
+	"id": "EventStatusType.json",
+	"title": "Event Status Type",
+	"format": "http://schema.org/EventStatusType",
+	"media": {"type": "application/json;profile=http://schema.org/EventStatusType"},
+	"enum": ["EventCancelled", "EventPostponed", "EventRescheduled", "EventScheduled"]
+}

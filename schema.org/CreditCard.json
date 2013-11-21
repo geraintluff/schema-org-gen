@@ -1,0 +1,30 @@
+{
+	"id": "CreditCard.json",
+	"title": "Credit Card",
+	"format": "http://schema.org/CreditCard",
+	"media": {"type": "application/json;profile=http://schema.org/CreditCard"},
+	"allOf": [{"$ref": "PaymentMethod.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

@@ -1,0 +1,48 @@
+{
+	"id": "ItemList.json",
+	"title": "Item List",
+	"format": "http://schema.org/ItemList",
+	"media": {"type": "application/json;profile=http://schema.org/ItemList"},
+	"allOf": [{"$ref": "CreativeWork.json"}],
+	"type": "object",
+	"properties": {
+		"itemListElement": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/itemListElement"}
+		},
+		"itemListOrder": {"$ref": "#/definitions/itemListOrder"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"itemListElement": {
+			"title": "Item List Element",
+			"description": "A single list item.",
+			"type": "string"
+		},
+		"itemListOrder": {
+			"title": "Item List Order",
+			"description": "Type of ordering (e.g. Ascending, Descending, Unordered).",
+			"type": "string"
+		}
+	}
+}

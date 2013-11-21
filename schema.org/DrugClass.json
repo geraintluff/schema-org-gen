@@ -1,0 +1,32 @@
+{
+	"id": "DrugClass.json",
+	"title": "Drug Class",
+	"format": "http://schema.org/DrugClass",
+	"media": {"type": "application/json;profile=http://schema.org/DrugClass"},
+	"allOf": [{"$ref": "MedicalTherapy.json"}],
+	"type": "object",
+	"properties": {"drug": {"$ref": "Drug.json#/definitions/possibleRefArray"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

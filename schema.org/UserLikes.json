@@ -1,0 +1,30 @@
+{
+	"id": "UserLikes.json",
+	"title": "User Likes",
+	"format": "http://schema.org/UserLikes",
+	"media": {"type": "application/json;profile=http://schema.org/UserLikes"},
+	"allOf": [{"$ref": "UserInteraction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

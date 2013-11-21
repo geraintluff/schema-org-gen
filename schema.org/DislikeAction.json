@@ -1,0 +1,30 @@
+{
+	"id": "DislikeAction.json",
+	"title": "Dislike Action",
+	"format": "http://schema.org/DislikeAction",
+	"media": {"type": "application/json;profile=http://schema.org/DislikeAction"},
+	"allOf": [{"$ref": "ReactAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

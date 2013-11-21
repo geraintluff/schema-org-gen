@@ -1,0 +1,50 @@
+{
+	"id": "NutritionInformation.json",
+	"title": "Nutrition Information",
+	"format": "http://schema.org/NutritionInformation",
+	"media": {"type": "application/json;profile=http://schema.org/NutritionInformation"},
+	"allOf": [{"$ref": "StructuredValue.json"}],
+	"type": "object",
+	"properties": {
+		"calories": {"$ref": "Energy.json#/definitions/possibleRef"},
+		"carbohydrateContent": {"$ref": "Mass.json#/definitions/possibleRef"},
+		"cholesterolContent": {"$ref": "Mass.json#/definitions/possibleRef"},
+		"fatContent": {"$ref": "Mass.json#/definitions/possibleRef"},
+		"fiberContent": {"$ref": "Mass.json#/definitions/possibleRef"},
+		"proteinContent": {"$ref": "Mass.json#/definitions/possibleRef"},
+		"saturatedFatContent": {"$ref": "Mass.json#/definitions/possibleRef"},
+		"servingSize": {"$ref": "#/definitions/servingSize"},
+		"sodiumContent": {"$ref": "Mass.json#/definitions/possibleRef"},
+		"sugarContent": {"$ref": "Mass.json#/definitions/possibleRef"},
+		"transFatContent": {"$ref": "Mass.json#/definitions/possibleRef"},
+		"unsaturatedFatContent": {"$ref": "Mass.json#/definitions/possibleRef"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"servingSize": {
+			"title": "Serving Size",
+			"description": "The serving size, in terms of the number of volume or mass",
+			"type": "string"
+		}
+	}
+}

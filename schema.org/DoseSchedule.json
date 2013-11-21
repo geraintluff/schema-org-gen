@@ -1,0 +1,60 @@
+{
+	"id": "DoseSchedule.json",
+	"title": "Dose Schedule",
+	"format": "http://schema.org/DoseSchedule",
+	"media": {"type": "application/json;profile=http://schema.org/DoseSchedule"},
+	"allOf": [{"$ref": "MedicalIntangible.json"}],
+	"type": "object",
+	"properties": {
+		"doseUnit": {"$ref": "#/definitions/doseUnit"},
+		"doseValue": {"$ref": "#/definitions/doseValue"},
+		"frequency": {"$ref": "#/definitions/frequency"},
+		"targetPopulation": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/targetPopulation"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"doseUnit": {
+			"title": "Dose Unit",
+			"description": "The unit of the dose, e.g. 'mg'.",
+			"type": "string"
+		},
+		"doseValue": {
+			"title": "Dose Value",
+			"description": "The value of the dose, e.g. 500.",
+			"type": "number"
+		},
+		"frequency": {
+			"title": "Frequency",
+			"description": "How often the dose is taken, e.g. 'daily'.",
+			"type": "string"
+		},
+		"targetPopulation": {
+			"title": "Target Population",
+			"description": "Characteristics of the population for which this is intended, or which typically uses it, e.g. 'adults'.",
+			"type": "string"
+		}
+	}
+}

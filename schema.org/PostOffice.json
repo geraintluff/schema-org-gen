@@ -1,0 +1,30 @@
+{
+	"id": "PostOffice.json",
+	"title": "Post Office",
+	"format": "http://schema.org/PostOffice",
+	"media": {"type": "application/json;profile=http://schema.org/PostOffice"},
+	"allOf": [{"$ref": "GovernmentOffice.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

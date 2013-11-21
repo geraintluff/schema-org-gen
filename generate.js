@@ -53,6 +53,9 @@ request.get('http://schema.rdfs.org/all.json', function (err, request, body) {
 		if (schema.allOf.length == 0) {
 			delete schema.allOf;
 		}		
+		if (schema.links.length == 0) {
+			delete schema.links;
+		}		
 		if (Object.keys(schema.properties).length == 0) {
 			delete schema.properties;
 			if (schema.type == 'object' && schema.allOf) {
@@ -75,6 +78,7 @@ request.get('http://schema.rdfs.org/all.json', function (err, request, body) {
 			"allOf": [],
 			"type": [],
 			"properties": {},
+			"links": [],
 			'definitions': {}
 		};
 		if (spec.instances) {
@@ -131,25 +135,9 @@ request.get('http://schema.rdfs.org/all.json', function (err, request, body) {
 					});
 					if (options.length == 1) {
 						schema.properties[key] = options[0];
-						if (options[0].format === 'uri') {
-							options[0].links = [{
-								"rel": "full",
-								"href": "{+$}"
-							}];
-							delete schema.definitions.possibleRef
-						}
 					} else {
 						schema.properties[key] = {"anyOf": options};
 					}
-				}
-				if (!schema.properties[key]['$ref']) {
-					var subSchema = schema.properties[key];
-					subSchema = merge({
-						title: propSpec['label'],
-						description: propSpec['comment_plain']
-					}, subSchema);
-					schema['definitions'][key] = subSchema
-					schema['properties'][key] = {"$ref": '#/definitions/' + key}
 				}
 				var description = propSpec['comment_plain'];
 				if (typeof propertyMultiplicity[key] !== 'boolean') {
@@ -161,18 +149,64 @@ request.get('http://schema.rdfs.org/all.json', function (err, request, body) {
 						propertyMultiplicity[key] = description;
 					}
 				}
+				var subSchema = schema.properties[key];
+				var shouldAddLink = (subSchema.format === 'uri');
+				if (!schema.properties[key]['$ref'] && !shouldAddLink) {
+					var subSchema = schema.properties[key];
+					subSchema = merge({
+						title: propSpec['label'],
+						description: propSpec['comment_plain']
+					}, subSchema);
+					schema['definitions'][key] = subSchema
+					schema['properties'][key] = {"$ref": '#/definitions/' + key}
+				}
 				if (propertyMultiplicity[key] === true) {
 					var subSchema = schema['properties'][key];
 					if (subSchema['$ref'] && /^[^#]+#\/definitions\/possibleRef?$/.test(subSchema['$ref'])) {
 						subSchema['$ref'] += 'Array';
+					} else if (shouldAddLink) {
+						if (subSchema['$ref']) {
+							subSchema = {
+								allOf: [subSchema]
+							};
+						}
+						subSchema.links = subSchema.links || [];
+						subSchema.links.push({
+							"rel": REL_PREFIX + key,
+							"href": "{+$}",
+							"linkSource": 2
+						});
+						schema.properties[key] = {
+							type: "array",
+							items: subSchema
+						};
 					} else {
 						schema.properties[key] = {
 							type: "array",
 							items: subSchema
 						};
 					}
-				} else if (propertyMultiplicity[key] !== false) {
+				} else if (propertyMultiplicity[key] === false) {
+					if (shouldAddLink) {
+						schema.links.push({
+							"rel": REL_PREFIX + key,
+							"href": "{+" + encodeURIComponent(key) + "}"
+						});
+					}
+				} else {
 					var subSchema = schema['properties'][key];
+					if (shouldAddLink) {
+						if (subSchema['$ref']) {
+							subSchema = {
+								allOf: [subSchema]
+							};
+						}
+						subSchema.links = subSchema.links || [];
+						subSchema.links.push({
+							"rel": "full",
+							"href": "{+$}"
+						});
+					}
 					schema.properties[key] = {
 						oneOf: [
 							subSchema,

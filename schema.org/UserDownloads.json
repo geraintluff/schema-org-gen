@@ -1,0 +1,30 @@
+{
+	"id": "UserDownloads.json",
+	"title": "User Downloads",
+	"format": "http://schema.org/UserDownloads",
+	"media": {"type": "application/json;profile=http://schema.org/UserDownloads"},
+	"allOf": [{"$ref": "UserInteraction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

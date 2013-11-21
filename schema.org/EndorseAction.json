@@ -1,0 +1,42 @@
+{
+	"id": "EndorseAction.json",
+	"title": "Endorse Action",
+	"format": "http://schema.org/EndorseAction",
+	"media": {"type": "application/json;profile=http://schema.org/EndorseAction"},
+	"allOf": [{"$ref": "ReactAction.json"}],
+	"type": "object",
+	"properties": {
+		"endorsee": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/endorsee"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"endorsee": {
+			"title": "Endorsee",
+			"description": "A sub property of participant. The person/organization being supported.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		}
+	}
+}

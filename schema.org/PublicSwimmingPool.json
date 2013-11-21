@@ -1,0 +1,30 @@
+{
+	"id": "PublicSwimmingPool.json",
+	"title": "Public Swimming Pool",
+	"format": "http://schema.org/PublicSwimmingPool",
+	"media": {"type": "application/json;profile=http://schema.org/PublicSwimmingPool"},
+	"allOf": [{"$ref": "SportsActivityLocation.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

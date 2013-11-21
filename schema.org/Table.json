@@ -1,0 +1,30 @@
+{
+	"id": "Table.json",
+	"title": "Table",
+	"format": "http://schema.org/Table",
+	"media": {"type": "application/json;profile=http://schema.org/Table"},
+	"allOf": [{"$ref": "WebPageElement.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

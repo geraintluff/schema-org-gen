@@ -1,0 +1,58 @@
+{
+	"id": "VideoObject.json",
+	"title": "Video Object",
+	"format": "http://schema.org/VideoObject",
+	"media": {"type": "application/json;profile=http://schema.org/VideoObject"},
+	"allOf": [{"$ref": "MediaObject.json"}],
+	"type": "object",
+	"properties": {
+		"caption": {"$ref": "#/definitions/caption"},
+		"thumbnail": {"$ref": "ImageObject.json#/definitions/possibleRef"},
+		"transcript": {"$ref": "#/definitions/transcript"},
+		"videoFrameSize": {"$ref": "#/definitions/videoFrameSize"},
+		"videoQuality": {"$ref": "#/definitions/videoQuality"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"caption": {
+			"title": "Caption",
+			"description": "The caption for this object.",
+			"type": "string"
+		},
+		"transcript": {
+			"title": "Transcript",
+			"description": "If this MediaObject is an AudioObject or VideoObject, the transcript of that object.",
+			"type": "string"
+		},
+		"videoFrameSize": {
+			"title": "Video Frame Size",
+			"description": "The frame size of the video.",
+			"type": "string"
+		},
+		"videoQuality": {
+			"title": "Video Quality",
+			"description": "The quality of the video.",
+			"type": "string"
+		}
+	}
+}

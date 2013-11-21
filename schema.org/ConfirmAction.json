@@ -1,0 +1,30 @@
+{
+	"id": "ConfirmAction.json",
+	"title": "Confirm Action",
+	"format": "http://schema.org/ConfirmAction",
+	"media": {"type": "application/json;profile=http://schema.org/ConfirmAction"},
+	"allOf": [{"$ref": "InformAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

@@ -1,0 +1,23 @@
+{
+	"id": "PhysicalExam.json",
+	"title": "Physical Exam",
+	"format": "http://schema.org/PhysicalExam",
+	"media": {"type": "application/json;profile=http://schema.org/PhysicalExam"},
+	"enum": [
+		"Abdomen",
+		"Appearance",
+		"CardiovascularExam",
+		"Ear",
+		"Eye",
+		"Genitourinary",
+		"Head",
+		"Lung",
+		"MusculoskeletalExam",
+		"Neck",
+		"Neuro",
+		"Nose",
+		"Skin",
+		"Throat",
+		"VitalSign"
+	]
+}

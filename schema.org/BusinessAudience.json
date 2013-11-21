@@ -1,0 +1,36 @@
+{
+	"id": "BusinessAudience.json",
+	"title": "Business Audience",
+	"format": "http://schema.org/BusinessAudience",
+	"media": {"type": "application/json;profile=http://schema.org/BusinessAudience"},
+	"allOf": [{"$ref": "Audience.json"}],
+	"type": "object",
+	"properties": {
+		"numberofEmployees": {"$ref": "QuantitativeValue.json#/definitions/possibleRef"},
+		"yearlyRevenue": {"$ref": "QuantitativeValue.json#/definitions/possibleRef"},
+		"yearsInOperation": {"$ref": "QuantitativeValue.json#/definitions/possibleRef"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

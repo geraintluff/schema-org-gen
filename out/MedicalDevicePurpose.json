@@ -1,6 +1,0 @@
-{
-	"id": "http://json-schema.org/schemas/MedicalDevicePurpose.json",
-	"title": "Medical Device Purpose",
-	"format": "http://schema.org/MedicalDevicePurpose",
-	"enum": ["Diagnostic", "Therapeutic"]
-}

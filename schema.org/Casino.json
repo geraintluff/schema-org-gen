@@ -1,0 +1,30 @@
+{
+	"id": "Casino.json",
+	"title": "Casino",
+	"format": "http://schema.org/Casino",
+	"media": {"type": "application/json;profile=http://schema.org/Casino"},
+	"allOf": [{"$ref": "EntertainmentBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

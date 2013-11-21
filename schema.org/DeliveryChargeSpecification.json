@@ -1,0 +1,40 @@
+{
+	"id": "DeliveryChargeSpecification.json",
+	"title": "Delivery Charge Specification",
+	"format": "http://schema.org/DeliveryChargeSpecification",
+	"media": {"type": "application/json;profile=http://schema.org/DeliveryChargeSpecification"},
+	"allOf": [{"$ref": "PriceSpecification.json"}],
+	"type": "object",
+	"properties": {
+		"appliesToDeliveryMethod": {"$ref": "DeliveryMethod.json#/definitions/possibleRef"},
+		"eligibleRegion": {"$ref": "#/definitions/eligibleRegion"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"eligibleRegion": {
+			"title": "Eligible Region",
+			"description": "The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.",
+			"anyOf": [{"type": "string"}, {"$ref": "GeoShape.json#/definitions/possibleRef"}]
+		}
+	}
+}

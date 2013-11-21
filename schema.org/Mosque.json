@@ -1,0 +1,30 @@
+{
+	"id": "Mosque.json",
+	"title": "Mosque",
+	"format": "http://schema.org/Mosque",
+	"media": {"type": "application/json;profile=http://schema.org/Mosque"},
+	"allOf": [{"$ref": "PlaceOfWorship.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

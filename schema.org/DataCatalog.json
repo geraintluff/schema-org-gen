@@ -1,0 +1,32 @@
+{
+	"id": "DataCatalog.json",
+	"title": "Data Catalog",
+	"format": "http://schema.org/DataCatalog",
+	"media": {"type": "application/json;profile=http://schema.org/DataCatalog"},
+	"allOf": [{"$ref": "CreativeWork.json"}],
+	"type": "object",
+	"properties": {"dataset": {"$ref": "Dataset.json#/definitions/possibleRefArray"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

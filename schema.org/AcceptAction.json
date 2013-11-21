@@ -1,0 +1,30 @@
+{
+	"id": "AcceptAction.json",
+	"title": "Accept Action",
+	"format": "http://schema.org/AcceptAction",
+	"media": {"type": "application/json;profile=http://schema.org/AcceptAction"},
+	"allOf": [{"$ref": "AllocateAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

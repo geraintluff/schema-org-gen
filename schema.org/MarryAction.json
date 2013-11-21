@@ -1,0 +1,30 @@
+{
+	"id": "MarryAction.json",
+	"title": "Marry Action",
+	"format": "http://schema.org/MarryAction",
+	"media": {"type": "application/json;profile=http://schema.org/MarryAction"},
+	"allOf": [{"$ref": "InteractAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

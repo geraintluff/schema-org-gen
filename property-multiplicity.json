@@ -200,7 +200,7 @@
 	"eligibleRegion": false,
 	"eligibleTransactionVolume": false,
 	"email": true,
-	"embedUrl": true,
+	"embedUrl": false,
 	"employee": true,
 	"employmentType": true,
 	"encodesCreativeWork": false,

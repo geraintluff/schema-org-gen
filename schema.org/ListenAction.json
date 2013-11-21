@@ -1,0 +1,30 @@
+{
+	"id": "ListenAction.json",
+	"title": "Listen Action",
+	"format": "http://schema.org/ListenAction",
+	"media": {"type": "application/json;profile=http://schema.org/ListenAction"},
+	"allOf": [{"$ref": "ConsumeAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

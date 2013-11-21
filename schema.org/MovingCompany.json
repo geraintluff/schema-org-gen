@@ -1,0 +1,30 @@
+{
+	"id": "MovingCompany.json",
+	"title": "Moving Company",
+	"format": "http://schema.org/MovingCompany",
+	"media": {"type": "application/json;profile=http://schema.org/MovingCompany"},
+	"allOf": [{"$ref": "HomeAndConstructionBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

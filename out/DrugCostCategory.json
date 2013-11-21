@@ -1,6 +1,0 @@
-{
-	"id": "http://json-schema.org/schemas/DrugCostCategory.json",
-	"title": "Drug Cost Category",
-	"format": "http://schema.org/DrugCostCategory",
-	"enum": ["ReimbursementCap", "Retail", "Wholesale"]
-}

@@ -1,0 +1,49 @@
+{
+	"id": "MedicalStudy.json",
+	"title": "Medical Study",
+	"format": "http://schema.org/MedicalStudy",
+	"media": {"type": "application/json;profile=http://schema.org/MedicalStudy"},
+	"allOf": [{"$ref": "MedicalEntity.json"}],
+	"type": "object",
+	"properties": {
+		"outcome": {"$ref": "#/definitions/outcome"},
+		"population": {"$ref": "#/definitions/population"},
+		"sponsor": {"$ref": "Organization.json#/definitions/possibleRefArray"},
+		"status": {"$ref": "MedicalStudyStatus.json#/definitions/possibleRef"},
+		"studyLocation": {"$ref": "AdministrativeArea.json#/definitions/possibleRef"},
+		"studySubject": {"$ref": "MedicalEntity.json#/definitions/possibleRefArray"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"outcome": {
+			"title": "Outcome",
+			"description": "Expected or actual outcomes of the study.",
+			"type": "string"
+		},
+		"population": {
+			"title": "Population",
+			"description": "Any characteristics of the population used in the study, e.g. 'males under 65'.",
+			"type": "string"
+		}
+	}
+}

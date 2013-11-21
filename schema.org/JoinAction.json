@@ -1,0 +1,32 @@
+{
+	"id": "JoinAction.json",
+	"title": "Join Action",
+	"format": "http://schema.org/JoinAction",
+	"media": {"type": "application/json;profile=http://schema.org/JoinAction"},
+	"allOf": [{"$ref": "InteractAction.json"}],
+	"type": "object",
+	"properties": {"event": {"$ref": "Event.json#/definitions/possibleRefArray"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

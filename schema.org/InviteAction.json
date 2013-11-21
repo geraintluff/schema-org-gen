@@ -1,0 +1,32 @@
+{
+	"id": "InviteAction.json",
+	"title": "Invite Action",
+	"format": "http://schema.org/InviteAction",
+	"media": {"type": "application/json;profile=http://schema.org/InviteAction"},
+	"allOf": [{"$ref": "CommunicateAction.json"}],
+	"type": "object",
+	"properties": {"event": {"$ref": "Event.json#/definitions/possibleRefArray"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

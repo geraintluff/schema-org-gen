@@ -1,0 +1,93 @@
+{
+	"id": "MedicalCondition.json",
+	"title": "Medical Condition",
+	"format": "http://schema.org/MedicalCondition",
+	"media": {"type": "application/json;profile=http://schema.org/MedicalCondition"},
+	"allOf": [{"$ref": "MedicalEntity.json"}],
+	"type": "object",
+	"properties": {
+		"associatedAnatomy": {"$ref": "#/definitions/associatedAnatomy"},
+		"cause": {"$ref": "MedicalCause.json#/definitions/possibleRefArray"},
+		"differentialDiagnosis": {"$ref": "DDxElement.json#/definitions/possibleRefArray"},
+		"epidemiology": {"$ref": "#/definitions/epidemiology"},
+		"expectedPrognosis": {"$ref": "#/definitions/expectedPrognosis"},
+		"naturalProgression": {"$ref": "#/definitions/naturalProgression"},
+		"pathophysiology": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/pathophysiology"}
+		},
+		"possibleComplication": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleComplication"}
+		},
+		"possibleTreatment": {"$ref": "MedicalTherapy.json#/definitions/possibleRefArray"},
+		"primaryPrevention": {"$ref": "MedicalTherapy.json#/definitions/possibleRefArray"},
+		"riskFactor": {"$ref": "MedicalRiskFactor.json#/definitions/possibleRefArray"},
+		"secondaryPrevention": {"$ref": "MedicalTherapy.json#/definitions/possibleRefArray"},
+		"signOrSymptom": {"$ref": "MedicalSignOrSymptom.json#/definitions/possibleRefArray"},
+		"stage": {"$ref": "MedicalConditionStage.json#/definitions/possibleRef"},
+		"subtype": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/subtype"}
+		},
+		"typicalTest": {"$ref": "MedicalTest.json#/definitions/possibleRefArray"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"associatedAnatomy": {
+			"title": "Associated Anatomy",
+			"description": "The anatomy of the underlying organ system or structures associated with this entity.",
+			"anyOf": [{"$ref": "AnatomicalSystem.json#/definitions/possibleRef"}, {"$ref": "SuperficialAnatomy.json#/definitions/possibleRef"}, {"$ref": "AnatomicalStructure.json#/definitions/possibleRef"}]
+		},
+		"epidemiology": {
+			"title": "Epidemiology",
+			"description": "The characteristics of associated patients, such as age, gender, race etc.",
+			"type": "string"
+		},
+		"expectedPrognosis": {
+			"title": "Expected Prognosis",
+			"description": "The likely outcome in either the short term or long term of the medical condition.",
+			"type": "string"
+		},
+		"naturalProgression": {
+			"title": "Natural Progression",
+			"description": "The expected progression of the condition if it is not treated and allowed to progress naturally.",
+			"type": "string"
+		},
+		"pathophysiology": {
+			"title": "Pathophysiology",
+			"description": "Changes in the normal mechanical, physical, and biochemical functions that are associated with this activity or condition.",
+			"type": "string"
+		},
+		"possibleComplication": {
+			"title": "Possible Complication",
+			"description": "A possible unexpected and unfavorable evolution of a medical condition. Complications may include worsening of the signs or symptoms of the disease, extension of the condition to other organ systems, etc.",
+			"type": "string"
+		},
+		"subtype": {
+			"title": "Subtype",
+			"description": "A more specific type of the condition, where applicable, for example 'Type 1 Diabetes', 'Type 2 Diabetes', or 'Gestational Diabetes' for Diabetes.",
+			"type": "string"
+		}
+	}
+}

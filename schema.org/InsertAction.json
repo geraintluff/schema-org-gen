@@ -1,0 +1,42 @@
+{
+	"id": "InsertAction.json",
+	"title": "Insert Action",
+	"format": "http://schema.org/InsertAction",
+	"media": {"type": "application/json;profile=http://schema.org/InsertAction"},
+	"allOf": [{"$ref": "AddAction.json"}],
+	"type": "object",
+	"properties": {
+		"toLocation": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/toLocation"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"toLocation": {
+			"title": "To Location",
+			"description": "A sub property of location. The final location of the object or the agent after the action.",
+			"anyOf": [{"$ref": "Place.json#/definitions/possibleRef"}, {"type": "number"}]
+		}
+	}
+}

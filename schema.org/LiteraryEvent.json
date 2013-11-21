@@ -1,0 +1,30 @@
+{
+	"id": "LiteraryEvent.json",
+	"title": "Literary Event",
+	"format": "http://schema.org/LiteraryEvent",
+	"media": {"type": "application/json;profile=http://schema.org/LiteraryEvent"},
+	"allOf": [{"$ref": "Event.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

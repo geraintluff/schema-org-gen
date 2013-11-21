@@ -1,0 +1,30 @@
+{
+	"id": "JewelryStore.json",
+	"title": "Jewelry Store",
+	"format": "http://schema.org/JewelryStore",
+	"media": {"type": "application/json;profile=http://schema.org/JewelryStore"},
+	"allOf": [{"$ref": "Store.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

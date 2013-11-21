@@ -1,0 +1,42 @@
+{
+	"id": "AllocateAction.json",
+	"title": "Allocate Action",
+	"format": "http://schema.org/AllocateAction",
+	"media": {"type": "application/json;profile=http://schema.org/AllocateAction"},
+	"allOf": [{"$ref": "OrganizeAction.json"}],
+	"type": "object",
+	"properties": {
+		"purpose": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/purpose"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"purpose": {
+			"title": "Purpose",
+			"description": "A goal towards an action is taken. Can be concrete or abstract.",
+			"anyOf": [{"$ref": "Thing.json#/definitions/possibleRef"}, {"$ref": "MedicalDevicePurpose.json#/definitions/possibleRef"}]
+		}
+	}
+}

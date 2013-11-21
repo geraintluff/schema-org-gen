@@ -1,0 +1,57 @@
+{
+	"id": "AnatomicalStructure.json",
+	"title": "Anatomical Structure",
+	"format": "http://schema.org/AnatomicalStructure",
+	"media": {"type": "application/json;profile=http://schema.org/AnatomicalStructure"},
+	"allOf": [{"$ref": "MedicalEntity.json"}],
+	"type": "object",
+	"properties": {
+		"associatedPathophysiology": {"$ref": "#/definitions/associatedPathophysiology"},
+		"bodyLocation": {"$ref": "#/definitions/bodyLocation"},
+		"connectedTo": {"$ref": "AnatomicalStructure.json#/definitions/possibleRefArray"},
+		"diagram": {"$ref": "ImageObject.json#/definitions/possibleRefArray"},
+		"function": {"$ref": "#/definitions/function"},
+		"partOfSystem": {"$ref": "AnatomicalSystem.json#/definitions/possibleRef"},
+		"relatedCondition": {"$ref": "MedicalCondition.json#/definitions/possibleRefArray"},
+		"relatedTherapy": {"$ref": "MedicalTherapy.json#/definitions/possibleRefArray"},
+		"subStructure": {"$ref": "AnatomicalStructure.json#/definitions/possibleRefArray"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"associatedPathophysiology": {
+			"title": "Associated Pathophysiology",
+			"description": "If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.",
+			"type": "string"
+		},
+		"bodyLocation": {
+			"title": "Body Location",
+			"description": "Location in the body of the anatomical structure.",
+			"type": "string"
+		},
+		"function": {
+			"title": "Function",
+			"description": "Function of the anatomical structure.",
+			"type": "string"
+		}
+	}
+}

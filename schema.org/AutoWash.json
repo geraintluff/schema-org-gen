@@ -1,0 +1,30 @@
+{
+	"id": "AutoWash.json",
+	"title": "Auto Wash",
+	"format": "http://schema.org/AutoWash",
+	"media": {"type": "application/json;profile=http://schema.org/AutoWash"},
+	"allOf": [{"$ref": "AutomotiveBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

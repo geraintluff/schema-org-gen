@@ -1,0 +1,32 @@
+{
+	"id": "BorrowAction.json",
+	"title": "Borrow Action",
+	"format": "http://schema.org/BorrowAction",
+	"media": {"type": "application/json;profile=http://schema.org/BorrowAction"},
+	"allOf": [{"$ref": "TransferAction.json"}],
+	"type": "object",
+	"properties": {"lender": {"$ref": "Person.json#/definitions/possibleRefArray"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

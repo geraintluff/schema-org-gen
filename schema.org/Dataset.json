@@ -1,0 +1,43 @@
+{
+	"id": "Dataset.json",
+	"title": "Dataset",
+	"format": "http://schema.org/Dataset",
+	"media": {"type": "application/json;profile=http://schema.org/Dataset"},
+	"allOf": [{"$ref": "CreativeWork.json"}],
+	"type": "object",
+	"properties": {
+		"catalog": {"$ref": "DataCatalog.json#/definitions/possibleRefArray"},
+		"distribution": {"$ref": "DataDownload.json#/definitions/possibleRefArray"},
+		"spatial": {"$ref": "Place.json#/definitions/possibleRef"},
+		"temporal": {"$ref": "#/definitions/temporal"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"temporal": {
+			"title": "Temporal",
+			"description": "The range of temporal applicability of a dataset, e.g. for a 2011 census dataset, the year 2011 (in ISO 8601 time interval format).",
+			"type": "string",
+			"format": "date-time"
+		}
+	}
+}

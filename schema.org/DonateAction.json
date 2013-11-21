@@ -1,0 +1,42 @@
+{
+	"id": "DonateAction.json",
+	"title": "Donate Action",
+	"format": "http://schema.org/DonateAction",
+	"media": {"type": "application/json;profile=http://schema.org/DonateAction"},
+	"allOf": [{"$ref": "TradeAction.json"}],
+	"type": "object",
+	"properties": {
+		"recipient": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/recipient"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"recipient": {
+			"title": "Recipient",
+			"description": "A sub property of participant. The participant who is at the receiving end of the action.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Audience.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		}
+	}
+}

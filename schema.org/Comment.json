@@ -1,0 +1,30 @@
+{
+	"id": "Comment.json",
+	"title": "Comment",
+	"format": "http://schema.org/Comment",
+	"media": {"type": "application/json;profile=http://schema.org/Comment"},
+	"allOf": [{"$ref": "CreativeWork.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

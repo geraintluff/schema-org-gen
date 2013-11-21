@@ -1,0 +1,30 @@
+{
+	"id": "ReactAction.json",
+	"title": "React Action",
+	"format": "http://schema.org/ReactAction",
+	"media": {"type": "application/json;profile=http://schema.org/ReactAction"},
+	"allOf": [{"$ref": "AssessAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

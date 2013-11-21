@@ -1,0 +1,30 @@
+{
+	"id": "HomeAndConstructionBusiness.json",
+	"title": "Home And Construction Business",
+	"format": "http://schema.org/HomeAndConstructionBusiness",
+	"media": {"type": "application/json;profile=http://schema.org/HomeAndConstructionBusiness"},
+	"allOf": [{"$ref": "LocalBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

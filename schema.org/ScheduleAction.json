@@ -1,0 +1,30 @@
+{
+	"id": "ScheduleAction.json",
+	"title": "Schedule Action",
+	"format": "http://schema.org/ScheduleAction",
+	"media": {"type": "application/json;profile=http://schema.org/ScheduleAction"},
+	"allOf": [{"$ref": "PlanAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

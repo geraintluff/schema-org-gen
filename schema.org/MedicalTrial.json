@@ -1,0 +1,40 @@
+{
+	"id": "MedicalTrial.json",
+	"title": "Medical Trial",
+	"format": "http://schema.org/MedicalTrial",
+	"media": {"type": "application/json;profile=http://schema.org/MedicalTrial"},
+	"allOf": [{"$ref": "MedicalStudy.json"}],
+	"type": "object",
+	"properties": {
+		"phase": {"$ref": "#/definitions/phase"},
+		"trialDesign": {"$ref": "MedicalTrialDesign.json#/definitions/possibleRef"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"phase": {
+			"title": "Phase",
+			"description": "The phase of the trial.",
+			"type": "string"
+		}
+	}
+}

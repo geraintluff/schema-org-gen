@@ -1,0 +1,30 @@
+{
+	"id": "Motel.json",
+	"title": "Motel",
+	"format": "http://schema.org/Motel",
+	"media": {"type": "application/json;profile=http://schema.org/Motel"},
+	"allOf": [{"$ref": "LodgingBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

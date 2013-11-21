@@ -1,0 +1,30 @@
+{
+	"id": "AmusementPark.json",
+	"title": "Amusement Park",
+	"format": "http://schema.org/AmusementPark",
+	"media": {"type": "application/json;profile=http://schema.org/AmusementPark"},
+	"allOf": [{"$ref": "EntertainmentBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

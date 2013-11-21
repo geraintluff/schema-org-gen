@@ -1,0 +1,30 @@
+{
+	"id": "InternetCafe.json",
+	"title": "Internet Cafe",
+	"format": "http://schema.org/InternetCafe",
+	"media": {"type": "application/json;profile=http://schema.org/InternetCafe"},
+	"allOf": [{"$ref": "LocalBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

@@ -1,0 +1,30 @@
+{
+	"id": "ParkingFacility.json",
+	"title": "Parking Facility",
+	"format": "http://schema.org/ParkingFacility",
+	"media": {"type": "application/json;profile=http://schema.org/ParkingFacility"},
+	"allOf": [{"$ref": "CivicStructure.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

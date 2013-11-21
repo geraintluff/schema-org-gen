@@ -1,0 +1,35 @@
+{
+	"id": "PlayAction.json",
+	"title": "Play Action",
+	"format": "http://schema.org/PlayAction",
+	"media": {"type": "application/json;profile=http://schema.org/PlayAction"},
+	"allOf": [{"$ref": "Action.json"}],
+	"type": "object",
+	"properties": {
+		"audience": {"$ref": "Audience.json#/definitions/possibleRef"},
+		"event": {"$ref": "Event.json#/definitions/possibleRefArray"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

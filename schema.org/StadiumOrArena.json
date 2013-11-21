@@ -1,0 +1,30 @@
+{
+	"id": "StadiumOrArena.json",
+	"title": "Stadium or Arena",
+	"format": "http://schema.org/StadiumOrArena",
+	"media": {"type": "application/json;profile=http://schema.org/StadiumOrArena"},
+	"allOf": [{"$ref": "CivicStructure.json"}, {"$ref": "SportsActivityLocation.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

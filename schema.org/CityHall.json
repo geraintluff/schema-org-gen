@@ -1,0 +1,30 @@
+{
+	"id": "CityHall.json",
+	"title": "City Hall",
+	"format": "http://schema.org/CityHall",
+	"media": {"type": "application/json;profile=http://schema.org/CityHall"},
+	"allOf": [{"$ref": "GovernmentBuilding.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

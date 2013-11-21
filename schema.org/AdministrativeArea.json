@@ -1,0 +1,30 @@
+{
+	"id": "AdministrativeArea.json",
+	"title": "Administrative Area",
+	"format": "http://schema.org/AdministrativeArea",
+	"media": {"type": "application/json;profile=http://schema.org/AdministrativeArea"},
+	"allOf": [{"$ref": "Place.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

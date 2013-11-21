@@ -1,0 +1,30 @@
+{
+	"id": "FinancialService.json",
+	"title": "Financial Service",
+	"format": "http://schema.org/FinancialService",
+	"media": {"type": "application/json;profile=http://schema.org/FinancialService"},
+	"allOf": [{"$ref": "LocalBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

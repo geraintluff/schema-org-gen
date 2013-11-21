@@ -1,0 +1,39 @@
+{
+	"id": "MedicalEntity.json",
+	"title": "Medical Entity",
+	"format": "http://schema.org/MedicalEntity",
+	"media": {"type": "application/json;profile=http://schema.org/MedicalEntity"},
+	"allOf": [{"$ref": "Thing.json"}],
+	"type": "object",
+	"properties": {
+		"code": {"$ref": "MedicalCode.json#/definitions/possibleRefArray"},
+		"guideline": {"$ref": "MedicalGuideline.json#/definitions/possibleRefArray"},
+		"medicineSystem": {"$ref": "MedicineSystem.json#/definitions/possibleRef"},
+		"recognizingAuthority": {"$ref": "Organization.json#/definitions/possibleRefArray"},
+		"relevantSpecialty": {"$ref": "MedicalSpecialty.json#/definitions/possibleRefArray"},
+		"study": {"$ref": "MedicalStudy.json#/definitions/possibleRefArray"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

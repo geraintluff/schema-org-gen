@@ -1,6 +1,0 @@
-{
-	"id": "http://json-schema.org/schemas/MedicalImagingTechnique.json",
-	"title": "Medical Imaging Technique",
-	"format": "http://schema.org/MedicalImagingTechnique",
-	"enum": ["CT", "MRI", "PET", "Ultrasound", "XRay"]
-}

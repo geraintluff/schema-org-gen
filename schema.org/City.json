@@ -1,0 +1,30 @@
+{
+	"id": "City.json",
+	"title": "City",
+	"format": "http://schema.org/City",
+	"media": {"type": "application/json;profile=http://schema.org/City"},
+	"allOf": [{"$ref": "AdministrativeArea.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

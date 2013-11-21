@@ -1,0 +1,32 @@
+{
+	"id": "ReviewAction.json",
+	"title": "Review Action",
+	"format": "http://schema.org/ReviewAction",
+	"media": {"type": "application/json;profile=http://schema.org/ReviewAction"},
+	"allOf": [{"$ref": "AssessAction.json"}],
+	"type": "object",
+	"properties": {"resultReview": {"$ref": "Review.json#/definitions/possibleRefArray"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

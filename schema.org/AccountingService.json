@@ -1,0 +1,30 @@
+{
+	"id": "AccountingService.json",
+	"title": "Accounting Service",
+	"format": "http://schema.org/AccountingService",
+	"media": {"type": "application/json;profile=http://schema.org/AccountingService"},
+	"allOf": [{"$ref": "ProfessionalService.json"}, {"$ref": "FinancialService.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

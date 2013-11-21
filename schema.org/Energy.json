@@ -1,0 +1,30 @@
+{
+	"id": "Energy.json",
+	"title": "Energy",
+	"format": "http://schema.org/Energy",
+	"media": {"type": "application/json;profile=http://schema.org/Energy"},
+	"allOf": [{"$ref": "Quantity.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

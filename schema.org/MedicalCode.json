@@ -1,0 +1,45 @@
+{
+	"id": "MedicalCode.json",
+	"title": "Medical Code",
+	"format": "http://schema.org/MedicalCode",
+	"media": {"type": "application/json;profile=http://schema.org/MedicalCode"},
+	"allOf": [{"$ref": "MedicalIntangible.json"}],
+	"type": "object",
+	"properties": {
+		"codeValue": {"$ref": "#/definitions/codeValue"},
+		"codingSystem": {"$ref": "#/definitions/codingSystem"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"codeValue": {
+			"title": "Code Value",
+			"description": "The actual code.",
+			"type": "string"
+		},
+		"codingSystem": {
+			"title": "Coding System",
+			"description": "The coding system, e.g. 'ICD-10'.",
+			"type": "string"
+		}
+	}
+}

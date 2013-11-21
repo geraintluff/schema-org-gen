@@ -1,0 +1,30 @@
+{
+	"id": "AgreeAction.json",
+	"title": "Agree Action",
+	"format": "http://schema.org/AgreeAction",
+	"media": {"type": "application/json;profile=http://schema.org/AgreeAction"},
+	"allOf": [{"$ref": "ReactAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

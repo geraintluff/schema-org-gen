@@ -1,0 +1,30 @@
+{
+	"id": "Church.json",
+	"title": "Church",
+	"format": "http://schema.org/Church",
+	"media": {"type": "application/json;profile=http://schema.org/Church"},
+	"allOf": [{"$ref": "PlaceOfWorship.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

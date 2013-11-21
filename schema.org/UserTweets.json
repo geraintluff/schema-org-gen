@@ -1,0 +1,30 @@
+{
+	"id": "UserTweets.json",
+	"title": "User Tweets",
+	"format": "http://schema.org/UserTweets",
+	"media": {"type": "application/json;profile=http://schema.org/UserTweets"},
+	"allOf": [{"$ref": "UserInteraction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

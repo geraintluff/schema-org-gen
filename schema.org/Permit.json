@@ -1,0 +1,60 @@
+{
+	"id": "Permit.json",
+	"title": "Permit",
+	"format": "http://schema.org/Permit",
+	"media": {"type": "application/json;profile=http://schema.org/Permit"},
+	"allOf": [{"$ref": "Intangible.json"}],
+	"type": "object",
+	"properties": {
+		"issuedBy": {"$ref": "Organization.json#/definitions/possibleRef"},
+		"issuedThrough": {"$ref": "Service.json#/definitions/possibleRef"},
+		"permitAudience": {"$ref": "Audience.json#/definitions/possibleRef"},
+		"validFor": {"$ref": "Duration.json#/definitions/possibleRef"},
+		"validFrom": {"$ref": "#/definitions/validFrom"},
+		"validIn": {"$ref": "AdministrativeArea.json#/definitions/possibleRef"},
+		"validUntil": {"$ref": "#/definitions/validUntil"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"validFrom": {
+			"title": "Valid From",
+			"description": "The date when the permit becomes valid.",
+			"anyOf": [
+				{
+					"type": "string",
+					"format": "date"
+				},
+				{
+					"type": "string",
+					"format": "date-time"
+				}
+			]
+		},
+		"validUntil": {
+			"title": "Valid Until",
+			"description": "The date when the permit is no longer valid.",
+			"type": "string",
+			"format": "date"
+		}
+	}
+}

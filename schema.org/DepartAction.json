@@ -1,0 +1,30 @@
+{
+	"id": "DepartAction.json",
+	"title": "Depart Action",
+	"format": "http://schema.org/DepartAction",
+	"media": {"type": "application/json;profile=http://schema.org/DepartAction"},
+	"allOf": [{"$ref": "MoveAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

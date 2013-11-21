@@ -1,0 +1,41 @@
+{
+	"id": "Vein.json",
+	"title": "Vein",
+	"format": "http://schema.org/Vein",
+	"media": {"type": "application/json;profile=http://schema.org/Vein"},
+	"allOf": [{"$ref": "Vessel.json"}],
+	"type": "object",
+	"properties": {
+		"drainsTo": {"$ref": "Vessel.json#/definitions/possibleRef"},
+		"regionDrained": {"$ref": "#/definitions/regionDrained"},
+		"tributary": {"$ref": "AnatomicalStructure.json#/definitions/possibleRef"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"regionDrained": {
+			"title": "Region Drained",
+			"description": "The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.",
+			"anyOf": [{"$ref": "AnatomicalSystem.json#/definitions/possibleRef"}, {"$ref": "AnatomicalStructure.json#/definitions/possibleRef"}]
+		}
+	}
+}

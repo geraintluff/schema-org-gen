@@ -1,0 +1,30 @@
+{
+	"id": "WPFooter.json",
+	"title": "WP Footer",
+	"format": "http://schema.org/WPFooter",
+	"media": {"type": "application/json;profile=http://schema.org/WPFooter"},
+	"allOf": [{"$ref": "WebPageElement.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

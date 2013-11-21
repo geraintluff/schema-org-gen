@@ -1,0 +1,30 @@
+{
+	"id": "AutoRental.json",
+	"title": "Auto Rental",
+	"format": "http://schema.org/AutoRental",
+	"media": {"type": "application/json;profile=http://schema.org/AutoRental"},
+	"allOf": [{"$ref": "AutomotiveBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

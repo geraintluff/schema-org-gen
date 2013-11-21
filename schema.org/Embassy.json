@@ -1,0 +1,30 @@
+{
+	"id": "Embassy.json",
+	"title": "Embassy",
+	"format": "http://schema.org/Embassy",
+	"media": {"type": "application/json;profile=http://schema.org/Embassy"},
+	"allOf": [{"$ref": "GovernmentBuilding.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

@@ -1,0 +1,266 @@
+{
+	"id": "CreativeWork.json",
+	"title": "Creative Work",
+	"format": "http://schema.org/CreativeWork",
+	"media": {"type": "application/json;profile=http://schema.org/CreativeWork"},
+	"allOf": [{"$ref": "Thing.json"}],
+	"type": "object",
+	"properties": {
+		"about": {"$ref": "Thing.json#/definitions/possibleRef"},
+		"accountablePerson": {"$ref": "Person.json#/definitions/possibleRef"},
+		"aggregateRating": {"$ref": "AggregateRating.json#/definitions/possibleRef"},
+		"alternativeHeadline": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/alternativeHeadline"}
+		},
+		"associatedMedia": {"$ref": "MediaObject.json#/definitions/possibleRef"},
+		"audience": {"$ref": "Audience.json#/definitions/possibleRef"},
+		"audio": {"$ref": "AudioObject.json#/definitions/possibleRefArray"},
+		"author": {"$ref": "#/definitions/author"},
+		"award": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/award"}
+		},
+		"citation": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/citation"}
+		},
+		"comment": {"$ref": "UserComments.json#/definitions/possibleRefArray"},
+		"contentLocation": {"$ref": "Place.json#/definitions/possibleRef"},
+		"contentRating": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/contentRating"}
+		},
+		"contributor": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/contributor"}
+		},
+		"copyrightHolder": {"$ref": "#/definitions/copyrightHolder"},
+		"copyrightYear": {"$ref": "#/definitions/copyrightYear"},
+		"creator": {"$ref": "#/definitions/creator"},
+		"dateCreated": {"$ref": "#/definitions/dateCreated"},
+		"dateModified": {"$ref": "#/definitions/dateModified"},
+		"datePublished": {"$ref": "#/definitions/datePublished"},
+		"discussionUrl": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"format": "uri",
+				"links": [{
+					"rel": "http://schema.org/discussionUrl",
+					"href": "{+$}",
+					"linkSource": 2
+				}]
+			}
+		},
+		"editor": {"$ref": "Person.json#/definitions/possibleRef"},
+		"educationalAlignment": {"$ref": "AlignmentObject.json#/definitions/possibleRefArray"},
+		"educationalUse": {"$ref": "#/definitions/educationalUse"},
+		"encoding": {"$ref": "MediaObject.json#/definitions/possibleRefArray"},
+		"genre": {"$ref": "#/definitions/genre"},
+		"headline": {"$ref": "#/definitions/headline"},
+		"inLanguage": {"$ref": "#/definitions/inLanguage"},
+		"interactionCount": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/interactionCount"}
+		},
+		"interactivityType": {"$ref": "#/definitions/interactivityType"},
+		"isBasedOnUrl": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"format": "uri",
+				"links": [{
+					"rel": "http://schema.org/isBasedOnUrl",
+					"href": "{+$}",
+					"linkSource": 2
+				}]
+			}
+		},
+		"isFamilyFriendly": {"$ref": "#/definitions/isFamilyFriendly"},
+		"keywords": {"$ref": "#/definitions/keywords"},
+		"learningResourceType": {"$ref": "#/definitions/learningResourceType"},
+		"mentions": {"$ref": "Thing.json#/definitions/possibleRefArray"},
+		"offers": {"$ref": "Offer.json#/definitions/possibleRefArray"},
+		"provider": {"$ref": "#/definitions/provider"},
+		"publisher": {"$ref": "Organization.json#/definitions/possibleRef"},
+		"publishingPrinciples": {
+			"type": "string",
+			"format": "uri"
+		},
+		"review": {"$ref": "Review.json#/definitions/possibleRefArray"},
+		"sourceOrganization": {"$ref": "Organization.json#/definitions/possibleRef"},
+		"text": {"$ref": "#/definitions/text"},
+		"thumbnailUrl": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"format": "uri",
+				"links": [{
+					"rel": "http://schema.org/thumbnailUrl",
+					"href": "{+$}",
+					"linkSource": 2
+				}]
+			}
+		},
+		"timeRequired": {"$ref": "Duration.json#/definitions/possibleRef"},
+		"typicalAgeRange": {"$ref": "#/definitions/typicalAgeRange"},
+		"version": {"$ref": "#/definitions/version"},
+		"video": {"$ref": "VideoObject.json#/definitions/possibleRefArray"}
+	},
+	"links": [{
+		"rel": "http://schema.org/publishingPrinciples",
+		"href": "{+publishingPrinciples}"
+	}],
+	"definitions": {
+		"alternativeHeadline": {
+			"title": "Alternative Headline",
+			"description": "A secondary title of the CreativeWork.",
+			"type": "string"
+		},
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"author": {
+			"title": "Author",
+			"description": "The author of this content. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		},
+		"award": {
+			"title": "Award",
+			"description": "An award won by this person or for this creative work.",
+			"type": "string"
+		},
+		"citation": {
+			"title": "Citation",
+			"description": "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc. NOTE: Candidate for promotion to ScholarlyArticle.",
+			"anyOf": [{"$ref": "CreativeWork.json#/definitions/possibleRef"}, {"type": "string"}]
+		},
+		"contentRating": {
+			"title": "Content Rating",
+			"description": "Official rating of a piece of content—for example,'MPAA PG-13'.",
+			"type": "string"
+		},
+		"contributor": {
+			"title": "Contributor",
+			"description": "A secondary contributor to the CreativeWork.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		},
+		"copyrightHolder": {
+			"title": "Copyright Holder",
+			"description": "The party holding the legal copyright to the CreativeWork.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		},
+		"copyrightYear": {
+			"title": "Copyright Year",
+			"description": "The year during which the claimed copyright for the CreativeWork was first asserted.",
+			"type": "number"
+		},
+		"creator": {
+			"title": "Creator",
+			"description": "The creator/author of this CreativeWork or UserComments. This is the same as the Author property for CreativeWork.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		},
+		"dateCreated": {
+			"title": "Date Created",
+			"description": "The date on which the CreativeWork was created.",
+			"type": "string",
+			"format": "date"
+		},
+		"dateModified": {
+			"title": "Date Modified",
+			"description": "The date on which the CreativeWork was most recently modified.",
+			"type": "string",
+			"format": "date"
+		},
+		"datePublished": {
+			"title": "Date Published",
+			"description": "Date of first broadcast/publication.",
+			"type": "string",
+			"format": "date"
+		},
+		"educationalUse": {
+			"title": "Educational Use",
+			"description": "The purpose of a work in the context of education; for example, 'assignment', 'group work'.",
+			"type": "string"
+		},
+		"genre": {
+			"title": "Genre",
+			"description": "Genre of the creative work",
+			"type": "string"
+		},
+		"headline": {
+			"title": "Headline",
+			"description": "Headline of the article",
+			"type": "string"
+		},
+		"inLanguage": {
+			"title": "In Language",
+			"description": "The language of the content. please use one of the language codes from the IETF BCP 47 standard.",
+			"type": "string"
+		},
+		"interactionCount": {
+			"title": "Interaction Count",
+			"description": "A count of a specific user interactions with this item—for example, 20 UserLikes, 5 UserComments, or 300 UserDownloads. The user interaction type should be one of the sub types of UserInteraction.",
+			"type": "string"
+		},
+		"interactivityType": {
+			"title": "Interactivity Type",
+			"description": "The predominant mode of learning supported by the learning resource. Acceptable values are 'active', 'expositive', or 'mixed'.",
+			"type": "string"
+		},
+		"isFamilyFriendly": {
+			"title": "Is Family Friendly",
+			"description": "Indicates whether this content is family friendly.",
+			"type": "boolean"
+		},
+		"keywords": {
+			"title": "Keywords",
+			"description": "The keywords/tags used to describe this content.",
+			"type": "string"
+		},
+		"learningResourceType": {
+			"title": "Learning Resource Type",
+			"description": "The predominant type or kind characterizing the learning resource. For example, 'presentation', 'handout'.",
+			"type": "string"
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"provider": {
+			"title": "Provider",
+			"description": "The organization or agency that is providing the service.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		},
+		"text": {
+			"title": "Text",
+			"description": "The textual content of this CreativeWork.",
+			"type": "string"
+		},
+		"typicalAgeRange": {
+			"title": "Typical Age Range",
+			"description": "The typical expected age range, e.g. '7-9', '11-'.",
+			"type": "string"
+		},
+		"version": {
+			"title": "Version",
+			"description": "The version of the CreativeWork embodied by a specified resource.",
+			"type": "number"
+		}
+	}
+}

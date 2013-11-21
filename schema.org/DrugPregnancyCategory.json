@@ -1,0 +1,14 @@
+{
+	"id": "DrugPregnancyCategory.json",
+	"title": "Drug Pregnancy Category",
+	"format": "http://schema.org/DrugPregnancyCategory",
+	"media": {"type": "application/json;profile=http://schema.org/DrugPregnancyCategory"},
+	"enum": [
+		"FDAcategoryA",
+		"FDAcategoryB",
+		"FDAcategoryC",
+		"FDAcategoryD",
+		"FDAcategoryX",
+		"FDAnotEvaluated"
+	]
+}

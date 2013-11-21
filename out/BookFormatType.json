@@ -1,6 +1,0 @@
-{
-	"id": "http://json-schema.org/schemas/BookFormatType.json",
-	"title": "Book Format Type",
-	"format": "http://schema.org/BookFormatType",
-	"enum": ["EBook", "Hardcover", "Paperback"]
-}

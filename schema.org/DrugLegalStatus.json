@@ -1,0 +1,32 @@
+{
+	"id": "DrugLegalStatus.json",
+	"title": "Drug Legal Status",
+	"format": "http://schema.org/DrugLegalStatus",
+	"media": {"type": "application/json;profile=http://schema.org/DrugLegalStatus"},
+	"allOf": [{"$ref": "MedicalIntangible.json"}],
+	"type": "object",
+	"properties": {"applicableLocation": {"$ref": "AdministrativeArea.json#/definitions/possibleRef"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

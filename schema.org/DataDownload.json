@@ -1,0 +1,30 @@
+{
+	"id": "DataDownload.json",
+	"title": "Data Download",
+	"format": "http://schema.org/DataDownload",
+	"media": {"type": "application/json;profile=http://schema.org/DataDownload"},
+	"allOf": [{"$ref": "MediaObject.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

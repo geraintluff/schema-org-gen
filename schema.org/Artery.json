@@ -1,0 +1,36 @@
+{
+	"id": "Artery.json",
+	"title": "Artery",
+	"format": "http://schema.org/Artery",
+	"media": {"type": "application/json;profile=http://schema.org/Artery"},
+	"allOf": [{"$ref": "Vessel.json"}],
+	"type": "object",
+	"properties": {
+		"arterialBranch": {"$ref": "AnatomicalStructure.json#/definitions/possibleRef"},
+		"source": {"$ref": "AnatomicalStructure.json#/definitions/possibleRef"},
+		"supplyTo": {"$ref": "AnatomicalStructure.json#/definitions/possibleRef"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

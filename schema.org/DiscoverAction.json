@@ -1,0 +1,30 @@
+{
+	"id": "DiscoverAction.json",
+	"title": "Discover Action",
+	"format": "http://schema.org/DiscoverAction",
+	"media": {"type": "application/json;profile=http://schema.org/DiscoverAction"},
+	"allOf": [{"$ref": "FindAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

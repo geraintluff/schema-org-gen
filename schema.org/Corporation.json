@@ -1,0 +1,37 @@
+{
+	"id": "Corporation.json",
+	"title": "Corporation",
+	"format": "http://schema.org/Corporation",
+	"media": {"type": "application/json;profile=http://schema.org/Corporation"},
+	"allOf": [{"$ref": "Organization.json"}],
+	"type": "object",
+	"properties": {"tickerSymbol": {"$ref": "#/definitions/tickerSymbol"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"tickerSymbol": {
+			"title": "Ticker Symbol",
+			"description": "The exchange traded instrument associated with a Corporation object. The tickerSymbol is expressed as an exchange and an instrument name separated by a space character. For the exchange component of the tickerSymbol attribute, we reccommend using the controlled vocaulary of Market Identifier Codes (MIC) specified in ISO15022.",
+			"type": "string"
+		}
+	}
+}

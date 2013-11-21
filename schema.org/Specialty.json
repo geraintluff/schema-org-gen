@@ -1,0 +1,30 @@
+{
+	"id": "Specialty.json",
+	"title": "Specialty",
+	"format": "http://schema.org/Specialty",
+	"media": {"type": "application/json;profile=http://schema.org/Specialty"},
+	"allOf": [{"$ref": "Enumeration.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

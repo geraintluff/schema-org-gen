@@ -1,0 +1,35 @@
+{
+	"id": "MedicalRiskEstimator.json",
+	"title": "Medical Risk Estimator",
+	"format": "http://schema.org/MedicalRiskEstimator",
+	"media": {"type": "application/json;profile=http://schema.org/MedicalRiskEstimator"},
+	"allOf": [{"$ref": "MedicalEntity.json"}],
+	"type": "object",
+	"properties": {
+		"estimatesRiskOf": {"$ref": "MedicalEntity.json#/definitions/possibleRef"},
+		"includedRiskFactor": {"$ref": "MedicalRiskFactor.json#/definitions/possibleRefArray"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

@@ -1,0 +1,134 @@
+{
+	"id": "Demand.json",
+	"title": "Demand",
+	"format": "http://schema.org/Demand",
+	"media": {"type": "application/json;profile=http://schema.org/Demand"},
+	"allOf": [{"$ref": "Intangible.json"}],
+	"type": "object",
+	"properties": {
+		"acceptedPaymentMethod": {"$ref": "PaymentMethod.json#/definitions/possibleRef"},
+		"advanceBookingRequirement": {"$ref": "QuantitativeValue.json#/definitions/possibleRef"},
+		"availability": {"$ref": "ItemAvailability.json#/definitions/possibleRef"},
+		"availabilityEnds": {"$ref": "#/definitions/availabilityEnds"},
+		"availabilityStarts": {"$ref": "#/definitions/availabilityStarts"},
+		"availableAtOrFrom": {"$ref": "Place.json#/definitions/possibleRef"},
+		"availableDeliveryMethod": {"$ref": "DeliveryMethod.json#/definitions/possibleRef"},
+		"businessFunction": {"$ref": "BusinessFunction.json#/definitions/possibleRef"},
+		"deliveryLeadTime": {"$ref": "QuantitativeValue.json#/definitions/possibleRef"},
+		"eligibleCustomerType": {"$ref": "BusinessEntityType.json#/definitions/possibleRef"},
+		"eligibleDuration": {"$ref": "QuantitativeValue.json#/definitions/possibleRef"},
+		"eligibleQuantity": {"$ref": "QuantitativeValue.json#/definitions/possibleRef"},
+		"eligibleRegion": {"$ref": "#/definitions/eligibleRegion"},
+		"eligibleTransactionVolume": {"$ref": "PriceSpecification.json#/definitions/possibleRef"},
+		"gtin13": {"$ref": "#/definitions/gtin13"},
+		"gtin14": {"$ref": "#/definitions/gtin14"},
+		"gtin8": {"$ref": "#/definitions/gtin8"},
+		"includesObject": {"$ref": "TypeAndQuantityNode.json#/definitions/possibleRefArray"},
+		"inventoryLevel": {"$ref": "QuantitativeValue.json#/definitions/possibleRef"},
+		"itemCondition": {"$ref": "OfferItemCondition.json#/definitions/possibleRefArray"},
+		"itemOffered": {"$ref": "Product.json#/definitions/possibleRef"},
+		"mpn": {"$ref": "#/definitions/mpn"},
+		"priceSpecification": {"$ref": "PriceSpecification.json#/definitions/possibleRefArray"},
+		"seller": {"$ref": "#/definitions/seller"},
+		"serialNumber": {"$ref": "#/definitions/serialNumber"},
+		"sku": {"$ref": "#/definitions/sku"},
+		"validFrom": {"$ref": "#/definitions/validFrom"},
+		"validThrough": {"$ref": "#/definitions/validThrough"},
+		"warranty": {"$ref": "WarrantyPromise.json#/definitions/possibleRef"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"availabilityEnds": {
+			"title": "Availability Ends",
+			"description": "The end of the availability of the product or service included in the offer.",
+			"type": "string",
+			"format": "date-time"
+		},
+		"availabilityStarts": {
+			"title": "Availability Starts",
+			"description": "The beginning of the availability of the product or service included in the offer.",
+			"type": "string",
+			"format": "date-time"
+		},
+		"eligibleRegion": {
+			"title": "Eligible Region",
+			"description": "The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.",
+			"anyOf": [{"type": "string"}, {"$ref": "GeoShape.json#/definitions/possibleRef"}]
+		},
+		"gtin13": {
+			"title": "Gtin13",
+			"description": "The GTIN-13 code of the product, or the product to which the offer refers. This is equivalent to 13-digit ISBN codes and EAN UCC-13. Former 12-digit UPC codes can be converted into a GTIN-13 code by simply adding a preceeding zero.",
+			"type": "string"
+		},
+		"gtin14": {
+			"title": "Gtin14",
+			"description": "The GTIN-14 code of the product, or the product to which the offer refers.",
+			"type": "string"
+		},
+		"gtin8": {
+			"title": "Gtin8",
+			"description": "The GTIN-8 code of the product, or the product to which the offer refers. This code is also known as EAN/UCC-8 or 8-digit EAN.",
+			"type": "string"
+		},
+		"mpn": {
+			"title": "Mpn",
+			"description": "The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.",
+			"type": "string"
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"seller": {
+			"title": "Seller",
+			"description": "The seller.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		},
+		"serialNumber": {
+			"title": "Serial Number",
+			"description": "The serial number or any alphanumeric identifier of a particular product. When attached to an offer, it is a shortcut for the serial number of the product included in the offer.",
+			"type": "string"
+		},
+		"sku": {
+			"title": "Sku",
+			"description": "The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.",
+			"type": "string"
+		},
+		"validFrom": {
+			"title": "Valid From",
+			"description": "The date when the permit becomes valid.",
+			"anyOf": [
+				{
+					"type": "string",
+					"format": "date"
+				},
+				{
+					"type": "string",
+					"format": "date-time"
+				}
+			]
+		},
+		"validThrough": {
+			"title": "Valid Through",
+			"description": "The end of the validity of offer, price specification, or opening hours data.",
+			"type": "string",
+			"format": "date-time"
+		}
+	}
+}

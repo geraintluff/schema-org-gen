@@ -1,0 +1,30 @@
+{
+	"id": "Sculpture.json",
+	"title": "Sculpture",
+	"format": "http://schema.org/Sculpture",
+	"media": {"type": "application/json;profile=http://schema.org/Sculpture"},
+	"allOf": [{"$ref": "CreativeWork.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

@@ -1,0 +1,35 @@
+{
+	"id": "PaymentChargeSpecification.json",
+	"title": "Payment Charge Specification",
+	"format": "http://schema.org/PaymentChargeSpecification",
+	"media": {"type": "application/json;profile=http://schema.org/PaymentChargeSpecification"},
+	"allOf": [{"$ref": "PriceSpecification.json"}],
+	"type": "object",
+	"properties": {
+		"appliesToDeliveryMethod": {"$ref": "DeliveryMethod.json#/definitions/possibleRef"},
+		"appliesToPaymentMethod": {"$ref": "PaymentMethod.json#/definitions/possibleRef"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

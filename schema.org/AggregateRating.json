@@ -1,0 +1,46 @@
+{
+	"id": "AggregateRating.json",
+	"title": "Aggregate Rating",
+	"format": "http://schema.org/AggregateRating",
+	"media": {"type": "application/json;profile=http://schema.org/AggregateRating"},
+	"allOf": [{"$ref": "Rating.json"}],
+	"type": "object",
+	"properties": {
+		"itemReviewed": {"$ref": "Thing.json#/definitions/possibleRef"},
+		"ratingCount": {"$ref": "#/definitions/ratingCount"},
+		"reviewCount": {"$ref": "#/definitions/reviewCount"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"ratingCount": {
+			"title": "Rating Count",
+			"description": "The count of total number of ratings.",
+			"type": "number"
+		},
+		"reviewCount": {
+			"title": "Review Count",
+			"description": "The count of total number of reviews.",
+			"type": "number"
+		}
+	}
+}

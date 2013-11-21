@@ -1,0 +1,35 @@
+{
+	"id": "WarrantyPromise.json",
+	"title": "Warranty Promise",
+	"format": "http://schema.org/WarrantyPromise",
+	"media": {"type": "application/json;profile=http://schema.org/WarrantyPromise"},
+	"allOf": [{"$ref": "StructuredValue.json"}],
+	"type": "object",
+	"properties": {
+		"durationOfWarranty": {"$ref": "QuantitativeValue.json#/definitions/possibleRef"},
+		"warrantyScope": {"$ref": "WarrantyScope.json#/definitions/possibleRef"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

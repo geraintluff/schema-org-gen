@@ -1,0 +1,30 @@
+{
+	"id": "HVACBusiness.json",
+	"title": "HVAC Business",
+	"format": "http://schema.org/HVACBusiness",
+	"media": {"type": "application/json;profile=http://schema.org/HVACBusiness"},
+	"allOf": [{"$ref": "HomeAndConstructionBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

@@ -1,0 +1,59 @@
+{
+	"id": "Code.json",
+	"title": "Code",
+	"format": "http://schema.org/Code",
+	"media": {"type": "application/json;profile=http://schema.org/Code"},
+	"allOf": [{"$ref": "CreativeWork.json"}],
+	"type": "object",
+	"properties": {
+		"codeRepository": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"format": "uri",
+				"links": [{
+					"rel": "http://schema.org/codeRepository",
+					"href": "{+$}",
+					"linkSource": 2
+				}]
+			}
+		},
+		"programmingLanguage": {"$ref": "Thing.json#/definitions/possibleRefArray"},
+		"runtime": {"$ref": "#/definitions/runtime"},
+		"sampleType": {"$ref": "#/definitions/sampleType"},
+		"targetProduct": {"$ref": "SoftwareApplication.json#/definitions/possibleRefArray"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"runtime": {
+			"title": "Runtime",
+			"description": "Runtime platform or script interpreter dependencies (Example - Java v1, Python2.3, .Net Framework 3.0)",
+			"type": "string"
+		},
+		"sampleType": {
+			"title": "Sample Type",
+			"description": "Full (compile ready) solution, code snippet, inline code, scripts, template.",
+			"type": "string"
+		}
+	}
+}

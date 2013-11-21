@@ -1,0 +1,30 @@
+{
+	"id": "DrinkAction.json",
+	"title": "Drink Action",
+	"format": "http://schema.org/DrinkAction",
+	"media": {"type": "application/json;profile=http://schema.org/DrinkAction"},
+	"allOf": [{"$ref": "ConsumeAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

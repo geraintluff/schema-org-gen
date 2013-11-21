@@ -1,0 +1,49 @@
+{
+	"id": "Clip.json",
+	"title": "Clip",
+	"format": "http://schema.org/Clip",
+	"media": {"type": "application/json;profile=http://schema.org/Clip"},
+	"allOf": [{"$ref": "CreativeWork.json"}],
+	"type": "object",
+	"properties": {
+		"clipNumber": {"$ref": "#/definitions/clipNumber"},
+		"partOfEpisode": {"$ref": "Episode.json#/definitions/possibleRef"},
+		"partOfSeason": {"$ref": "Season.json#/definitions/possibleRef"},
+		"partOfSeries": {"$ref": "Series.json#/definitions/possibleRef"},
+		"position": {"$ref": "#/definitions/position"},
+		"publication": {"$ref": "PublicationEvent.json#/definitions/possibleRefArray"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"clipNumber": {
+			"title": "Clip Number",
+			"description": "Position of the clip within an ordered group of clips.",
+			"type": "integer"
+		},
+		"position": {
+			"title": "Position",
+			"description": "Free text to define other than pure numerical ranking of an episode or a season in an ordered list of items (further formatting restrictions may apply within particular user groups).",
+			"type": "string"
+		}
+	}
+}

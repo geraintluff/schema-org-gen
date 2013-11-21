@@ -1,0 +1,30 @@
+{
+	"id": "SportsClub.json",
+	"title": "Sports Club",
+	"format": "http://schema.org/SportsClub",
+	"media": {"type": "application/json;profile=http://schema.org/SportsClub"},
+	"allOf": [{"$ref": "SportsActivityLocation.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

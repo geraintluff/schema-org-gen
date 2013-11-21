@@ -1,0 +1,30 @@
+{
+	"id": "DanceGroup.json",
+	"title": "Dance Group",
+	"format": "http://schema.org/DanceGroup",
+	"media": {"type": "application/json;profile=http://schema.org/DanceGroup"},
+	"allOf": [{"$ref": "PerformingGroup.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

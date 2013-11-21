@@ -1,0 +1,114 @@
+{
+	"id": "Place.json",
+	"title": "Place",
+	"format": "http://schema.org/Place",
+	"media": {"type": "application/json;profile=http://schema.org/Place"},
+	"allOf": [{"$ref": "Thing.json"}],
+	"type": "object",
+	"properties": {
+		"address": {"$ref": "PostalAddress.json#/definitions/possibleRef"},
+		"aggregateRating": {"$ref": "AggregateRating.json#/definitions/possibleRef"},
+		"containedIn": {"$ref": "Place.json#/definitions/possibleRef"},
+		"event": {"$ref": "Event.json#/definitions/possibleRefArray"},
+		"faxNumber": {"$ref": "#/definitions/faxNumber"},
+		"geo": {"$ref": "#/definitions/geo"},
+		"globalLocationNumber": {"$ref": "#/definitions/globalLocationNumber"},
+		"interactionCount": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/interactionCount"}
+		},
+		"isicV4": {"$ref": "#/definitions/isicV4"},
+		"logo": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/logo"}
+		},
+		"map": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"format": "uri",
+				"links": [{
+					"rel": "http://schema.org/map",
+					"href": "{+$}",
+					"linkSource": 2
+				}]
+			}
+		},
+		"openingHoursSpecification": {"$ref": "OpeningHoursSpecification.json#/definitions/possibleRef"},
+		"photo": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/photo"}
+		},
+		"review": {"$ref": "Review.json#/definitions/possibleRefArray"},
+		"telephone": {"$ref": "#/definitions/telephone"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"faxNumber": {
+			"title": "Fax Number",
+			"description": "The fax number.",
+			"type": "string"
+		},
+		"geo": {
+			"title": "Geo",
+			"description": "The geo coordinates of the place.",
+			"anyOf": [{"$ref": "GeoCoordinates.json#/definitions/possibleRef"}, {"$ref": "GeoShape.json#/definitions/possibleRef"}]
+		},
+		"globalLocationNumber": {
+			"title": "Global Location Number",
+			"description": "The Global Location Number (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.",
+			"type": "string"
+		},
+		"interactionCount": {
+			"title": "Interaction Count",
+			"description": "A count of a specific user interactions with this item—for example, 20 UserLikes, 5 UserComments, or 300 UserDownloads. The user interaction type should be one of the sub types of UserInteraction.",
+			"type": "string"
+		},
+		"isicV4": {
+			"title": "Isic V4",
+			"description": "The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.",
+			"type": "string"
+		},
+		"logo": {
+			"title": "Logo",
+			"description": "A logo associated with an organization.",
+			"anyOf": [
+				{
+					"type": "string",
+					"format": "uri"
+				},
+				{"$ref": "ImageObject.json#/definitions/possibleRef"}
+			]
+		},
+		"photo": {
+			"title": "Photo",
+			"description": "A photograph of this place.",
+			"anyOf": [{"$ref": "ImageObject.json#/definitions/possibleRef"}, {"$ref": "Photograph.json#/definitions/possibleRef"}]
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"telephone": {
+			"title": "Telephone",
+			"description": "The telephone number.",
+			"type": "string"
+		}
+	}
+}

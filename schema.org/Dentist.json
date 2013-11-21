@@ -1,0 +1,30 @@
+{
+	"id": "Dentist.json",
+	"title": "Dentist",
+	"format": "http://schema.org/Dentist",
+	"media": {"type": "application/json;profile=http://schema.org/Dentist"},
+	"allOf": [{"$ref": "MedicalOrganization.json"}, {"$ref": "ProfessionalService.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

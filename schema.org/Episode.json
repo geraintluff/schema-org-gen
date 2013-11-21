@@ -1,0 +1,59 @@
+{
+	"id": "Episode.json",
+	"title": "Episode",
+	"format": "http://schema.org/Episode",
+	"media": {"type": "application/json;profile=http://schema.org/Episode"},
+	"allOf": [{"$ref": "CreativeWork.json"}],
+	"type": "object",
+	"properties": {
+		"actor": {"$ref": "Person.json#/definitions/possibleRefArray"},
+		"director": {"$ref": "Person.json#/definitions/possibleRef"},
+		"episodeNumber": {"$ref": "#/definitions/episodeNumber"},
+		"musicBy": {"$ref": "#/definitions/musicBy"},
+		"partOfSeason": {"$ref": "Season.json#/definitions/possibleRef"},
+		"partOfSeries": {"$ref": "Series.json#/definitions/possibleRef"},
+		"position": {"$ref": "#/definitions/position"},
+		"producer": {"$ref": "Person.json#/definitions/possibleRef"},
+		"productionCompany": {"$ref": "Organization.json#/definitions/possibleRef"},
+		"publication": {"$ref": "PublicationEvent.json#/definitions/possibleRefArray"},
+		"trailer": {"$ref": "VideoObject.json#/definitions/possibleRef"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"episodeNumber": {
+			"title": "Episode Number",
+			"description": "Position of the episode within an ordered group of episodes.",
+			"type": "integer"
+		},
+		"musicBy": {
+			"title": "Music by",
+			"description": "The composer of the movie or TV/radio soundtrack.",
+			"anyOf": [{"$ref": "Person.json#/definitions/possibleRef"}, {"$ref": "MusicGroup.json#/definitions/possibleRef"}]
+		},
+		"position": {
+			"title": "Position",
+			"description": "Free text to define other than pure numerical ranking of an episode or a season in an ordered list of items (further formatting restrictions may apply within particular user groups).",
+			"type": "string"
+		}
+	}
+}

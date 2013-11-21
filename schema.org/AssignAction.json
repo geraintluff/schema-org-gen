@@ -1,0 +1,30 @@
+{
+	"id": "AssignAction.json",
+	"title": "Assign Action",
+	"format": "http://schema.org/AssignAction",
+	"media": {"type": "application/json;profile=http://schema.org/AssignAction"},
+	"allOf": [{"$ref": "AllocateAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

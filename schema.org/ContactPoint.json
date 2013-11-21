@@ -1,0 +1,73 @@
+{
+	"id": "ContactPoint.json",
+	"title": "Contact Point",
+	"format": "http://schema.org/ContactPoint",
+	"media": {"type": "application/json;profile=http://schema.org/ContactPoint"},
+	"allOf": [{"$ref": "StructuredValue.json"}],
+	"type": "object",
+	"properties": {
+		"areaServed": {"$ref": "AdministrativeArea.json#/definitions/possibleRef"},
+		"availableLanguage": {"$ref": "Language.json#/definitions/possibleRefArray"},
+		"contactOption": {"$ref": "ContactPointOption.json#/definitions/possibleRefArray"},
+		"contactType": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/contactType"}
+		},
+		"email": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/email"}
+		},
+		"faxNumber": {"$ref": "#/definitions/faxNumber"},
+		"hoursAvailable": {"$ref": "OpeningHoursSpecification.json#/definitions/possibleRef"},
+		"productSupported": {"$ref": "#/definitions/productSupported"},
+		"telephone": {"$ref": "#/definitions/telephone"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"contactType": {
+			"title": "Contact Type",
+			"description": "A person or organization can have different contact points, for different purposes. For example, a sales contact point, a PR contact point and so on. This property is used to specify the kind of contact point.",
+			"type": "string"
+		},
+		"email": {
+			"title": "Email",
+			"description": "Email address.",
+			"type": "string"
+		},
+		"faxNumber": {
+			"title": "Fax Number",
+			"description": "The fax number.",
+			"type": "string"
+		},
+		"productSupported": {
+			"title": "Product Supported",
+			"description": "The product or service this support contact point is related to (such as product support for a particular product line). This can be a specific product or product line (e.g. \"iPhone\") or a general category of products or services (e.g. \"smartphones\").",
+			"anyOf": [{"$ref": "Product.json#/definitions/possibleRef"}, {"type": "string"}]
+		},
+		"telephone": {
+			"title": "Telephone",
+			"description": "The telephone number.",
+			"type": "string"
+		}
+	}
+}

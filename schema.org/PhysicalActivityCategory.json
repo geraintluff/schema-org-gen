@@ -1,0 +1,15 @@
+{
+	"id": "PhysicalActivityCategory.json",
+	"title": "Physical Activity Category",
+	"format": "http://schema.org/PhysicalActivityCategory",
+	"media": {"type": "application/json;profile=http://schema.org/PhysicalActivityCategory"},
+	"enum": [
+		"AerobicActivity",
+		"AnaerobicActivity",
+		"Balance",
+		"Flexibility",
+		"LeisureTimeActivity",
+		"OccupationalActivity",
+		"StrengthTraining"
+	]
+}

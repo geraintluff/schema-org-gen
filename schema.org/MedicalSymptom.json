@@ -1,0 +1,30 @@
+{
+	"id": "MedicalSymptom.json",
+	"title": "Medical Symptom",
+	"format": "http://schema.org/MedicalSymptom",
+	"media": {"type": "application/json;profile=http://schema.org/MedicalSymptom"},
+	"allOf": [{"$ref": "MedicalSignOrSymptom.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

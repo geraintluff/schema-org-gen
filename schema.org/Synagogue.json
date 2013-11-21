@@ -1,0 +1,30 @@
+{
+	"id": "Synagogue.json",
+	"title": "Synagogue",
+	"format": "http://schema.org/Synagogue",
+	"media": {"type": "application/json;profile=http://schema.org/Synagogue"},
+	"allOf": [{"$ref": "PlaceOfWorship.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

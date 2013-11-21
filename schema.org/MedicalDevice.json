@@ -1,0 +1,73 @@
+{
+	"id": "MedicalDevice.json",
+	"title": "Medical Device",
+	"format": "http://schema.org/MedicalDevice",
+	"media": {"type": "application/json;profile=http://schema.org/MedicalDevice"},
+	"allOf": [{"$ref": "MedicalEntity.json"}],
+	"type": "object",
+	"properties": {
+		"adverseOutcome": {"$ref": "MedicalEntity.json#/definitions/possibleRefArray"},
+		"contraindication": {"$ref": "MedicalContraindication.json#/definitions/possibleRefArray"},
+		"indication": {"$ref": "MedicalIndication.json#/definitions/possibleRefArray"},
+		"postOp": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/postOp"}
+		},
+		"preOp": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/preOp"}
+		},
+		"procedure": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/procedure"}
+		},
+		"purpose": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/purpose"}
+		},
+		"seriousAdverseOutcome": {"$ref": "MedicalEntity.json#/definitions/possibleRefArray"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"postOp": {
+			"title": "Post Op",
+			"description": "A description of the postoperative procedures, care, and/or followups for this device.",
+			"type": "string"
+		},
+		"preOp": {
+			"title": "Pre Op",
+			"description": "A description of the workup, testing, and other preparations required before implanting this device.",
+			"type": "string"
+		},
+		"procedure": {
+			"title": "Procedure",
+			"description": "A description of the procedure involved in setting up, using, and/or installing the device.",
+			"type": "string"
+		},
+		"purpose": {
+			"title": "Purpose",
+			"description": "A goal towards an action is taken. Can be concrete or abstract.",
+			"anyOf": [{"$ref": "Thing.json#/definitions/possibleRef"}, {"$ref": "MedicalDevicePurpose.json#/definitions/possibleRef"}]
+		}
+	}
+}

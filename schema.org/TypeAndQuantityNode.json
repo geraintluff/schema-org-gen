@@ -1,0 +1,47 @@
+{
+	"id": "TypeAndQuantityNode.json",
+	"title": "Type And Quantity Node",
+	"format": "http://schema.org/TypeAndQuantityNode",
+	"media": {"type": "application/json;profile=http://schema.org/TypeAndQuantityNode"},
+	"allOf": [{"$ref": "StructuredValue.json"}],
+	"type": "object",
+	"properties": {
+		"amountOfThisGood": {"$ref": "#/definitions/amountOfThisGood"},
+		"businessFunction": {"$ref": "BusinessFunction.json#/definitions/possibleRef"},
+		"typeOfGood": {"$ref": "Product.json#/definitions/possibleRef"},
+		"unitCode": {"$ref": "#/definitions/unitCode"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"amountOfThisGood": {
+			"title": "Amount of This Good",
+			"description": "The quantity of the goods included in the offer.",
+			"type": "number"
+		},
+		"unitCode": {
+			"title": "Unit Code",
+			"description": "The unit of measurement given using the UN/CEFACT Common Code (3 characters).",
+			"type": "string"
+		}
+	}
+}

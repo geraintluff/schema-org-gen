@@ -1,0 +1,30 @@
+{
+	"id": "RadioSeason.json",
+	"title": "Radio Season",
+	"format": "http://schema.org/RadioSeason",
+	"media": {"type": "application/json;profile=http://schema.org/RadioSeason"},
+	"allOf": [{"$ref": "Season.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

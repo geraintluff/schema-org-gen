@@ -1,0 +1,30 @@
+{
+	"id": "OrganizeAction.json",
+	"title": "Organize Action",
+	"format": "http://schema.org/OrganizeAction",
+	"media": {"type": "application/json;profile=http://schema.org/OrganizeAction"},
+	"allOf": [{"$ref": "Action.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

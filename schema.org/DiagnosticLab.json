@@ -1,0 +1,32 @@
+{
+	"id": "DiagnosticLab.json",
+	"title": "Diagnostic Lab",
+	"format": "http://schema.org/DiagnosticLab",
+	"media": {"type": "application/json;profile=http://schema.org/DiagnosticLab"},
+	"allOf": [{"$ref": "MedicalOrganization.json"}],
+	"type": "object",
+	"properties": {"availableTest": {"$ref": "MedicalTest.json#/definitions/possibleRefArray"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

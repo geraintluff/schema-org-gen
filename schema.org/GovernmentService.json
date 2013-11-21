@@ -1,0 +1,32 @@
+{
+	"id": "GovernmentService.json",
+	"title": "Government Service",
+	"format": "http://schema.org/GovernmentService",
+	"media": {"type": "application/json;profile=http://schema.org/GovernmentService"},
+	"allOf": [{"$ref": "Service.json"}],
+	"type": "object",
+	"properties": {"serviceOperator": {"$ref": "Organization.json#/definitions/possibleRef"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

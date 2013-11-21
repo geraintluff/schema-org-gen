@@ -1,0 +1,41 @@
+{
+	"id": "LymphaticVessel.json",
+	"title": "Lymphatic Vessel",
+	"format": "http://schema.org/LymphaticVessel",
+	"media": {"type": "application/json;profile=http://schema.org/LymphaticVessel"},
+	"allOf": [{"$ref": "Vessel.json"}],
+	"type": "object",
+	"properties": {
+		"originatesFrom": {"$ref": "Vessel.json#/definitions/possibleRef"},
+		"regionDrained": {"$ref": "#/definitions/regionDrained"},
+		"runsTo": {"$ref": "Vessel.json#/definitions/possibleRef"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"regionDrained": {
+			"title": "Region Drained",
+			"description": "The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.",
+			"anyOf": [{"$ref": "AnatomicalSystem.json#/definitions/possibleRef"}, {"$ref": "AnatomicalStructure.json#/definitions/possibleRef"}]
+		}
+	}
+}

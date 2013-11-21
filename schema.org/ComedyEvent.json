@@ -1,0 +1,30 @@
+{
+	"id": "ComedyEvent.json",
+	"title": "Comedy Event",
+	"format": "http://schema.org/ComedyEvent",
+	"media": {"type": "application/json;profile=http://schema.org/ComedyEvent"},
+	"allOf": [{"$ref": "Event.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

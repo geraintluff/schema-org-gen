@@ -1,0 +1,30 @@
+{
+	"id": "ScholarlyArticle.json",
+	"title": "Scholarly Article",
+	"format": "http://schema.org/ScholarlyArticle",
+	"media": {"type": "application/json;profile=http://schema.org/ScholarlyArticle"},
+	"allOf": [{"$ref": "Article.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

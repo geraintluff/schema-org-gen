@@ -1,0 +1,30 @@
+{
+	"id": "FastFoodRestaurant.json",
+	"title": "Fast Food Restaurant",
+	"format": "http://schema.org/FastFoodRestaurant",
+	"media": {"type": "application/json;profile=http://schema.org/FastFoodRestaurant"},
+	"allOf": [{"$ref": "FoodEstablishment.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

@@ -1,0 +1,30 @@
+{
+	"id": "Brewery.json",
+	"title": "Brewery",
+	"format": "http://schema.org/Brewery",
+	"media": {"type": "application/json;profile=http://schema.org/Brewery"},
+	"allOf": [{"$ref": "FoodEstablishment.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

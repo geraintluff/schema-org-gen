@@ -1,0 +1,30 @@
+{
+	"id": "TheaterEvent.json",
+	"title": "Theater Event",
+	"format": "http://schema.org/TheaterEvent",
+	"media": {"type": "application/json;profile=http://schema.org/TheaterEvent"},
+	"allOf": [{"$ref": "Event.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

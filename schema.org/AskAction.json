@@ -1,0 +1,42 @@
+{
+	"id": "AskAction.json",
+	"title": "Ask Action",
+	"format": "http://schema.org/AskAction",
+	"media": {"type": "application/json;profile=http://schema.org/AskAction"},
+	"allOf": [{"$ref": "CommunicateAction.json"}],
+	"type": "object",
+	"properties": {
+		"question": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/question"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"question": {
+			"title": "Question",
+			"description": "A sub property of object. A question.",
+			"type": "string"
+		}
+	}
+}

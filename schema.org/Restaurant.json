@@ -1,0 +1,30 @@
+{
+	"id": "Restaurant.json",
+	"title": "Restaurant",
+	"format": "http://schema.org/Restaurant",
+	"media": {"type": "application/json;profile=http://schema.org/Restaurant"},
+	"allOf": [{"$ref": "FoodEstablishment.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

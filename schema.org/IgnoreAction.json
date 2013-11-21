@@ -1,0 +1,30 @@
+{
+	"id": "IgnoreAction.json",
+	"title": "Ignore Action",
+	"format": "http://schema.org/IgnoreAction",
+	"media": {"type": "application/json;profile=http://schema.org/IgnoreAction"},
+	"allOf": [{"$ref": "AssessAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

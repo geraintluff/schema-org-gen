@@ -1,0 +1,30 @@
+{
+	"id": "Pharmacy.json",
+	"title": "Pharmacy",
+	"format": "http://schema.org/Pharmacy",
+	"media": {"type": "application/json;profile=http://schema.org/Pharmacy"},
+	"allOf": [{"$ref": "MedicalOrganization.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

@@ -1,0 +1,48 @@
+{
+	"id": "ServiceChannel.json",
+	"title": "Service Channel",
+	"format": "http://schema.org/ServiceChannel",
+	"media": {"type": "application/json;profile=http://schema.org/ServiceChannel"},
+	"allOf": [{"$ref": "Intangible.json"}],
+	"type": "object",
+	"properties": {
+		"availableLanguage": {"$ref": "Language.json#/definitions/possibleRefArray"},
+		"processingTime": {"$ref": "Duration.json#/definitions/possibleRef"},
+		"providesService": {"$ref": "Service.json#/definitions/possibleRef"},
+		"serviceLocation": {"$ref": "Place.json#/definitions/possibleRef"},
+		"servicePhone": {"$ref": "ContactPoint.json#/definitions/possibleRef"},
+		"servicePostalAddress": {"$ref": "PostalAddress.json#/definitions/possibleRef"},
+		"serviceSmsNumber": {"$ref": "ContactPoint.json#/definitions/possibleRef"},
+		"serviceUrl": {
+			"type": "string",
+			"format": "uri"
+		}
+	},
+	"links": [{
+		"rel": "http://schema.org/serviceUrl",
+		"href": "{+serviceUrl}"
+	}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

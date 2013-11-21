@@ -1,0 +1,14 @@
+{
+	"id": "InfectiousAgentClass.json",
+	"title": "Infectious Agent Class",
+	"format": "http://schema.org/InfectiousAgentClass",
+	"media": {"type": "application/json;profile=http://schema.org/InfectiousAgentClass"},
+	"enum": [
+		"Bacteria",
+		"Fungus",
+		"MulticellularParasite",
+		"Prion",
+		"Protozoa",
+		"Virus"
+	]
+}

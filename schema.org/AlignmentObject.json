@@ -1,0 +1,68 @@
+{
+	"id": "AlignmentObject.json",
+	"title": "Alignment Object",
+	"format": "http://schema.org/AlignmentObject",
+	"media": {"type": "application/json;profile=http://schema.org/AlignmentObject"},
+	"allOf": [{"$ref": "Intangible.json"}],
+	"type": "object",
+	"properties": {
+		"alignmentType": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/alignmentType"}
+		},
+		"educationalFramework": {"$ref": "#/definitions/educationalFramework"},
+		"targetDescription": {"$ref": "#/definitions/targetDescription"},
+		"targetName": {"$ref": "#/definitions/targetName"},
+		"targetUrl": {
+			"type": "string",
+			"format": "uri"
+		}
+	},
+	"links": [{
+		"rel": "http://schema.org/targetUrl",
+		"href": "{+targetUrl}"
+	}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"alignmentType": {
+			"title": "Alignment Type",
+			"description": "A category of alignment between the learning resource and the framework node. Recommended values include: 'assesses', 'teaches', 'requires', 'textComplexity', 'readingLevel', 'educationalSubject', and 'educationLevel'.",
+			"type": "string"
+		},
+		"educationalFramework": {
+			"title": "Educational Framework",
+			"description": "The framework to which the resource being described is aligned.",
+			"type": "string"
+		},
+		"targetDescription": {
+			"title": "Target Description",
+			"description": "The description of a node in an established educational framework.",
+			"type": "string"
+		},
+		"targetName": {
+			"title": "Target Name",
+			"description": "The name of a node in an established educational framework.",
+			"type": "string"
+		}
+	}
+}

@@ -1,0 +1,30 @@
+{
+	"id": "Class.json",
+	"title": "Class",
+	"format": "http://schema.org/Class",
+	"media": {"type": "application/json;profile=http://schema.org/Class"},
+	"allOf": [{"$ref": "Thing.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

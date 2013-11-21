@@ -1,0 +1,30 @@
+{
+	"id": "Vessel.json",
+	"title": "Vessel",
+	"format": "http://schema.org/Vessel",
+	"media": {"type": "application/json;profile=http://schema.org/Vessel"},
+	"allOf": [{"$ref": "AnatomicalStructure.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

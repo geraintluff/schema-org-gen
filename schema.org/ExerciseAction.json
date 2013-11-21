@@ -1,0 +1,68 @@
+{
+	"id": "ExerciseAction.json",
+	"title": "Exercise Action",
+	"format": "http://schema.org/ExerciseAction",
+	"media": {"type": "application/json;profile=http://schema.org/ExerciseAction"},
+	"allOf": [{"$ref": "PlayAction.json"}],
+	"type": "object",
+	"properties": {
+		"course": {"$ref": "Place.json#/definitions/possibleRefArray"},
+		"diet": {"$ref": "Diet.json#/definitions/possibleRefArray"},
+		"distance": {"$ref": "Distance.json#/definitions/possibleRefArray"},
+		"exercisePlan": {"$ref": "ExercisePlan.json#/definitions/possibleRefArray"},
+		"exerciseType": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/exerciseType"}
+		},
+		"fromLocation": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/fromLocation"}
+		},
+		"oponent": {"$ref": "Person.json#/definitions/possibleRefArray"},
+		"sportsActivityLocation": {"$ref": "SportsActivityLocation.json#/definitions/possibleRefArray"},
+		"sportsEvent": {"$ref": "SportsEvent.json#/definitions/possibleRefArray"},
+		"sportsTeam": {"$ref": "SportsTeam.json#/definitions/possibleRefArray"},
+		"toLocation": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/toLocation"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"exerciseType": {
+			"title": "Exercise Type",
+			"description": "Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc.",
+			"type": "string"
+		},
+		"fromLocation": {
+			"title": "From Location",
+			"description": "A sub property of location. The original location of the object or the agent before the action.",
+			"anyOf": [{"$ref": "Place.json#/definitions/possibleRef"}, {"type": "number"}]
+		},
+		"toLocation": {
+			"title": "To Location",
+			"description": "A sub property of location. The final location of the object or the agent after the action.",
+			"anyOf": [{"$ref": "Place.json#/definitions/possibleRef"}, {"type": "number"}]
+		}
+	}
+}

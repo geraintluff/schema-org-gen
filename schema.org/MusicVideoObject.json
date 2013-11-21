@@ -1,0 +1,30 @@
+{
+	"id": "MusicVideoObject.json",
+	"title": "Music Video Object",
+	"format": "http://schema.org/MusicVideoObject",
+	"media": {"type": "application/json;profile=http://schema.org/MusicVideoObject"},
+	"allOf": [{"$ref": "MediaObject.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

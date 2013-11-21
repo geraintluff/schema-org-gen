@@ -1,0 +1,32 @@
+{
+	"id": "WriteAction.json",
+	"title": "Write Action",
+	"format": "http://schema.org/WriteAction",
+	"media": {"type": "application/json;profile=http://schema.org/WriteAction"},
+	"allOf": [{"$ref": "CreateAction.json"}],
+	"type": "object",
+	"properties": {"language": {"$ref": "Language.json#/definitions/possibleRefArray"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

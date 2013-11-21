@@ -1,0 +1,30 @@
+{
+	"id": "RejectAction.json",
+	"title": "Reject Action",
+	"format": "http://schema.org/RejectAction",
+	"media": {"type": "application/json;profile=http://schema.org/RejectAction"},
+	"allOf": [{"$ref": "AllocateAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

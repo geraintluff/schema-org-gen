@@ -1,0 +1,13 @@
+{
+	"id": "Quantity.json",
+	"title": "Quantity",
+	"format": "http://schema.org/Quantity",
+	"media": {"type": "application/json;profile=http://schema.org/Quantity"},
+	"type": "string",
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		}
+	}
+}

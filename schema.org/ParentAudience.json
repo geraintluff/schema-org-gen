@@ -1,0 +1,45 @@
+{
+	"id": "ParentAudience.json",
+	"title": "Parent Audience",
+	"format": "http://schema.org/ParentAudience",
+	"media": {"type": "application/json;profile=http://schema.org/ParentAudience"},
+	"allOf": [{"$ref": "PeopleAudience.json"}],
+	"type": "object",
+	"properties": {
+		"childMaxAge": {"$ref": "#/definitions/childMaxAge"},
+		"childMinAge": {"$ref": "#/definitions/childMinAge"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"childMaxAge": {
+			"title": "Child Max Age",
+			"description": "Maximal age of the child",
+			"type": "number"
+		},
+		"childMinAge": {
+			"title": "Child Min Age",
+			"description": "Minimal age of the child",
+			"type": "number"
+		}
+	}
+}

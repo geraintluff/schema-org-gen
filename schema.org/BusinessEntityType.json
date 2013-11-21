@@ -1,0 +1,30 @@
+{
+	"id": "BusinessEntityType.json",
+	"title": "Business Entity Type",
+	"format": "http://schema.org/BusinessEntityType",
+	"media": {"type": "application/json;profile=http://schema.org/BusinessEntityType"},
+	"allOf": [{"$ref": "Enumeration.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

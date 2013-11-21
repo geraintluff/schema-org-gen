@@ -1,0 +1,30 @@
+{
+	"id": "DayOfWeek.json",
+	"title": "Day of Week",
+	"format": "http://schema.org/DayOfWeek",
+	"media": {"type": "application/json;profile=http://schema.org/DayOfWeek"},
+	"allOf": [{"$ref": "Enumeration.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

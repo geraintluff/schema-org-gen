@@ -1,0 +1,35 @@
+{
+	"id": "MedicalSign.json",
+	"title": "Medical Sign",
+	"format": "http://schema.org/MedicalSign",
+	"media": {"type": "application/json;profile=http://schema.org/MedicalSign"},
+	"allOf": [{"$ref": "MedicalSignOrSymptom.json"}],
+	"type": "object",
+	"properties": {
+		"identifyingExam": {"$ref": "PhysicalExam.json#/definitions/possibleRefArray"},
+		"identifyingTest": {"$ref": "MedicalTest.json#/definitions/possibleRefArray"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

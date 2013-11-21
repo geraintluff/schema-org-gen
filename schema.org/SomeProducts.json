@@ -1,0 +1,32 @@
+{
+	"id": "SomeProducts.json",
+	"title": "Some Products",
+	"format": "http://schema.org/SomeProducts",
+	"media": {"type": "application/json;profile=http://schema.org/SomeProducts"},
+	"allOf": [{"$ref": "Product.json"}],
+	"type": "object",
+	"properties": {"inventoryLevel": {"$ref": "QuantitativeValue.json#/definitions/possibleRef"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

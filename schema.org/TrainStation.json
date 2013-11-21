@@ -1,0 +1,30 @@
+{
+	"id": "TrainStation.json",
+	"title": "Train Station",
+	"format": "http://schema.org/TrainStation",
+	"media": {"type": "application/json;profile=http://schema.org/TrainStation"},
+	"allOf": [{"$ref": "CivicStructure.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

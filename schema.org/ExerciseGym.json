@@ -1,0 +1,30 @@
+{
+	"id": "ExerciseGym.json",
+	"title": "Exercise Gym",
+	"format": "http://schema.org/ExerciseGym",
+	"media": {"type": "application/json;profile=http://schema.org/ExerciseGym"},
+	"allOf": [{"$ref": "SportsActivityLocation.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

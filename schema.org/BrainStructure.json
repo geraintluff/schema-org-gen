@@ -1,0 +1,30 @@
+{
+	"id": "BrainStructure.json",
+	"title": "Brain Structure",
+	"format": "http://schema.org/BrainStructure",
+	"media": {"type": "application/json;profile=http://schema.org/BrainStructure"},
+	"allOf": [{"$ref": "AnatomicalStructure.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

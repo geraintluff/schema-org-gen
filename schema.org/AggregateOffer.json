@@ -1,0 +1,51 @@
+{
+	"id": "AggregateOffer.json",
+	"title": "Aggregate Offer",
+	"format": "http://schema.org/AggregateOffer",
+	"media": {"type": "application/json;profile=http://schema.org/AggregateOffer"},
+	"allOf": [{"$ref": "Offer.json"}],
+	"type": "object",
+	"properties": {
+		"highPrice": {"$ref": "#/definitions/highPrice"},
+		"lowPrice": {"$ref": "#/definitions/lowPrice"},
+		"offerCount": {"$ref": "#/definitions/offerCount"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"highPrice": {
+			"title": "High Price",
+			"description": "The highest price of all offers available.",
+			"anyOf": [{"type": "number"}, {"type": "string"}]
+		},
+		"lowPrice": {
+			"title": "Low Price",
+			"description": "The lowest price of all offers available.",
+			"anyOf": [{"type": "number"}, {"type": "string"}]
+		},
+		"offerCount": {
+			"title": "Offer Count",
+			"description": "The number of offers for the product.",
+			"type": "integer"
+		}
+	}
+}

@@ -1,0 +1,70 @@
+{
+	"id": "OpeningHoursSpecification.json",
+	"title": "Opening Hours Specification",
+	"format": "http://schema.org/OpeningHoursSpecification",
+	"media": {"type": "application/json;profile=http://schema.org/OpeningHoursSpecification"},
+	"allOf": [{"$ref": "StructuredValue.json"}],
+	"type": "object",
+	"properties": {
+		"closes": {"$ref": "#/definitions/closes"},
+		"dayOfWeek": {"$ref": "DayOfWeek.json#/definitions/possibleRef"},
+		"opens": {"$ref": "#/definitions/opens"},
+		"validFrom": {"$ref": "#/definitions/validFrom"},
+		"validThrough": {"$ref": "#/definitions/validThrough"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"closes": {
+			"title": "Closes",
+			"description": "The closing hour of the place or service on the given day(s) of the week.",
+			"type": "string",
+			"format": "time"
+		},
+		"opens": {
+			"title": "Opens",
+			"description": "The opening hour of the place or service on the given day(s) of the week.",
+			"type": "string",
+			"format": "time"
+		},
+		"validFrom": {
+			"title": "Valid From",
+			"description": "The date when the permit becomes valid.",
+			"anyOf": [
+				{
+					"type": "string",
+					"format": "date"
+				},
+				{
+					"type": "string",
+					"format": "date-time"
+				}
+			]
+		},
+		"validThrough": {
+			"title": "Valid Through",
+			"description": "The end of the validity of offer, price specification, or opening hours data.",
+			"type": "string",
+			"format": "date-time"
+		}
+	}
+}

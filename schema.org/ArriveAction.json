@@ -1,0 +1,30 @@
+{
+	"id": "ArriveAction.json",
+	"title": "Arrive Action",
+	"format": "http://schema.org/ArriveAction",
+	"media": {"type": "application/json;profile=http://schema.org/ArriveAction"},
+	"allOf": [{"$ref": "MoveAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

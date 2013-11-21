@@ -1,0 +1,30 @@
+{
+	"id": "BodyOfWater.json",
+	"title": "Body of Water",
+	"format": "http://schema.org/BodyOfWater",
+	"media": {"type": "application/json;profile=http://schema.org/BodyOfWater"},
+	"allOf": [{"$ref": "Landform.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

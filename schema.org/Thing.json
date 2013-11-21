@@ -1,0 +1,100 @@
+{
+	"id": "Thing.json",
+	"title": "Thing",
+	"format": "http://schema.org/Thing",
+	"media": {"type": "application/json;profile=http://schema.org/Thing"},
+	"type": "object",
+	"properties": {
+		"additionalType": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"format": "uri",
+				"links": [{
+					"rel": "http://schema.org/additionalType",
+					"href": "{+$}",
+					"linkSource": 2
+				}]
+			}
+		},
+		"alternateName": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/alternateName"}
+		},
+		"description": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/description"}
+		},
+		"image": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"format": "uri",
+				"links": [{
+					"rel": "http://schema.org/image",
+					"href": "{+$}",
+					"linkSource": 2
+				}]
+			}
+		},
+		"name": {"$ref": "#/definitions/name"},
+		"sameAs": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"format": "uri",
+				"links": [{
+					"rel": "http://schema.org/sameAs",
+					"href": "{+$}",
+					"linkSource": 2
+				}]
+			}
+		},
+		"url": {
+			"type": "string",
+			"format": "uri"
+		}
+	},
+	"links": [{
+		"rel": "http://schema.org/url",
+		"href": "{+url}"
+	}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"alternateName": {
+			"title": "Alternate Name",
+			"description": "An alias for the item.",
+			"type": "string"
+		},
+		"description": {
+			"title": "Description",
+			"description": "A short description of the item.",
+			"type": "string"
+		},
+		"name": {
+			"title": "Name",
+			"description": "The name of the item.",
+			"type": "string"
+		}
+	}
+}

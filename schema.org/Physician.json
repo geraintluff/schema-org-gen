@@ -1,0 +1,44 @@
+{
+	"id": "Physician.json",
+	"title": "Physician",
+	"format": "http://schema.org/Physician",
+	"media": {"type": "application/json;profile=http://schema.org/Physician"},
+	"allOf": [{"$ref": "MedicalOrganization.json"}],
+	"type": "object",
+	"properties": {
+		"availableService": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/availableService"}
+		},
+		"hospitalAffiliation": {"$ref": "Hospital.json#/definitions/possibleRefArray"},
+		"medicalSpecialty": {"$ref": "MedicalSpecialty.json#/definitions/possibleRefArray"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"availableService": {
+			"title": "Available Service",
+			"description": "A medical service available from this provider.",
+			"anyOf": [{"$ref": "MedicalTest.json#/definitions/possibleRef"}, {"$ref": "MedicalProcedure.json#/definitions/possibleRef"}, {"$ref": "MedicalTherapy.json#/definitions/possibleRef"}]
+		}
+	}
+}

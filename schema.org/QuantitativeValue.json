@@ -1,0 +1,66 @@
+{
+	"id": "QuantitativeValue.json",
+	"title": "Quantitative Value",
+	"format": "http://schema.org/QuantitativeValue",
+	"media": {"type": "application/json;profile=http://schema.org/QuantitativeValue"},
+	"allOf": [{"$ref": "StructuredValue.json"}],
+	"type": "object",
+	"properties": {
+		"maxValue": {"$ref": "#/definitions/maxValue"},
+		"minValue": {"$ref": "#/definitions/minValue"},
+		"unitCode": {"$ref": "#/definitions/unitCode"},
+		"value": {"$ref": "#/definitions/value"},
+		"valueReference": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/valueReference"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"maxValue": {
+			"title": "Max Value",
+			"description": "The upper of the product characteristic.",
+			"type": "number"
+		},
+		"minValue": {
+			"title": "Min Value",
+			"description": "The lower value of the product characteristic.",
+			"type": "number"
+		},
+		"unitCode": {
+			"title": "Unit Code",
+			"description": "The unit of measurement given using the UN/CEFACT Common Code (3 characters).",
+			"type": "string"
+		},
+		"value": {
+			"title": "Value",
+			"description": "The value of the product characteristic.",
+			"type": "number"
+		},
+		"valueReference": {
+			"title": "Value Reference",
+			"description": "A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.",
+			"anyOf": [{"$ref": "Enumeration.json#/definitions/possibleRef"}, {"$ref": "StructuredValue.json#/definitions/possibleRef"}]
+		}
+	}
+}

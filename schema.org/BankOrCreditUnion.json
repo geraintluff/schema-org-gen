@@ -1,0 +1,30 @@
+{
+	"id": "BankOrCreditUnion.json",
+	"title": "Bank or Credit Union",
+	"format": "http://schema.org/BankOrCreditUnion",
+	"media": {"type": "application/json;profile=http://schema.org/BankOrCreditUnion"},
+	"allOf": [{"$ref": "FinancialService.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

@@ -1,0 +1,30 @@
+{
+	"id": "SportingGoodsStore.json",
+	"title": "Sporting Goods Store",
+	"format": "http://schema.org/SportingGoodsStore",
+	"media": {"type": "application/json;profile=http://schema.org/SportingGoodsStore"},
+	"allOf": [{"$ref": "Store.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

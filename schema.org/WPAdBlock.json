@@ -1,0 +1,30 @@
+{
+	"id": "WPAdBlock.json",
+	"title": "WP Ad Block",
+	"format": "http://schema.org/WPAdBlock",
+	"media": {"type": "application/json;profile=http://schema.org/WPAdBlock"},
+	"allOf": [{"$ref": "WebPageElement.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

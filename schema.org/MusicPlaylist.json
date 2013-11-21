@@ -1,0 +1,40 @@
+{
+	"id": "MusicPlaylist.json",
+	"title": "Music Playlist",
+	"format": "http://schema.org/MusicPlaylist",
+	"media": {"type": "application/json;profile=http://schema.org/MusicPlaylist"},
+	"allOf": [{"$ref": "CreativeWork.json"}],
+	"type": "object",
+	"properties": {
+		"numTracks": {"$ref": "#/definitions/numTracks"},
+		"track": {"$ref": "MusicRecording.json#/definitions/possibleRefArray"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"numTracks": {
+			"title": "Num Tracks",
+			"description": "The number of tracks in this album or playlist.",
+			"type": "integer"
+		}
+	}
+}

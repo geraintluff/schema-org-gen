@@ -1,0 +1,16 @@
+{
+	"id": "ItemAvailability.json",
+	"title": "Item Availability",
+	"format": "http://schema.org/ItemAvailability",
+	"media": {"type": "application/json;profile=http://schema.org/ItemAvailability"},
+	"enum": [
+		"Discontinued",
+		"InStock",
+		"InStoreOnly",
+		"LimitedAvailability",
+		"OnlineOnly",
+		"OutOfStock",
+		"PreOrder",
+		"SoldOut"
+	]
+}

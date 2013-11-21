@@ -1,0 +1,14 @@
+{
+	"id": "MedicalObservationalStudyDesign.json",
+	"title": "Medical Observational Study Design",
+	"format": "http://schema.org/MedicalObservationalStudyDesign",
+	"media": {"type": "application/json;profile=http://schema.org/MedicalObservationalStudyDesign"},
+	"enum": [
+		"CaseSeries",
+		"CohortStudy",
+		"CrossSectional",
+		"Longitudinal",
+		"Observational",
+		"Registry"
+	]
+}

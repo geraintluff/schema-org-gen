@@ -1,0 +1,30 @@
+{
+	"id": "RecommendedDoseSchedule.json",
+	"title": "Recommended Dose Schedule",
+	"format": "http://schema.org/RecommendedDoseSchedule",
+	"media": {"type": "application/json;profile=http://schema.org/RecommendedDoseSchedule"},
+	"allOf": [{"$ref": "DoseSchedule.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

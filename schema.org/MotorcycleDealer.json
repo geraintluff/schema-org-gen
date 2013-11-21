@@ -1,0 +1,30 @@
+{
+	"id": "MotorcycleDealer.json",
+	"title": "Motorcycle Dealer",
+	"format": "http://schema.org/MotorcycleDealer",
+	"media": {"type": "application/json;profile=http://schema.org/MotorcycleDealer"},
+	"allOf": [{"$ref": "AutomotiveBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

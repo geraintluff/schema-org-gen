@@ -1,0 +1,30 @@
+{
+	"id": "Continent.json",
+	"title": "Continent",
+	"format": "http://schema.org/Continent",
+	"media": {"type": "application/json;profile=http://schema.org/Continent"},
+	"allOf": [{"$ref": "Landform.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

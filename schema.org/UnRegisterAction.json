@@ -1,0 +1,30 @@
+{
+	"id": "UnRegisterAction.json",
+	"title": "Un Register Action",
+	"format": "http://schema.org/UnRegisterAction",
+	"media": {"type": "application/json;profile=http://schema.org/UnRegisterAction"},
+	"allOf": [{"$ref": "InteractAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

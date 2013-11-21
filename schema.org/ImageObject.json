@@ -1,0 +1,52 @@
+{
+	"id": "ImageObject.json",
+	"title": "Image Object",
+	"format": "http://schema.org/ImageObject",
+	"media": {"type": "application/json;profile=http://schema.org/ImageObject"},
+	"allOf": [{"$ref": "MediaObject.json"}],
+	"type": "object",
+	"properties": {
+		"caption": {"$ref": "#/definitions/caption"},
+		"exifData": {"$ref": "#/definitions/exifData"},
+		"representativeOfPage": {"$ref": "#/definitions/representativeOfPage"},
+		"thumbnail": {"$ref": "ImageObject.json#/definitions/possibleRef"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"caption": {
+			"title": "Caption",
+			"description": "The caption for this object.",
+			"type": "string"
+		},
+		"exifData": {
+			"title": "Exif Data",
+			"description": "exif data for this object.",
+			"type": "string"
+		},
+		"representativeOfPage": {
+			"title": "Representative of Page",
+			"description": "Indicates whether this image is representative of the content of the page.",
+			"type": "boolean"
+		}
+	}
+}

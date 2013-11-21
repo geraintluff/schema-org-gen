@@ -1,0 +1,32 @@
+{
+	"id": "WinAction.json",
+	"title": "Win Action",
+	"format": "http://schema.org/WinAction",
+	"media": {"type": "application/json;profile=http://schema.org/WinAction"},
+	"allOf": [{"$ref": "AchieveAction.json"}],
+	"type": "object",
+	"properties": {"loser": {"$ref": "Person.json#/definitions/possibleRefArray"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

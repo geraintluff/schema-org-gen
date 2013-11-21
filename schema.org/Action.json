@@ -1,0 +1,71 @@
+{
+	"id": "Action.json",
+	"title": "Action",
+	"format": "http://schema.org/Action",
+	"media": {"type": "application/json;profile=http://schema.org/Action"},
+	"allOf": [{"$ref": "Thing.json"}],
+	"type": "object",
+	"properties": {
+		"agent": {"$ref": "#/definitions/agent"},
+		"endTime": {"$ref": "#/definitions/endTime"},
+		"instrument": {"$ref": "Thing.json#/definitions/possibleRef"},
+		"location": {"$ref": "#/definitions/location"},
+		"object": {"$ref": "Thing.json#/definitions/possibleRef"},
+		"participant": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/participant"}
+		},
+		"result": {"$ref": "Thing.json#/definitions/possibleRef"},
+		"startTime": {"$ref": "#/definitions/startTime"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"agent": {
+			"title": "Agent",
+			"description": "The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		},
+		"endTime": {
+			"title": "End Time",
+			"description": "When the Action was performed: end time. This is for actions that span a period of time. e.g. John wrote a book from January to *December*.",
+			"type": "string",
+			"format": "date-time"
+		},
+		"location": {
+			"title": "Location",
+			"description": "The location of the event, organization or action.",
+			"anyOf": [{"$ref": "PostalAddress.json#/definitions/possibleRef"}, {"$ref": "Place.json#/definitions/possibleRef"}]
+		},
+		"participant": {
+			"title": "Participant",
+			"description": "Other co-agents that participated in the action indirectly. e.g. John wrote a book with *Steve*.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		},
+		"startTime": {
+			"title": "Start Time",
+			"description": "When the Action was performed: start time. This is for actions that span a period of time. e.g. John wrote a book from *January* to December.",
+			"type": "string",
+			"format": "date-time"
+		}
+	}
+}

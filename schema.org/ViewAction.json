@@ -1,0 +1,30 @@
+{
+	"id": "ViewAction.json",
+	"title": "View Action",
+	"format": "http://schema.org/ViewAction",
+	"media": {"type": "application/json;profile=http://schema.org/ViewAction"},
+	"allOf": [{"$ref": "ConsumeAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

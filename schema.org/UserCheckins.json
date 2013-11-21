@@ -1,0 +1,30 @@
+{
+	"id": "UserCheckins.json",
+	"title": "User Checkins",
+	"format": "http://schema.org/UserCheckins",
+	"media": {"type": "application/json;profile=http://schema.org/UserCheckins"},
+	"allOf": [{"$ref": "UserInteraction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

@@ -1,0 +1,56 @@
+{
+	"id": "LocalBusiness.json",
+	"title": "Local Business",
+	"format": "http://schema.org/LocalBusiness",
+	"media": {"type": "application/json;profile=http://schema.org/LocalBusiness"},
+	"allOf": [{"$ref": "Organization.json"}, {"$ref": "Place.json"}],
+	"type": "object",
+	"properties": {
+		"branchOf": {"$ref": "Organization.json#/definitions/possibleRef"},
+		"currenciesAccepted": {"$ref": "#/definitions/currenciesAccepted"},
+		"openingHours": {"$ref": "Duration.json#/definitions/possibleRef"},
+		"paymentAccepted": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/paymentAccepted"}
+		},
+		"priceRange": {"$ref": "#/definitions/priceRange"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"currenciesAccepted": {
+			"title": "Currencies Accepted",
+			"description": "The currency accepted (in ISO 4217 currency format).",
+			"type": "string"
+		},
+		"paymentAccepted": {
+			"title": "Payment Accepted",
+			"description": "Cash, credit card, etc.",
+			"type": "string"
+		},
+		"priceRange": {
+			"title": "Price Range",
+			"description": "The price range of the business, for example $$$.",
+			"type": "string"
+		}
+	}
+}

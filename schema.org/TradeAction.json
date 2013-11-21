@@ -1,0 +1,37 @@
+{
+	"id": "TradeAction.json",
+	"title": "Trade Action",
+	"format": "http://schema.org/TradeAction",
+	"media": {"type": "application/json;profile=http://schema.org/TradeAction"},
+	"allOf": [{"$ref": "Action.json"}],
+	"type": "object",
+	"properties": {"price": {"$ref": "#/definitions/price"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"price": {
+			"title": "Price",
+			"description": "The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.",
+			"anyOf": [{"type": "string"}, {"type": "number"}]
+		}
+	}
+}

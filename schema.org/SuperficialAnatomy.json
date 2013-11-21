@@ -1,0 +1,56 @@
+{
+	"id": "SuperficialAnatomy.json",
+	"title": "Superficial Anatomy",
+	"format": "http://schema.org/SuperficialAnatomy",
+	"media": {"type": "application/json;profile=http://schema.org/SuperficialAnatomy"},
+	"allOf": [{"$ref": "MedicalEntity.json"}],
+	"type": "object",
+	"properties": {
+		"associatedPathophysiology": {"$ref": "#/definitions/associatedPathophysiology"},
+		"relatedAnatomy": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/relatedAnatomy"}
+		},
+		"relatedCondition": {"$ref": "MedicalCondition.json#/definitions/possibleRefArray"},
+		"relatedTherapy": {"$ref": "MedicalTherapy.json#/definitions/possibleRefArray"},
+		"significance": {"$ref": "#/definitions/significance"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"associatedPathophysiology": {
+			"title": "Associated Pathophysiology",
+			"description": "If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.",
+			"type": "string"
+		},
+		"relatedAnatomy": {
+			"title": "Related Anatomy",
+			"description": "Anatomical systems or structures that relate to the superficial anatomy.",
+			"anyOf": [{"$ref": "AnatomicalStructure.json#/definitions/possibleRef"}, {"$ref": "AnatomicalSystem.json#/definitions/possibleRef"}]
+		},
+		"significance": {
+			"title": "Significance",
+			"description": "The significance associated with the superficial anatomy; as an example, how characteristics of the superficial anatomy can suggest underlying medical conditions or courses of treatment.",
+			"type": "string"
+		}
+	}
+}

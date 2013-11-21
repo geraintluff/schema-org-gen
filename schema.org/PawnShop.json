@@ -1,0 +1,30 @@
+{
+	"id": "PawnShop.json",
+	"title": "Pawn Shop",
+	"format": "http://schema.org/PawnShop",
+	"media": {"type": "application/json;profile=http://schema.org/PawnShop"},
+	"allOf": [{"$ref": "Store.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

@@ -1,0 +1,48 @@
+{
+	"id": "Brand.json",
+	"title": "Brand",
+	"format": "http://schema.org/Brand",
+	"media": {"type": "application/json;profile=http://schema.org/Brand"},
+	"allOf": [{"$ref": "Intangible.json"}],
+	"type": "object",
+	"properties": {
+		"logo": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/logo"}
+		}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"logo": {
+			"title": "Logo",
+			"description": "A logo associated with an organization.",
+			"anyOf": [
+				{
+					"type": "string",
+					"format": "uri"
+				},
+				{"$ref": "ImageObject.json#/definitions/possibleRef"}
+			]
+		}
+	}
+}

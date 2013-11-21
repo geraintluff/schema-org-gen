@@ -1,0 +1,30 @@
+{
+	"id": "AutomotiveBusiness.json",
+	"title": "Automotive Business",
+	"format": "http://schema.org/AutomotiveBusiness",
+	"media": {"type": "application/json;profile=http://schema.org/AutomotiveBusiness"},
+	"allOf": [{"$ref": "LocalBusiness.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

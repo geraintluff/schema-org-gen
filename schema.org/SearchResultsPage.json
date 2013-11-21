@@ -1,0 +1,30 @@
+{
+	"id": "SearchResultsPage.json",
+	"title": "Search Results Page",
+	"format": "http://schema.org/SearchResultsPage",
+	"media": {"type": "application/json;profile=http://schema.org/SearchResultsPage"},
+	"allOf": [{"$ref": "WebPage.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

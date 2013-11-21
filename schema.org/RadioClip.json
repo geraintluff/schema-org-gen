@@ -1,0 +1,30 @@
+{
+	"id": "RadioClip.json",
+	"title": "Radio Clip",
+	"format": "http://schema.org/RadioClip",
+	"media": {"type": "application/json;profile=http://schema.org/RadioClip"},
+	"allOf": [{"$ref": "Clip.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

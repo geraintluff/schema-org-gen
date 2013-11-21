@@ -1,0 +1,37 @@
+{
+	"id": "MobileApplication.json",
+	"title": "Mobile Application",
+	"format": "http://schema.org/MobileApplication",
+	"media": {"type": "application/json;profile=http://schema.org/MobileApplication"},
+	"allOf": [{"$ref": "SoftwareApplication.json"}],
+	"type": "object",
+	"properties": {"carrierRequirements": {"$ref": "#/definitions/carrierRequirements"}},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		},
+		"carrierRequirements": {
+			"title": "Carrier Requirements",
+			"description": "Specifies specific carrier(s) requirements for the application (e.g. an application may only work on a specific carrier network).",
+			"type": "string"
+		}
+	}
+}

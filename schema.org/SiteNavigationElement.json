@@ -1,0 +1,30 @@
+{
+	"id": "SiteNavigationElement.json",
+	"title": "Site Navigation Element",
+	"format": "http://schema.org/SiteNavigationElement",
+	"media": {"type": "application/json;profile=http://schema.org/SiteNavigationElement"},
+	"allOf": [{"$ref": "WebPageElement.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

@@ -1,0 +1,30 @@
+{
+	"id": "AddAction.json",
+	"title": "Add Action",
+	"format": "http://schema.org/AddAction",
+	"media": {"type": "application/json;profile=http://schema.org/AddAction"},
+	"allOf": [{"$ref": "UpdateAction.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}

@@ -1,0 +1,30 @@
+{
+	"id": "ChildrensEvent.json",
+	"title": "Childrens Event",
+	"format": "http://schema.org/ChildrensEvent",
+	"media": {"type": "application/json;profile=http://schema.org/ChildrensEvent"},
+	"allOf": [{"$ref": "Event.json"}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/possibleRefArray"}
+		}
+	}
+}
