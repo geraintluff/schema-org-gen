@@ -71,6 +71,7 @@ request.get('http://schema.rdfs.org/all.json', function (err, request, body) {
 			'title': spec['label'],
 			'description': spec['comment_plain'],
 			'format': spec['url'],
+			'media': {"type": "application/json;profile=" + spec['url']},
 			"allOf": [],
 			"type": [],
 			"properties": {},
