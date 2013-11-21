@@ -1,6 +1,6 @@
 var OUTPUT_DIR = "out";
 var OUTPUT_SUFFIX = ".json";
-var URL_PREFIX = "http://json-schema.org/schemas/";
+var URL_PREFIX = "";
 var URL_SUFFIX = '.json';
 var REL_PREFIX = 'http://schema.org/';
 
