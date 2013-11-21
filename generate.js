@@ -114,8 +114,20 @@ request.get('http://schema.rdfs.org/all.json', function (err, request, body) {
 				]
 			};
 			schema.definitions.possibleRefArray = {
-				"type": "array",
-				"items": {"$ref": "#/definitions/possibleRefArray"}
+				"oneOf": [
+					{
+						"type": "string",
+						"format": "uri",
+						"links": [{
+							"rel": "full",
+							"href": "{+$}"
+						}]
+					},
+					{
+						"type": "array",
+						"items": {"$ref": "#/definitions/possibleRef"}
+					}
+				]
 			};
 			schema.allOf = spec.supertypes.map(function (supertype) {
 				return {"$ref": supertype + URL_SUFFIX};

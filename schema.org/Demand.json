@@ -92,8 +92,20 @@
 			]
 		},
 		"possibleRefArray": {
-			"type": "array",
-			"items": {"$ref": "#/definitions/possibleRefArray"}
+			"oneOf": [
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				},
+				{
+					"type": "array",
+					"items": {"$ref": "#/definitions/possibleRef"}
+				}
+			]
 		},
 		"seller": {
 			"title": "Seller",
