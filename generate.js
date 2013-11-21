@@ -1,4 +1,4 @@
-var OUTPUT_DIR = "out";
+var OUTPUT_DIR = "schema.org";
 var OUTPUT_SUFFIX = ".json";
 var URL_PREFIX = "";
 var URL_SUFFIX = '.json';
