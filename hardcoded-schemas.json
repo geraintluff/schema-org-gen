@@ -50,5 +50,13 @@
 	"repetitions": {
 		"type": "integer",
 		"minimum": 1
+	},
+	"startDate": {
+		"type": "string",
+		"format": "date-time"
+	},
+	"endDate": {
+		"type": "string",
+		"format": "date-time"
 	}
 }

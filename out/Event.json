@@ -58,7 +58,7 @@
 			"title": "End Date",
 			"description": "The end date and time of the event or item (in ISO 8601 date format).",
 			"type": "string",
-			"format": "date"
+			"format": "date-time"
 		},
 		"location": {
 			"title": "Location",
@@ -80,7 +80,7 @@
 			"title": "Start Date",
 			"description": "The start date and time of the event or item (in ISO 8601 date format).",
 			"type": "string",
-			"format": "date"
+			"format": "date-time"
 		},
 		"typicalAgeRange": {
 			"title": "Typical Age Range",

@@ -42,7 +42,7 @@
 			"title": "End Date",
 			"description": "The end date and time of the event or item (in ISO 8601 date format).",
 			"type": "string",
-			"format": "date"
+			"format": "date-time"
 		},
 		"numberOfEpisodes": {
 			"title": "Number of Episodes",
@@ -63,7 +63,7 @@
 			"title": "Start Date",
 			"description": "The start date and time of the event or item (in ISO 8601 date format).",
 			"type": "string",
-			"format": "date"
+			"format": "date-time"
 		}
 	}
 }
