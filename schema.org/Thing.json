@@ -56,7 +56,7 @@
 		}
 	},
 	"links": [{
-		"rel": "http://schema.org/url",
+		"rel": "self",
 		"href": "{+url}"
 	}],
 	"definitions": {

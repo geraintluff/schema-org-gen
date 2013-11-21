@@ -18,6 +18,13 @@ try {
 } catch (e) {
 }
 
+function createRel(key) {
+	if (key === 'url') {
+		return 'self';
+	}
+	return REL_PREFIX + encodeURIComponent(key);
+}
+
 request.get('http://schema.rdfs.org/all.json', function (err, request, body) {
 	if (err) throw err;
 	
@@ -172,7 +179,7 @@ request.get('http://schema.rdfs.org/all.json', function (err, request, body) {
 						}
 						subSchema.links = subSchema.links || [];
 						subSchema.links.push({
-							"rel": REL_PREFIX + key,
+							"rel": createRel(key),
 							"href": "{+$}",
 							"linkSource": 2
 						});
@@ -189,7 +196,7 @@ request.get('http://schema.rdfs.org/all.json', function (err, request, body) {
 				} else if (propertyMultiplicity[key] === false) {
 					if (shouldAddLink) {
 						schema.links.push({
-							"rel": REL_PREFIX + key,
+							"rel": createRel(key),
 							"href": "{+" + encodeURIComponent(key) + "}"
 						});
 					}
