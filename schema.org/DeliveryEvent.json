@@ -1,0 +1,66 @@
+{
+	"id": "DeliveryEvent.json",
+	"title": "Delivery Event",
+	"format": "http://schema.org/DeliveryEvent",
+	"media": {"type": "application/json;profile=http://schema.org/DeliveryEvent"},
+	"allOf": [{"$ref": "Event.json"}],
+	"type": "object",
+	"properties": {
+		"accessCode": {"$ref": "#/definitions/accessCode"},
+		"availableFrom": {"$ref": "#/definitions/availableFrom"},
+		"availableThrough": {"$ref": "#/definitions/availableThrough"},
+		"hasDeliveryMethod": {"$ref": "DeliveryMethod.json#/definitions/possibleRef"}
+	},
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"oneOf": [
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				},
+				{
+					"type": "array",
+					"items": {"$ref": "#/definitions/possibleRef"}
+				}
+			]
+		},
+		"accessCode": {
+			"title": "Access Code",
+			"description": "Password, PIN, or access code needed for delivery (e.g. from a locker).",
+			"type": "string"
+		},
+		"availableFrom": {
+			"title": "Available From",
+			"description": "When the item is available for pickup from the store, locker, etc.",
+			"type": "string",
+			"format": "date-time"
+		},
+		"availableThrough": {
+			"title": "Available Through",
+			"description": "After this date, the item will no longer be available for pickup.",
+			"type": "string",
+			"format": "date-time"
+		}
+	}
+}

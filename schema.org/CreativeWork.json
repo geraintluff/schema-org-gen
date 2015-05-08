@@ -7,6 +7,22 @@
 	"type": "object",
 	"properties": {
 		"about": {"$ref": "Thing.json#/definitions/possibleRef"},
+		"accessibilityAPI": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/accessibilityAPI"}
+		},
+		"accessibilityControl": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/accessibilityControl"}
+		},
+		"accessibilityFeature": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/accessibilityFeature"}
+		},
+		"accessibilityHazard": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/accessibilityHazard"}
+		},
 		"accountablePerson": {"$ref": "Person.json#/definitions/possibleRef"},
 		"aggregateRating": {"$ref": "AggregateRating.json#/definitions/possibleRef"},
 		"alternativeHeadline": {
@@ -113,6 +129,26 @@
 		"href": "{+publishingPrinciples}"
 	}],
 	"definitions": {
+		"accessibilityAPI": {
+			"title": "Accessibility API",
+			"description": "Indicates that the resource is compatible with the referenced accessibility API (WebSchemas wiki lists possible values).\n     ",
+			"type": "string"
+		},
+		"accessibilityControl": {
+			"title": "Accessibility Control",
+			"description": "Identifies input methods that are sufficient to fully control the described resource (WebSchemas wiki lists possible values).",
+			"type": "string"
+		},
+		"accessibilityFeature": {
+			"title": "Accessibility Feature",
+			"description": "Content features of the resource, such as accessible media, alternatives and supported enhancements for accessibility (WebSchemas wiki lists possible values).",
+			"type": "string"
+		},
+		"accessibilityHazard": {
+			"title": "Accessibility Hazard",
+			"description": "A characteristic of the described resource that is physiologically dangerous to some users. Related to WCAG 2.0 guideline 2.3. (WebSchemas wiki lists possible values)",
+			"type": "string"
+		},
 		"alternativeHeadline": {
 			"title": "Alternative Headline",
 			"description": "A secondary title of the CreativeWork.",
@@ -134,7 +170,7 @@
 		},
 		"citation": {
 			"title": "Citation",
-			"description": "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc. NOTE: Candidate for promotion to ScholarlyArticle.",
+			"description": "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.",
 			"anyOf": [{"$ref": "CreativeWork.json#/definitions/possibleRef"}, {"type": "string"}]
 		},
 		"contentRating": {

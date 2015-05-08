@@ -140,7 +140,7 @@
 		},
 		"seller": {
 			"title": "Seller",
-			"description": "The seller.",
+			"description": "The organization or person making the offer.",
 			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
 		},
 		"serialNumber": {
@@ -155,17 +155,9 @@
 		},
 		"validFrom": {
 			"title": "Valid From",
-			"description": "The date when the permit becomes valid.",
-			"anyOf": [
-				{
-					"type": "string",
-					"format": "date"
-				},
-				{
-					"type": "string",
-					"format": "date-time"
-				}
-			]
+			"description": "The date when the item becomes valid.",
+			"type": "string",
+			"format": "date-time"
 		},
 		"validThrough": {
 			"title": "Valid Through",

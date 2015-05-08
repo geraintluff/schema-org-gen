@@ -60,17 +60,9 @@
 		},
 		"validFrom": {
 			"title": "Valid From",
-			"description": "The date when the permit becomes valid.",
-			"anyOf": [
-				{
-					"type": "string",
-					"format": "date"
-				},
-				{
-					"type": "string",
-					"format": "date-time"
-				}
-			]
+			"description": "The date when the item becomes valid.",
+			"type": "string",
+			"format": "date-time"
 		},
 		"validThrough": {
 			"title": "Valid Through",

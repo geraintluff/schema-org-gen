@@ -1,0 +1,78 @@
+{
+	"id": "ParcelDelivery.json",
+	"title": "Parcel Delivery",
+	"format": "http://schema.org/ParcelDelivery",
+	"media": {"type": "application/json;profile=http://schema.org/ParcelDelivery"},
+	"allOf": [{"$ref": "Intangible.json"}],
+	"type": "object",
+	"properties": {
+		"deliveryAddress": {"$ref": "PostalAddress.json#/definitions/possibleRef"},
+		"deliveryStatus": {"$ref": "DeliveryEvent.json#/definitions/possibleRefArray"},
+		"expectedArrivalFrom": {"$ref": "#/definitions/expectedArrivalFrom"},
+		"expectedArrivalUntil": {"$ref": "#/definitions/expectedArrivalUntil"},
+		"hasDeliveryMethod": {"$ref": "DeliveryMethod.json#/definitions/possibleRef"},
+		"itemShipped": {"$ref": "Product.json#/definitions/possibleRefArray"},
+		"originAddress": {"$ref": "PostalAddress.json#/definitions/possibleRef"},
+		"trackingNumber": {"$ref": "#/definitions/trackingNumber"},
+		"trackingUrl": {
+			"type": "string",
+			"format": "uri"
+		}
+	},
+	"links": [{
+		"rel": "http://schema.org/trackingUrl",
+		"href": "{+trackingUrl}"
+	}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"oneOf": [
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				},
+				{
+					"type": "array",
+					"items": {"$ref": "#/definitions/possibleRef"}
+				}
+			]
+		},
+		"expectedArrivalFrom": {
+			"title": "Expected Arrival From",
+			"description": "The earliest date the package may arrive.",
+			"type": "string",
+			"format": "date-time"
+		},
+		"expectedArrivalUntil": {
+			"title": "Expected Arrival Until",
+			"description": "The latest date the package may arrive.",
+			"type": "string",
+			"format": "date-time"
+		},
+		"trackingNumber": {
+			"title": "Tracking Number",
+			"description": "Shipper tracking number.",
+			"type": "string"
+		}
+	}
+}

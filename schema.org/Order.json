@@ -1,0 +1,123 @@
+{
+	"id": "Order.json",
+	"title": "Order",
+	"format": "http://schema.org/Order",
+	"media": {"type": "application/json;profile=http://schema.org/Order"},
+	"allOf": [{"$ref": "Intangible.json"}],
+	"type": "object",
+	"properties": {
+		"acceptedOffer": {"$ref": "Offer.json#/definitions/possibleRefArray"},
+		"billingAddress": {"$ref": "PostalAddress.json#/definitions/possibleRef"},
+		"confirmationNumber": {"$ref": "#/definitions/confirmationNumber"},
+		"customer": {"$ref": "#/definitions/customer"},
+		"discount": {"$ref": "#/definitions/discount"},
+		"discountCode": {"$ref": "#/definitions/discountCode"},
+		"discountCurrency": {"$ref": "#/definitions/discountCurrency"},
+		"isGift": {"$ref": "#/definitions/isGift"},
+		"orderDate": {"$ref": "#/definitions/orderDate"},
+		"orderNumber": {"$ref": "#/definitions/orderNumber"},
+		"orderStatus": {"$ref": "OrderStatus.json#/definitions/possibleRef"},
+		"orderedItem": {"$ref": "Product.json#/definitions/possibleRefArray"},
+		"paymentDue": {"$ref": "#/definitions/paymentDue"},
+		"paymentMethod": {"$ref": "PaymentMethod.json#/definitions/possibleRef"},
+		"paymentMethodId": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/paymentMethodId"}
+		},
+		"paymentUrl": {
+			"type": "string",
+			"format": "uri"
+		}
+	},
+	"links": [{
+		"rel": "http://schema.org/paymentUrl",
+		"href": "{+paymentUrl}"
+	}],
+	"definitions": {
+		"array": {
+			"type": "array",
+			"items": {"$ref": "#"}
+		},
+		"confirmationNumber": {
+			"title": "Confirmation Number",
+			"description": "A number that confirms the given order.",
+			"type": "string"
+		},
+		"customer": {
+			"title": "Customer",
+			"description": "Party placing the order.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		},
+		"discount": {
+			"title": "Discount",
+			"description": "Any discount applied (to an Order).",
+			"anyOf": [{"type": "number"}, {"type": "string"}]
+		},
+		"discountCode": {
+			"title": "Discount Code",
+			"description": "Code used to redeem a discount.",
+			"type": "string"
+		},
+		"discountCurrency": {
+			"title": "Discount Currency",
+			"description": "The currency (in 3-letter ISO 4217 format) of the discount.",
+			"type": "string"
+		},
+		"isGift": {
+			"title": "Is Gift",
+			"description": "Was the offer accepted as a gift for someone other than the buyer.",
+			"type": "boolean"
+		},
+		"orderDate": {
+			"title": "Order Date",
+			"description": "Date order was placed.",
+			"type": "string",
+			"format": "date-time"
+		},
+		"orderNumber": {
+			"title": "Order Number",
+			"description": "The identifier of the transaction.",
+			"type": "string"
+		},
+		"paymentDue": {
+			"title": "Payment Due",
+			"description": "The date that payment is due.",
+			"type": "string",
+			"format": "date-time"
+		},
+		"paymentMethodId": {
+			"title": "Payment Method Id",
+			"description": "An identifier for the method of payment used (e.g. the last 4 digits of the credit card).",
+			"type": "string"
+		},
+		"possibleRef": {
+			"oneOf": [
+				{"$ref": "#"},
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				}
+			]
+		},
+		"possibleRefArray": {
+			"oneOf": [
+				{
+					"type": "string",
+					"format": "uri",
+					"links": [{
+						"rel": "full",
+						"href": "{+$}"
+					}]
+				},
+				{
+					"type": "array",
+					"items": {"$ref": "#/definitions/possibleRef"}
+				}
+			]
+		}
+	}
+}

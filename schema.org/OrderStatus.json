@@ -1,0 +1,16 @@
+{
+	"id": "OrderStatus.json",
+	"title": "Order Status",
+	"format": "http://schema.org/OrderStatus",
+	"media": {"type": "application/json;profile=http://schema.org/OrderStatus"},
+	"enum": [
+		"OrderCancelled",
+		"OrderDelivered",
+		"OrderInTransit",
+		"OrderPaymentDue",
+		"OrderPickupAvailable",
+		"OrderProblem",
+		"OrderProcessing",
+		"OrderReturned"
+	]
+}

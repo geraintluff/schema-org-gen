@@ -10,6 +10,7 @@
 			"type": "array",
 			"items": {"$ref": "#/definitions/attendee"}
 		},
+		"doorTime": {"$ref": "#/definitions/doorTime"},
 		"duration": {"$ref": "Duration.json#/definitions/possibleRef"},
 		"endDate": {"$ref": "#/definitions/endDate"},
 		"eventStatus": {"$ref": "EventStatusType.json#/definitions/possibleRefArray"},
@@ -32,6 +33,33 @@
 		"array": {
 			"type": "array",
 			"items": {"$ref": "#"}
+		},
+		"attendee": {
+			"title": "Attendee",
+			"description": "A person or organization attending the event.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
+		},
+		"doorTime": {
+			"title": "Door Time",
+			"description": "The time admission will commence.",
+			"type": "string",
+			"format": "date-time"
+		},
+		"endDate": {
+			"title": "End Date",
+			"description": "The end date and time of the event or item (in ISO 8601 date format).",
+			"type": "string",
+			"format": "date-time"
+		},
+		"location": {
+			"title": "Location",
+			"description": "The location of the event, organization or action.",
+			"anyOf": [{"$ref": "PostalAddress.json#/definitions/possibleRef"}, {"$ref": "Place.json#/definitions/possibleRef"}]
+		},
+		"performer": {
+			"title": "Performer",
+			"description": "A performer at the event—for example, a presenter, musician, musical group or actor.",
+			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
 		},
 		"possibleRef": {
 			"oneOf": [
@@ -61,27 +89,6 @@
 					"items": {"$ref": "#/definitions/possibleRef"}
 				}
 			]
-		},
-		"attendee": {
-			"title": "Attendee",
-			"description": "A person or organization attending the event.",
-			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
-		},
-		"endDate": {
-			"title": "End Date",
-			"description": "The end date and time of the event or item (in ISO 8601 date format).",
-			"type": "string",
-			"format": "date-time"
-		},
-		"location": {
-			"title": "Location",
-			"description": "The location of the event, organization or action.",
-			"anyOf": [{"$ref": "PostalAddress.json#/definitions/possibleRef"}, {"$ref": "Place.json#/definitions/possibleRef"}]
-		},
-		"performer": {
-			"title": "Performer",
-			"description": "A performer at the event—for example, a presenter, musician, musical group or actor.",
-			"anyOf": [{"$ref": "Organization.json#/definitions/possibleRef"}, {"$ref": "Person.json#/definitions/possibleRef"}]
 		},
 		"previousStartDate": {
 			"title": "Previous Start Date",
